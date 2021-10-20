@@ -7,6 +7,8 @@ import com.mygdx.game.MyGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+		config.setTitle("nome_gioco");
+		config.setWindowedMode(800, 480);
 		new Lwjgl3Application(new MyGdxGame(), config);
 	}
 }
