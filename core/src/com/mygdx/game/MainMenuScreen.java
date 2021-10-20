@@ -29,6 +29,7 @@ public class MainMenuScreen implements Screen {
         ScreenUtils.clear(0,0,0.2f,1);
 
         camera.update();
+        game.batch.begin();
         game.font.draw(game.batch, "Something", 100, 150);
         game.font.draw(game.batch, "Tap:", 100, 100);
         game.batch.end();
