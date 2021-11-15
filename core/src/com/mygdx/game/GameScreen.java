@@ -29,15 +29,12 @@ public class GameScreen implements Screen {
         playerImage = new Texture(Gdx.files.internal("bucket.png"));
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 800, 480);
-        camera.position.x=400;
-        camera.position.y=240;
+        camera.setToOrtho(false, 1280, 800);
+        camera.position.x=640;
+        camera.position.y=400;
         camera.update();
         //create player
         player = new Rectangle();
-        player.x = 800 / 2 - 64 / 2; // center the bucket horizontally
-        player.y = 20; // bottom left corner of the bucket is 20 pixels above
-        // the bottom screen edge
         player.width = 32;
         player.height = 32;
 
@@ -73,7 +70,7 @@ public class GameScreen implements Screen {
             Vector3 touchPos = new Vector3();
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
             camera.unproject(touchPos);
-            player.x = touchPos.x - 64 / 2;
+
         }
 
         game.batch.begin();
