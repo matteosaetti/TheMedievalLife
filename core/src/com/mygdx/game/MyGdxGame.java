@@ -27,6 +27,11 @@ public class MyGdxGame extends Game {
 	private World world;
 	private Box2DDebugRenderer box2DDebugRenderer;
 
+	private WorldContactListener worldContactListener;
+
+	private static final float FIXED_TIME_STEP = 1/ 60f;
+	private  float accumulator;
+
 	public static final short BIT_CIRCLE = 1 << 0;
 	public static final short BIT_BOX = 1 << 1;
 	public static final short BIT_GROUND = 1 << 2;
@@ -36,11 +41,15 @@ public class MyGdxGame extends Game {
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
+		accumulator =  0;
+
 		Box2D.init();
-		world= new World(new Vector2(0, 9.81f), true);
+		world = new World(new Vector2(0, 9.81f), true);
+		worldContactListener = new WorldContactListener();
+		world.setContactListener(worldContactListener);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 
-		screenVieport=new FitViewport(9,16);
+		screenVieport = new FitViewport(9,16);
 		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
 		setScreen(ScreenType.LOADING);
 	}
@@ -73,6 +82,20 @@ public class MyGdxGame extends Game {
 			Gdx.app.debug(TAG, "switching to screen: " + screenType );
 			setScreen(screen);
 		}
+	}
+
+	@Override
+	public void render() {
+		super.render();
+
+		Gdx.app.debug(TAG, "" + Gdx.graphics.getRawDeltaTime());
+
+		accumulator += Math.min(0.25f, Gdx.graphics.getRawDeltaTime());
+		while(accumulator >= FIXED_TIME_STEP){
+				world.step(FIXED_TIME_STEP,6,2);
+				accumulator -= FIXED_TIME_STEP;
+		}
+		//final float alpha = accumulator / FIXED_TIME_STEP;
 	}
 
 	@Override
