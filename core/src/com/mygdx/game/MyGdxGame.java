@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Box2D;
@@ -26,6 +27,7 @@ import java.util.EnumMap;
 public class MyGdxGame extends Game {
 	public static final String TAG = MyGdxGame.class.getSimpleName();
 	private OrthographicCamera gameCamera;
+	private SpriteBatch spriteBatch;
 	private EnumMap<ScreenType, AbstractScreen> screenCache;
 	private FitViewport screenVieport;
 
@@ -39,6 +41,7 @@ public class MyGdxGame extends Game {
 
 	private AssetManager assetManager;
 
+	public static final float UNIT_SCALE = 1/32f;
 
 	public static final short BIT_PLAYER = 1 << 0;
 	public static final short BIT_GROUND = 1 << 2;
@@ -48,6 +51,8 @@ public class MyGdxGame extends Game {
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
+		spriteBatch = new SpriteBatch();
+
 		//box2d stuff
 		accumulator =  0;
 		Box2D.init();
@@ -56,15 +61,23 @@ public class MyGdxGame extends Game {
 		world.setContactListener(worldContactListener);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 
-		//set first screen
-		gameCamera = new OrthographicCamera();
-		screenVieport = new FitViewport(9,16);
-		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
-		setScreen(ScreenType.GAME);
 
 		//initialize assetManager
 		assetManager = new AssetManager();
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+
+		//set first screen
+		gameCamera = new OrthographicCamera();
+		screenVieport = new FitViewport(9,16);
+		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
+		setScreen(ScreenType.LOADING);
+
+
+	}
+
+	public SpriteBatch getSpriteBatch() {
+
+		return spriteBatch;
 	}
 
 	public AssetManager getAssetManager() {
