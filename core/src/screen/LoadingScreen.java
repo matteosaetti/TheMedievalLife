@@ -4,13 +4,19 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.game.MyGdxGame;
 
 public class LoadingScreen extends  AbstractScreen {
+    private final AssetManager assetManager;
 
     public LoadingScreen(final MyGdxGame context){
+
         super(context);
+
+        this.assetManager= context.getAssetManager();
+        //assetManager.load("map/...", TileMap.class);
     }
     @Override
     public void show() {
@@ -25,7 +31,6 @@ public class LoadingScreen extends  AbstractScreen {
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
             context.setScreen(ScreenType.GAME);
         }
-        viewport.apply(true);
     }
 
     @Override

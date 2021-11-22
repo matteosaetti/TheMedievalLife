@@ -4,6 +4,10 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -21,6 +25,7 @@ import java.util.EnumMap;
 
 public class MyGdxGame extends Game {
 	public static final String TAG = MyGdxGame.class.getSimpleName();
+	private OrthographicCamera gameCamera;
 	private EnumMap<ScreenType, AbstractScreen> screenCache;
 	private FitViewport screenVieport;
 
@@ -32,8 +37,10 @@ public class MyGdxGame extends Game {
 	private static final float FIXED_TIME_STEP = 1/ 60f;
 	private  float accumulator;
 
-	public static final short BIT_CIRCLE = 1 << 0;
-	public static final short BIT_BOX = 1 << 1;
+	private AssetManager assetManager;
+
+
+	public static final short BIT_PLAYER = 1 << 0;
 	public static final short BIT_GROUND = 1 << 2;
 
 
@@ -41,17 +48,33 @@ public class MyGdxGame extends Game {
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
+		//box2d stuff
 		accumulator =  0;
-
 		Box2D.init();
-		world = new World(new Vector2(0, 9.81f), true);
+		world = new World(Vector2.Zero, true);
 		worldContactListener = new WorldContactListener();
 		world.setContactListener(worldContactListener);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 
+		//set first screen
+		gameCamera = new OrthographicCamera();
 		screenVieport = new FitViewport(9,16);
 		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
-		setScreen(ScreenType.LOADING);
+		setScreen(ScreenType.GAME);
+
+		//initialize assetManager
+		assetManager = new AssetManager();
+		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+	}
+
+	public AssetManager getAssetManager() {
+
+		return assetManager;
+	}
+
+	public OrthographicCamera getGameCamera() {
+
+		return gameCamera;
 	}
 
 	public  FitViewport getScreenVieport(){ return screenVieport; }
@@ -64,8 +87,8 @@ public class MyGdxGame extends Game {
 		return box2DDebugRenderer;
 	}
 
-	public void setScreen(final ScreenType screenType){
 
+	public void setScreen(final ScreenType screenType){
 
 		final Screen screen = screenCache.get(screenType);
 		if(screen==null){
@@ -103,6 +126,7 @@ public class MyGdxGame extends Game {
 		super.dispose();
 		box2DDebugRenderer.dispose();
 		world.dispose();
+		assetManager.dispose();
 	}
 }
 
