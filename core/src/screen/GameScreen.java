@@ -6,13 +6,14 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.MyGdxGame;
-
-import javax.swing.*;
+import jdk.nashorn.internal.parser.JSONParser;
+import map.CollisionArea;
+import map.Map;
 
 import static com.mygdx.game.MyGdxGame.*;
 
@@ -26,12 +27,16 @@ public class GameScreen  extends AbstractScreen{
     private final AssetManager assetManager;
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final OrthographicCamera gameCamera;
+    private final GLProfiler profiler;
+    private final Map map;
 
     public GameScreen(final MyGdxGame context) {
         super(context);
         assetManager = context.getAssetManager();
         this.gameCamera = context.getGameCamera();
         mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, context.getSpriteBatch());
+        profiler = new GLProfiler(Gdx.graphics);
+        profiler.enable();
 
         bodyDef = new BodyDef();
         fixtureDef= new FixtureDef();
@@ -56,29 +61,52 @@ public class GameScreen  extends AbstractScreen{
         player.createFixture(fixtureDef);
         pShape.dispose();
 
-        //create a room
+
+        final TiledMap tiledMap = assetManager.get("map/..", TiledMap.class);
+        mapRenderer.setMap(tiledMap);
+        map = new Map(tiledMap);
+
+        spawnCollisionAreas();
+    }
+
+    private void resetBodyAndFixtureDefinitions(){
         bodyDef.position.set(0,0);
         bodyDef.gravityScale = 1;
         bodyDef.type = BodyDef.BodyType.StaticBody;
-        final Body body = world.createBody(bodyDef);
-        body.setUserData("GROUND");
+        bodyDef.fixedRotation = false;
 
+        fixtureDef.density = 0;
         fixtureDef.isSensor = false;
         fixtureDef.restitution = 0;
         fixtureDef.friction = 0.2f;
-        fixtureDef.filter.categoryBits = BIT_GROUND;
+        fixtureDef.filter.categoryBits = 0x0001;
         fixtureDef.filter.maskBits = -1;
-        final ChainShape chainShape = new ChainShape();
-        chainShape.createLoop(new float[]{1,1,15,8,15,8,1});
-        fixtureDef.shape = chainShape;
-        body.createFixture(fixtureDef);
-        chainShape.dispose();
+        fixtureDef.shape = null;
 
+    }
+    private void  spawnCollisionAreas(){
+        for(final CollisionArea collisionArea : map.getCollisionAreas()){
+            resetBodyAndFixtureDefinitions();
+
+            //create a room
+            bodyDef.position.set(collisionArea.getX(), collisionArea.getY());
+            final Body body = world.createBody(bodyDef);
+            body.setUserData("GROUND");
+
+            fixtureDef.filter.categoryBits = BIT_GROUND;
+            fixtureDef.filter.maskBits = -1;
+            final ChainShape chainShape = new ChainShape();
+            chainShape.createLoop(collisionArea.getVertices());
+            fixtureDef.shape = chainShape;
+            body.createFixture(fixtureDef);
+            chainShape.dispose();
+
+        }
     }
 
     @Override
     public void show() {
-        mapRenderer.setMap(assetManager.get("map/..", TiledMap.class));
+
     }
 
     @Override
@@ -110,7 +138,7 @@ public class GameScreen  extends AbstractScreen{
         player.applyLinearImpulse(
                 (speedX-player.getLinearVelocity().x) * player.getMass(),
                 (speedY - player.getLinearVelocity().y) * player.getMass(),
-                player.getWorldCenter().x + 0.5f, player.getWorldCenter().y + 0.5f, true
+                player.getWorldCenter().x , player.getWorldCenter().y , true
 
         );
 
@@ -118,6 +146,9 @@ public class GameScreen  extends AbstractScreen{
         mapRenderer.setView(gameCamera);
         mapRenderer.render();
         box2DDebugRenderer.render(world, viewport.getCamera().combined);
+        Gdx.app.debug("RenderInfo", "Bindings " + profiler.getTextureBindings());
+        Gdx.app.debug("RenderInfo", "Drawcalls " + profiler.getDrawCalls());
+        profiler.reset();
     }
 
     @Override

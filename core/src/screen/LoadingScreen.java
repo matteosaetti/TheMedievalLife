@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.mygdx.game.MyGdxGame;
 
 public class LoadingScreen extends  AbstractScreen {
@@ -16,7 +17,7 @@ public class LoadingScreen extends  AbstractScreen {
         super(context);
 
         this.assetManager= context.getAssetManager();
-        //assetManager.load("map/...", TileMap.class);
+        assetManager.load("map/...", TiledMap.class);
 
     }
     @Override

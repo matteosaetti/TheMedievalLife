@@ -23,6 +23,7 @@ import com.badlogic.gdx.math.Vector2;
 
 
 import java.util.EnumMap;
+import java.util.HashMap;
 
 public class MyGdxGame extends Game {
 	public static final String TAG = MyGdxGame.class.getSimpleName();
@@ -44,7 +45,7 @@ public class MyGdxGame extends Game {
 	public static final float UNIT_SCALE = 1/32f;
 
 	public static final short BIT_PLAYER = 1 << 0;
-	public static final short BIT_GROUND = 1 << 2;
+	public static final short BIT_GROUND = 1 << 1;
 
 
 	@Override
