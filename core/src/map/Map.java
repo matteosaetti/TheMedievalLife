@@ -10,23 +10,45 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Polyline;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import javax.print.attribute.standard.RequestingUserName;
+
+import static com.mygdx.game.MyGdxGame.UNIT_SCALE;
 
 public class Map {
     public static final String TAG = Map.class.getSimpleName();
     private final TiledMap tiledMap;
     private final Array<CollisionArea> collisionAreas;
-
+    private final Vector2 startLocation;
 
     public Map(final TiledMap tiledMap){
         this.tiledMap = tiledMap;
         collisionAreas = new Array<CollisionArea>();
-
+        startLocation = new Vector2();
 
         parseCollisionLayer();
+        parsePlayerStartLocation();
 
+    }
+
+    private void parsePlayerStartLocation() {
+        final MapLayer startLocationLayer = tiledMap.getLayers().get("playerStartLocation");
+        if(startLocationLayer == null){
+            Gdx.app.debug(TAG, "there is no start location layer");
+            return;
+        }
+        final MapObjects objects = startLocationLayer.getObjects();
+        for(final MapObject mapObj : objects){
+            if(mapObj instanceof RectangleMapObject){
+                final RectangleMapObject rectangleMapObject = (RectangleMapObject) mapObj;
+                startLocation.set(rectangleMapObject.getRectangle().x * UNIT_SCALE, rectangleMapObject.getRectangle().y * UNIT_SCALE);
+            }
+            else{
+                Gdx.app.debug(TAG, "MapObject of type " + mapObj + " is not supported for player start Location layer!");
+            }
+        }
     }
 
     private void parseCollisionLayer() {
@@ -37,7 +59,7 @@ public class Map {
        }
         final MapObjects mapObjects = collisionLayer.getObjects();
         if(mapObjects==null){
-            Gdx.app.debug(TAG, "there are no collision mapobjects defined");
+            Gdx.app.debug(TAG, "there are no collision map objects defined");
         }
        for( MapObject mapObj : mapObjects){
             if(mapObj instanceof RectangleMapObject){
@@ -77,5 +99,9 @@ public class Map {
 
     public Array<CollisionArea> getCollisionAreas() {
         return collisionAreas;
+    }
+
+    public Vector2 getStartLocation() {
+        return startLocation;
     }
 }

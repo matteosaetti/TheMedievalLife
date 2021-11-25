@@ -23,7 +23,7 @@ public class GameScreen  extends AbstractScreen{
     private final BodyDef bodyDef;
     private final FixtureDef fixtureDef;
 
-    private final Body player;
+    private  Body player;
     private final AssetManager assetManager;
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final OrthographicCamera gameCamera;
@@ -42,17 +42,25 @@ public class GameScreen  extends AbstractScreen{
         fixtureDef= new FixtureDef();
 
 
+
+
+        final TiledMap tiledMap = assetManager.get("map/..", TiledMap.class);
+        mapRenderer.setMap(tiledMap);
+        map = new Map(tiledMap);
+
+        spawnCollisionAreas();
+        spawnPlayer();
+    }
+
+    private void spawnPlayer() {
+        resetBodyAndFixtureDefinitions();
+
         //create a PLAYER
-        bodyDef.position.set(4.5f,3);
-        bodyDef.gravityScale = 1;
+        bodyDef.position.set(map.getStartLocation());
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         player = world.createBody(bodyDef);
         player.setUserData("PLAYER");
 
-        fixtureDef.density = 1;
-        fixtureDef.isSensor = false;
-        fixtureDef.restitution = 0;
-        fixtureDef.friction = 0.2f;
         fixtureDef.filter.categoryBits = BIT_PLAYER;
         fixtureDef.filter.maskBits = BIT_GROUND;
         final PolygonShape pShape = new PolygonShape();
@@ -61,12 +69,6 @@ public class GameScreen  extends AbstractScreen{
         player.createFixture(fixtureDef);
         pShape.dispose();
 
-
-        final TiledMap tiledMap = assetManager.get("map/..", TiledMap.class);
-        mapRenderer.setMap(tiledMap);
-        map = new Map(tiledMap);
-
-        spawnCollisionAreas();
     }
 
     private void resetBodyAndFixtureDefinitions(){
@@ -89,7 +91,7 @@ public class GameScreen  extends AbstractScreen{
             resetBodyAndFixtureDefinitions();
 
             //create a room
-            bodyDef.position.set(collisionArea.getX(), collisionArea.getY());
+            bodyDef.position.set(collisionArea.getX() + 0.5f, collisionArea.getY() + 0.5f);
             final Body body = world.createBody(bodyDef);
             body.setUserData("GROUND");
 
