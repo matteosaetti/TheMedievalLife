@@ -5,14 +5,19 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.SkinLoader;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -42,6 +47,8 @@ public class MyGdxGame extends Game {
 
 	private AssetManager assetManager;
 
+	private Skin skin;
+
 	public static final float UNIT_SCALE = 1/32f;
 
 	public static final short BIT_PLAYER = 1 << 0;
@@ -66,13 +73,35 @@ public class MyGdxGame extends Game {
 		//initialize assetManager
 		assetManager = new AssetManager();
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
-
+		initializeSkin();
 		//set first screen
 		gameCamera = new OrthographicCamera();
 		screenVieport = new FitViewport(9,16);
 		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
 		setScreen(ScreenType.LOADING);
 
+
+	}
+
+	private void initializeSkin() {
+		//generate ttf bitmaps
+		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
+		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/font.ttf"));
+		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		fontParameter.minFilter = Texture.TextureFilter.Linear;
+		fontParameter.magFilter = Texture.TextureFilter.Linear;
+		final int[] sizeToCreate = {16,20,24,32};
+		for(int size : sizeToCreate){
+			fontParameter.size = size;
+			resources.put("font_" + size, fontGenerator.generateFont(fontParameter));
+		}
+		fontGenerator.dispose();;
+
+		//load skin
+		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
+		assetManager.load("ui/...", Skin.class, skinParameter);
+		assetManager.finishLoading();
+		skin = assetManager.get("ui/...", Skin.class);
 
 	}
 
