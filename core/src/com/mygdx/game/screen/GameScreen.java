@@ -1,4 +1,4 @@
-package screen;
+package com.mygdx.game.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -10,10 +10,13 @@ import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.mygdx.game.MyGdxGame;
 
-import map.CollisionArea;
-import map.Map;
+import com.mygdx.game.ui.GameUI;
+import com.mygdx.game.map.CollisionArea;
+import com.mygdx.game.map.Map;
 
 import static com.mygdx.game.MyGdxGame.*;
 
@@ -44,12 +47,17 @@ public class GameScreen  extends AbstractScreen{
 
 
 
-        final TiledMap tiledMap = assetManager.get("map/..", TiledMap.class);
+        final TiledMap tiledMap = assetManager.get("com/mygdx/game/map/..", TiledMap.class);
         mapRenderer.setMap(tiledMap);
         map = new Map(tiledMap);
 
         spawnCollisionAreas();
         spawnPlayer();
+    }
+
+    @Override
+    protected Table getScreenUI(Skin skin) {
+        return new GameUI(skin);
     }
 
     private void spawnPlayer() {

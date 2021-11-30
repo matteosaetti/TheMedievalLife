@@ -1,4 +1,4 @@
-package map;
+package com.mygdx.game.map;
 
 import com.badlogic.gdx.math.Vector2;
 

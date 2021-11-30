@@ -1,4 +1,4 @@
-package map;
+package com.mygdx.game.map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
@@ -12,8 +12,6 @@ import com.badlogic.gdx.math.Polyline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-
-import javax.print.attribute.standard.RequestingUserName;
 
 import static com.mygdx.game.MyGdxGame.UNIT_SCALE;
 

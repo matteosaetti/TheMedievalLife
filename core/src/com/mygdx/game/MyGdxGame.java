@@ -15,20 +15,21 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
-import screen.AbstractScreen;
-import screen.ScreenType;
+
+import com.mygdx.game.screen.AbstractScreen;
+import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
 
 
 import java.util.EnumMap;
-import java.util.HashMap;
+
 
 public class MyGdxGame extends Game {
 	public static final String TAG = MyGdxGame.class.getSimpleName();
@@ -47,6 +48,7 @@ public class MyGdxGame extends Game {
 
 	private AssetManager assetManager;
 
+	private Stage stage;
 	private Skin skin;
 
 	public static final float UNIT_SCALE = 1/32f;
@@ -74,6 +76,8 @@ public class MyGdxGame extends Game {
 		assetManager = new AssetManager();
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
 		initializeSkin();
+		stage = new Stage(new FitViewport(1280,720), spriteBatch);
+
 		//set first screen
 		gameCamera = new OrthographicCamera();
 		screenVieport = new FitViewport(9,16);
@@ -95,7 +99,7 @@ public class MyGdxGame extends Game {
 			fontParameter.size = size;
 			resources.put("font_" + size, fontGenerator.generateFont(fontParameter));
 		}
-		fontGenerator.dispose();;
+		fontGenerator.dispose();
 
 		//load skin
 		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
@@ -103,6 +107,14 @@ public class MyGdxGame extends Game {
 		assetManager.finishLoading();
 		skin = assetManager.get("ui/...", Skin.class);
 
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public Skin getSkin() {
+		return skin;
 	}
 
 	public SpriteBatch getSpriteBatch() {
@@ -162,6 +174,9 @@ public class MyGdxGame extends Game {
 				accumulator -= FIXED_TIME_STEP;
 		}
 		//final float alpha = accumulator / FIXED_TIME_STEP;
+		stage.getViewport().apply();
+		stage.act();
+		stage.draw();
 	}
 
 	@Override
@@ -170,6 +185,8 @@ public class MyGdxGame extends Game {
 		box2DDebugRenderer.dispose();
 		world.dispose();
 		assetManager.dispose();
+		spriteBatch.dispose();
+		stage.dispose();
 	}
 }
 
