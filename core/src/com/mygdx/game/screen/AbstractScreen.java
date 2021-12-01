@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 
@@ -18,6 +19,7 @@ public abstract class AbstractScreen<T extends Table> implements Screen, InputLi
     protected final T screenUI;
     protected final Stage stage;
     protected final InputManager inputManager;
+    protected final AudioManager audioManager;
 
     public AbstractScreen(final MyGdxGame context){
         this.context = context;
@@ -25,7 +27,7 @@ public abstract class AbstractScreen<T extends Table> implements Screen, InputLi
         this.world = context.getWorld();
         this.box2DDebugRenderer = context.getBox2DDebugRenderer();
         inputManager = context.getInputManager();
-
+        audioManager = context.getAudioManager();
         stage = context.getStage();
         screenUI = getScreenUI(context);
     }

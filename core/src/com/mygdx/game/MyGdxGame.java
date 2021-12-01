@@ -24,6 +24,7 @@ import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
@@ -50,6 +51,8 @@ public class MyGdxGame extends Game {
 
 	private AssetManager assetManager;
 
+	private AudioManager audioManager;
+
 	private Stage stage;
 	private Skin skin;
 
@@ -69,6 +72,7 @@ public class MyGdxGame extends Game {
 
 		spriteBatch = new SpriteBatch();
 
+
 		//box2d stuff
 		accumulator =  0;
 		Box2D.init();
@@ -83,6 +87,9 @@ public class MyGdxGame extends Game {
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
 		initializeSkin();
 		stage = new Stage(new FitViewport(1280,720), spriteBatch);
+
+		//audio
+		audioManager = new AudioManager(this);
 
 		//input
 		inputManager = new InputManager();
@@ -127,14 +134,18 @@ public class MyGdxGame extends Game {
 		i18NBundle = assetManager.get("ui/strings", I18NBundle.class);
 	}
 
-	public I18NBundle getI18NBundle() {
-		return i18NBundle;
+
+	public AudioManager getAudioManager() {
+		return audioManager;
 	}
 
 	public InputManager getInputManager() {
 		return inputManager;
 	}
 
+	public I18NBundle getI18NBundle() {
+		return i18NBundle;
+	}
 	public Stage getStage() {
 		return stage;
 	}
