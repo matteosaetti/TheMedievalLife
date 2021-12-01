@@ -1,13 +1,13 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.SkinLoader;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -18,11 +18,13 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+import com.mygdx.game.input.InputManager;
 import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
@@ -51,6 +53,10 @@ public class MyGdxGame extends Game {
 	private Stage stage;
 	private Skin skin;
 
+	private I18NBundle i18NBundle;
+
+	private InputManager inputManager;
+
 	public static final float UNIT_SCALE = 1/32f;
 
 	public static final short BIT_PLAYER = 1 << 0;
@@ -78,6 +84,10 @@ public class MyGdxGame extends Game {
 		initializeSkin();
 		stage = new Stage(new FitViewport(1280,720), spriteBatch);
 
+		//input
+		inputManager = new InputManager();
+		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
+
 		//set first screen
 		gameCamera = new OrthographicCamera();
 		screenVieport = new FitViewport(9,16);
@@ -88,6 +98,11 @@ public class MyGdxGame extends Game {
 	}
 
 	private void initializeSkin() {
+		//setup markup colors
+		Colors.put("Red", Color.RED);
+		Colors.put("Blu", Color.BLUE);
+
+
 		//generate ttf bitmaps
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
 		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/font.ttf"));
@@ -97,16 +112,27 @@ public class MyGdxGame extends Game {
 		final int[] sizeToCreate = {16,20,24,32};
 		for(int size : sizeToCreate){
 			fontParameter.size = size;
-			resources.put("font_" + size, fontGenerator.generateFont(fontParameter));
+			final BitmapFont bitmapFont = fontGenerator.generateFont(fontParameter);
+			bitmapFont.getData().markupEnabled = true;
+			resources.put("font_" + size, bitmapFont);
 		}
 		fontGenerator.dispose();
 
 		//load skin
 		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
 		assetManager.load("ui/...", Skin.class, skinParameter);
+		assetManager.load("ui/strings", I18NBundle.class);
 		assetManager.finishLoading();
 		skin = assetManager.get("ui/...", Skin.class);
+		i18NBundle = assetManager.get("ui/strings", I18NBundle.class);
+	}
 
+	public I18NBundle getI18NBundle() {
+		return i18NBundle;
+	}
+
+	public InputManager getInputManager() {
+		return inputManager;
 	}
 
 	public Stage getStage() {

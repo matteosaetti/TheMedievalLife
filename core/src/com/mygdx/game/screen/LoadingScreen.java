@@ -2,16 +2,17 @@ package com.mygdx.game.screen;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.input.GameKeys;
+
+import com.mygdx.game.input.InputManager;
 import com.mygdx.game.ui.LoadingUI;
 
-public class LoadingScreen extends  AbstractScreen<LoadingUI> {
+public class LoadingScreen extends AbstractScreen<LoadingUI>  {
     private final AssetManager assetManager;
 
     public LoadingScreen(final MyGdxGame context){
@@ -19,13 +20,16 @@ public class LoadingScreen extends  AbstractScreen<LoadingUI> {
         super(context);
 
         this.assetManager= context.getAssetManager();
-        assetManager.load("com/mygdx/game/map/...", TiledMap.class);
+        assetManager.load("map/map/...", TiledMap.class);
+
 
     }
 
+
+
     @Override
-    protected LoadingUI getScreenUI(Skin skin) {
-        return new LoadingUI(skin);
+    protected LoadingUI getScreenUI(final MyGdxGame context) {
+        return new LoadingUI(context);
     }
 
     @Override
@@ -38,9 +42,7 @@ public class LoadingScreen extends  AbstractScreen<LoadingUI> {
         Gdx.gl.glClearColor(0,0,0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if(assetManager.update() && Gdx.input.isKeyPressed(Input.Keys.ENTER)){
-            context.setScreen(ScreenType.GAME);
-        }
+        assetManager.update();
         screenUI.setProgress(assetManager.getProgress());
     }
 
@@ -66,6 +68,18 @@ public class LoadingScreen extends  AbstractScreen<LoadingUI> {
 
     @Override
     public void dispose() {
+
+    }
+
+    @Override
+    public void keyPressed(InputManager manager, GameKeys key) {
+        if(assetManager.getProgress() >= 1) {
+            context.setScreen(ScreenType.GAME);
+        }
+    }
+
+    @Override
+    public void keyUp(InputManager manager, GameKeys key) {
 
     }
 }

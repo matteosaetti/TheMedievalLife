@@ -1,7 +1,7 @@
 package com.mygdx.game.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
@@ -10,10 +10,11 @@ import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+
 import com.mygdx.game.MyGdxGame;
 
+import com.mygdx.game.input.GameKeys;
+import com.mygdx.game.input.InputManager;
 import com.mygdx.game.ui.GameUI;
 import com.mygdx.game.map.CollisionArea;
 import com.mygdx.game.map.Map;
@@ -21,10 +22,14 @@ import com.mygdx.game.map.Map;
 import static com.mygdx.game.MyGdxGame.*;
 
 
-public class GameScreen  extends AbstractScreen{
+public class GameScreen  extends AbstractScreen<GameUI>{
 
     private final BodyDef bodyDef;
     private final FixtureDef fixtureDef;
+
+    private boolean directionChange;
+    private int xFactor;
+    private int yFactor;
 
     private  Body player;
     private final AssetManager assetManager;
@@ -39,15 +44,12 @@ public class GameScreen  extends AbstractScreen{
         this.gameCamera = context.getGameCamera();
         mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, context.getSpriteBatch());
         profiler = new GLProfiler(Gdx.graphics);
-        profiler.enable();
+         //    profiler.enable();
 
         bodyDef = new BodyDef();
         fixtureDef= new FixtureDef();
 
-
-
-
-        final TiledMap tiledMap = assetManager.get("com/mygdx/game/map/..", TiledMap.class);
+        final TiledMap tiledMap = assetManager.get("map/map/..", TiledMap.class);
         mapRenderer.setMap(tiledMap);
         map = new Map(tiledMap);
 
@@ -56,8 +58,8 @@ public class GameScreen  extends AbstractScreen{
     }
 
     @Override
-    protected Table getScreenUI(Skin skin) {
-        return new GameUI(skin);
+    protected GameUI getScreenUI(final MyGdxGame context) {
+        return new GameUI(context);
     }
 
     private void spawnPlayer() {
@@ -123,41 +125,22 @@ public class GameScreen  extends AbstractScreen{
     public void render(float delta) {
         Gdx.gl.glClearColor(1,0,0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        final float speedX;
-        final float speedY;
 
-        if(Gdx.input.isKeyPressed(Input.Keys.A)){
-          speedX = -3;
-        }
-        else if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            speedX = 3;
-        }
-        else{
-            speedX = 0;
-        }
+        if(directionChange) {
+            player.applyLinearImpulse(
+                    (xFactor - player.getLinearVelocity().x) * player.getMass(),
+                    (yFactor - player.getLinearVelocity().y) * player.getMass(),
+                    player.getWorldCenter().x, player.getWorldCenter().y, true
 
-        if(Gdx.input.isKeyPressed(Input.Keys.S)){
-            speedY = -3;
+            );
         }
-        else if(Gdx.input.isKeyPressed(Input.Keys.W)){
-            speedY = 3;
-        }
-        else{
-            speedY = 0;
-        }
-        player.applyLinearImpulse(
-                (speedX-player.getLinearVelocity().x) * player.getMass(),
-                (speedY - player.getLinearVelocity().y) * player.getMass(),
-                player.getWorldCenter().x , player.getWorldCenter().y , true
-
-        );
 
         viewport.apply(true);
         mapRenderer.setView(gameCamera);
         mapRenderer.render();
         box2DDebugRenderer.render(world, viewport.getCamera().combined);
         Gdx.app.debug("RenderInfo", "Bindings " + profiler.getTextureBindings());
-        Gdx.app.debug("RenderInfo", "Drawcalls " + profiler.getDrawCalls());
+        Gdx.app.debug("RenderInfo", "Draw calls " + profiler.getDrawCalls());
         profiler.reset();
     }
 
@@ -184,5 +167,55 @@ public class GameScreen  extends AbstractScreen{
     @Override
     public void dispose() {
         mapRenderer.dispose();
+    }
+
+    @Override
+    public void keyPressed(InputManager manager, GameKeys key) {
+        switch (key){
+            case LEFT:
+                directionChange = true;
+                xFactor = -1;
+                break;
+            case RIGHT:
+                directionChange = true;
+                xFactor = 1;
+                break;
+            case UP:
+                directionChange = true;
+                yFactor = 1;
+                break;
+            case DOWN:
+                directionChange = true;
+                yFactor = -1;
+                break;
+            default:
+                //nothing
+                return;
+        }
+    }
+
+    @Override
+    public void keyUp(InputManager manager, GameKeys key) {
+        switch (key) {
+            case LEFT:
+                directionChange = true;
+                xFactor = manager.isKeyPressed(GameKeys.RIGHT) ? 1 : 0;
+                break;
+            case RIGHT:
+                directionChange = true;
+                xFactor = manager.isKeyPressed(GameKeys.LEFT) ? -1 : 0;
+                break;
+            case UP:
+                directionChange = true;
+                yFactor = manager.isKeyPressed(GameKeys.UP) ? -1 : 0;
+                break;
+            case DOWN:
+                directionChange = true;
+                yFactor = manager.isKeyPressed(GameKeys.DOWN) ? 1 : 0;
+                break;
+            default:
+                //nothing
+                return;
+        }
     }
 }
