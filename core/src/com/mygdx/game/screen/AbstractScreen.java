@@ -23,7 +23,7 @@ public abstract class AbstractScreen<T extends Table> implements Screen, InputLi
 
     public AbstractScreen(final MyGdxGame context){
         this.context = context;
-        viewport = context.getScreenVieport();
+        viewport = context.getScreenViewport();
         this.world = context.getWorld();
         this.box2DDebugRenderer = context.getBox2DDebugRenderer();
         inputManager = context.getInputManager();
