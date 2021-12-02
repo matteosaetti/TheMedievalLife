@@ -25,6 +25,7 @@ import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import com.mygdx.game.audio.AudioManager;
+import com.mygdx.game.ecs.ECSEngine;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
@@ -39,7 +40,7 @@ public class MyGdxGame extends Game {
 	private OrthographicCamera gameCamera;
 	private SpriteBatch spriteBatch;
 	private EnumMap<ScreenType, AbstractScreen> screenCache;
-	private FitViewport screenVieport;
+	private FitViewport screenViewport;
 
 	private World world;
 	private Box2DDebugRenderer box2DDebugRenderer;
@@ -57,6 +58,7 @@ public class MyGdxGame extends Game {
 	private Skin skin;
 
 	private I18NBundle i18NBundle;
+	private ECSEngine ecsEngine;
 
 	private InputManager inputManager;
 
@@ -95,9 +97,13 @@ public class MyGdxGame extends Game {
 		inputManager = new InputManager();
 		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
 
+		//ecs engine
+		ecsEngine = new ECSEngine(this);
+
+
 		//set first screen
 		gameCamera = new OrthographicCamera();
-		screenVieport = new FitViewport(9,16);
+		screenViewport = new FitViewport(9,16);
 		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
 		setScreen(ScreenType.LOADING);
 
@@ -134,6 +140,9 @@ public class MyGdxGame extends Game {
 		i18NBundle = assetManager.get("ui/strings", I18NBundle.class);
 	}
 
+	public ECSEngine getEcsEngine() {
+		return ecsEngine;
+	}
 
 	public AudioManager getAudioManager() {
 		return audioManager;
@@ -169,7 +178,9 @@ public class MyGdxGame extends Game {
 		return gameCamera;
 	}
 
-	public  FitViewport getScreenVieport(){ return screenVieport; }
+	public  FitViewport getScreenViewport(){
+		return screenViewport;
+	}
 
 	public World getWorld(){
 		return world;
@@ -203,9 +214,8 @@ public class MyGdxGame extends Game {
 	public void render() {
 		super.render();
 
-		Gdx.app.debug(TAG, "" + Gdx.graphics.getRawDeltaTime());
-
-		accumulator += Math.min(0.25f, Gdx.graphics.getRawDeltaTime());
+		ecsEngine.update(Gdx.graphics.getDeltaTime());
+		accumulator += Math.min(0.25f, Gdx.graphics.getDeltaTime());
 		while(accumulator >= FIXED_TIME_STEP){
 				world.step(FIXED_TIME_STEP,6,2);
 				accumulator -= FIXED_TIME_STEP;
