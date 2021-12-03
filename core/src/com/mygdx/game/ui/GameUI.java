@@ -7,10 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.MyGdxGame;
 
 public class GameUI extends Table {
-    public GameUI(final MyGdxGame skin) {
-        super(skin);
+    public GameUI(final MyGdxGame context) {
+        super(context.getSkin());
         setFillParent(true);
 
-        add(new TextButton("Blub", skin, "huge"));
+        add(new TextButton("Blub", context.getSkin(), "huge"));
     }
 }
