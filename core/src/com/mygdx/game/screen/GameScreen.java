@@ -1,51 +1,28 @@
 package com.mygdx.game.screen;
 
 import com.badlogic.gdx.Gdx;
-
-
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.profiling.GLProfiler;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.*;
-
+import com.badlogic.gdx.Input;
 import com.mygdx.game.MyGdxGame;
-
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.map.MapListener;
 import com.mygdx.game.ui.GameUI;
-import com.mygdx.game.map.CollisionArea;
 import com.mygdx.game.map.Map;
+import com.mygdx.game.map.MapManager;
 
-import static com.mygdx.game.MyGdxGame.*;
 
+public class GameScreen  extends AbstractScreen<GameUI> implements MapListener {
 
-public class GameScreen  extends AbstractScreen<GameUI>{
-    private final AssetManager assetManager;
-    private final OrthogonalTiledMapRenderer mapRenderer;
-    private final OrthographicCamera gameCamera;
-    private final GLProfiler profiler;
-
-    private final Map map;
+    private final MapManager mapManager;
 
     public GameScreen(final MyGdxGame context) {
         super(context);
 
-        assetManager = context.getAssetManager();
-        this.gameCamera = context.getGameCamera();
-        mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, context.getSpriteBatch());
-        profiler = new GLProfiler(Gdx.graphics);
-        //    profiler.enable();
+        mapManager = context.getMapManager();
+        mapManager.addMapListener(this);
+       // mapManager.setMap(MapType.);
 
-
-        final TiledMap tiledMap = assetManager.get("map/..", TiledMap.class);
-        mapRenderer.setMap(tiledMap);
-        map = new Map(tiledMap);
-
-        spawnCollisionAreas();
-        context.getEcsEngine().createPlayer(map.getStartLocation(), 1,1);
+        context.getEcsEngine().createPlayer(mapManager.getCurrentMap().getStartLocation(), 0.75f,0.75f);
     }
 
     @Override
@@ -54,27 +31,6 @@ public class GameScreen  extends AbstractScreen<GameUI>{
     }
 
 
-    private void  spawnCollisionAreas(){
-        final BodyDef bodyDef = new BodyDef();
-        final FixtureDef fixtureDef = new FixtureDef();
-        for(final CollisionArea collisionArea : map.getCollisionAreas()){
-
-            //create a room
-            bodyDef.position.set(collisionArea.getX() + 0.5f, collisionArea.getY() + 0.5f);
-            final Body body = world.createBody(bodyDef);
-            body.setUserData("GROUND");
-
-            fixtureDef.filter.categoryBits = BIT_GROUND;
-            fixtureDef.filter.maskBits = -1;
-            final ChainShape chainShape = new ChainShape();
-            chainShape.createLoop(collisionArea.getVertices());
-            fixtureDef.shape = chainShape;
-            body.createFixture(fixtureDef);
-            chainShape.dispose();
-
-        }
-    }
-
     @Override
     public void show() {
 
@@ -82,18 +38,15 @@ public class GameScreen  extends AbstractScreen<GameUI>{
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1,0,0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        //TODO remove map change test stuff
+        if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
+           // mapManager.setMap(MapType.MAP_1);
 
-
-        viewport.apply(true);
-        mapRenderer.setView(gameCamera);
-        mapRenderer.render();
-        box2DDebugRenderer.render(world, viewport.getCamera().combined);
-        Gdx.app.debug("RenderInfo", "Bindings " + profiler.getTextureBindings());
-        Gdx.app.debug("RenderInfo", "Draw calls " + profiler.getDrawCalls());
-        profiler.reset();
+        }
+        else if(Gdx.input.isKeyPressed(Input.Keys.NUM_2)){
+            // mapManager.setMap(MapType.MAP_2);
+        }
     }
 
     @Override
@@ -118,7 +71,6 @@ public class GameScreen  extends AbstractScreen<GameUI>{
 
     @Override
     public void dispose() {
-        mapRenderer.dispose();
     }
 
     @Override
@@ -128,6 +80,11 @@ public class GameScreen  extends AbstractScreen<GameUI>{
 
     @Override
     public void keyUp(InputManager manager, GameKeys key) {
+
+    }
+
+    @Override
+    public void mapChange(Map currentMap) {
 
     }
 }

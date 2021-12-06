@@ -12,12 +12,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.physics.box2d.Box2D;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.ObjectMap;
@@ -28,9 +25,11 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.ecs.ECSEngine;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.map.MapManager;
 import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.ui.GameRenderer;
 
 
 import java.util.EnumMap;
@@ -41,7 +40,7 @@ public class MyGdxGame extends Game {
 	private OrthographicCamera gameCamera;
 	private SpriteBatch spriteBatch;
 	private EnumMap<ScreenType, AbstractScreen> screenCache;
-	private FitViewport screenViewport;
+		private FitViewport screenViewport;
 
 	private World world;
 	private Box2DDebugRenderer box2DDebugRenderer;
@@ -63,7 +62,14 @@ public class MyGdxGame extends Game {
 
 	private InputManager inputManager;
 
+	private MapManager mapManager;
+
+	private GameRenderer gameRenderer;
+
 	public static final float UNIT_SCALE = 1/32f;
+
+	public static final FixtureDef FIXTURE_DEF = new FixtureDef();
+	public static final BodyDef BODY_DEF = new BodyDef();
 
 	public static final short BIT_PLAYER = 1 << 0;
 	public static final short BIT_GROUND = 1 << 1;
@@ -98,17 +104,37 @@ public class MyGdxGame extends Game {
 		inputManager = new InputManager();
 		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
 
+		//setup game viewport
+		gameCamera = new OrthographicCamera();
+		screenViewport = new FitViewport(9,16, gameCamera);
+
+		//setup map manager
+		mapManager = new MapManager(this);
+
 		//ecs engine
 		ecsEngine = new ECSEngine(this);
 
+		//game renderer
+		gameRenderer = new GameRenderer(this);
 
 		//set first screen
-		gameCamera = new OrthographicCamera();
-		screenViewport = new FitViewport(9,16);
 		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
 		setScreen(ScreenType.LOADING);
+	}
 
+	public static void resetBodyAndFixtureDefinition(){
+			BODY_DEF.position.set(0,0);
+			BODY_DEF.gravityScale = 1;
+			BODY_DEF.type = BodyDef.BodyType.StaticBody;
+			BODY_DEF.fixedRotation = false;
 
+			FIXTURE_DEF.density = 0;
+			FIXTURE_DEF.isSensor = false;
+			FIXTURE_DEF.restitution = 0;
+			FIXTURE_DEF.friction = 0.2f;
+			FIXTURE_DEF.filter.categoryBits = 0x0001;
+			FIXTURE_DEF.filter.maskBits = -1;
+			FIXTURE_DEF.shape = null;
 	}
 
 	private void initializeSkin() {
@@ -141,6 +167,10 @@ public class MyGdxGame extends Game {
 		i18NBundle = assetManager.get("ui/strings", I18NBundle.class);
 	}
 
+	public MapManager getMapManager() {
+		return mapManager;
+	}
+
 	public ECSEngine getEcsEngine() {
 		return ecsEngine;
 	}
@@ -165,17 +195,14 @@ public class MyGdxGame extends Game {
 	}
 
 	public SpriteBatch getSpriteBatch() {
-
 		return spriteBatch;
 	}
 
 	public AssetManager getAssetManager() {
-
 		return assetManager;
 	}
 
 	public OrthographicCamera getGameCamera() {
-
 		return gameCamera;
 	}
 
@@ -215,15 +242,17 @@ public class MyGdxGame extends Game {
 	public void render() {
 		super.render();
 
-		ecsEngine.update(Gdx.graphics.getDeltaTime());
-		accumulator += Math.min(0.25f, Gdx.graphics.getDeltaTime());
+
+		final float deltaTime = Math.min(0.25f, Gdx.graphics.getDeltaTime());
+		ecsEngine.update(deltaTime);
+		accumulator += deltaTime;
 		while(accumulator >= FIXED_TIME_STEP){
 				world.step(FIXED_TIME_STEP,6,2);
 				accumulator -= FIXED_TIME_STEP;
 		}
-		//final float alpha = accumulator / FIXED_TIME_STEP;
+		gameRenderer.render(accumulator / FIXED_TIME_STEP)	;
 		stage.getViewport().apply();
-		stage.act();
+		stage.act(deltaTime);
 		stage.draw();
 	}
 

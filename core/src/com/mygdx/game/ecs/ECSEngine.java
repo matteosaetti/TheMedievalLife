@@ -9,8 +9,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.ecs.component.AnimationComponent;
 import com.mygdx.game.ecs.component.B2DComponent;
 import com.mygdx.game.ecs.component.PlayerComponent;
+import com.mygdx.game.ecs.system.PlayerCameraSystem;
 import com.mygdx.game.ecs.system.PlayerMovementSystem;
 
 import static com.mygdx.game.MyGdxGame.BIT_GROUND;
@@ -31,6 +33,7 @@ public class ECSEngine extends PooledEngine {
         fixtureDef = new FixtureDef();
 
         this.addSystem(new PlayerMovementSystem(context));
+        this.addSystem(new PlayerCameraSystem(context));
     }
 
 
@@ -58,27 +61,30 @@ public class ECSEngine extends PooledEngine {
         player.add(playerComponent);
 
         //box2d component
-        resetBodyAndFixtureDefinition();
-
+        MyGdxGame.resetBodyAndFixtureDefinition();
         final B2DComponent b2DComponent = this.createComponent(B2DComponent.class);
-
-        bodyDef.position.set(playerSpawnLocation.x, playerSpawnLocation.y + height * 0.5f);
-        bodyDef.fixedRotation = true;
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
-        b2DComponent.body = world.createBody(bodyDef);
+        MyGdxGame.BODY_DEF.position.set(playerSpawnLocation.x, playerSpawnLocation.y + height * 0.5f);
+        MyGdxGame.BODY_DEF.fixedRotation = true;
+        MyGdxGame.BODY_DEF.type = BodyDef.BodyType.DynamicBody;
+        b2DComponent.body = world.createBody(MyGdxGame.BODY_DEF);
         b2DComponent.body.setUserData("PLAYER");
         b2DComponent.width = width;
         b2DComponent.height = height;
+        b2DComponent.renderPosition.set(b2DComponent.body.getPosition());
 
-        fixtureDef.filter.categoryBits = BIT_PLAYER;
-        fixtureDef.filter.maskBits = BIT_GROUND;
+
+        MyGdxGame.FIXTURE_DEF.filter.categoryBits = BIT_PLAYER;
+        MyGdxGame.FIXTURE_DEF.filter.maskBits = BIT_GROUND;
         final PolygonShape pShape = new PolygonShape();
         pShape.setAsBox(width * 0.5f, height * 0.5f);
-        fixtureDef.shape = pShape;
-        b2DComponent.body.createFixture(fixtureDef);
+        MyGdxGame.FIXTURE_DEF.shape = pShape;
+        b2DComponent.body.createFixture(MyGdxGame.FIXTURE_DEF);
         pShape.dispose();
-
         player.add(b2DComponent);
+
+        //animation component
+        final AnimationComponent animationComponent = this.createComponent(AnimationComponent.class);
+        player.add(animationComponent);
         this.addEntity(player);
     }
 }

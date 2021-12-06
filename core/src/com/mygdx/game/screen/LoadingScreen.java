@@ -6,6 +6,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import com.mygdx.game.MyGdxGame;
@@ -25,6 +26,9 @@ public class LoadingScreen extends AbstractScreen<LoadingUI>  {
 
         this.assetManager= context.getAssetManager();
         assetManager.load("map/map/...", TiledMap.class);
+
+        //load characters and effects
+        assetManager.load("characters_and_effects/..", TextureAtlas.class);
 
         //load audio
         isMusicLoaded = false;
@@ -90,8 +94,9 @@ public class LoadingScreen extends AbstractScreen<LoadingUI>  {
 
     @Override
     public void keyPressed(InputManager manager, GameKeys key) {
-        audioManager.playAudio(AudioType.SELECT);
+
         if(assetManager.getProgress() >= 1) {
+            audioManager.playAudio(AudioType.SELECT);
             context.setScreen(ScreenType.GAME);
         }
     }
