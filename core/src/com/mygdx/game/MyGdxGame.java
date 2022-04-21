@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -29,6 +31,7 @@ import com.mygdx.game.map.MapManager;
 import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.ui.AnimationType;
 import com.mygdx.game.ui.GameRenderer;
 
 
@@ -64,7 +67,9 @@ public class MyGdxGame extends Game {
 
 	private MapManager mapManager;
 
-	private GameRenderer gameRenderer;
+	//game renderer
+
+	private GameRenderer gameRenderer = new GameRenderer(this, animationCache);
 
 	public static final float UNIT_SCALE = 1/32f;
 
@@ -114,9 +119,6 @@ public class MyGdxGame extends Game {
 		//ecs engine
 		ecsEngine = new ECSEngine(this);
 
-		//game renderer
-		gameRenderer = new GameRenderer(this);
-
 		//set first screen
 		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
 		setScreen(ScreenType.LOADING);
@@ -145,7 +147,7 @@ public class MyGdxGame extends Game {
 
 		//generate ttf bitmaps
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/font.ttf"));
+		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/Pixelmania.ttf"));
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;
@@ -165,6 +167,7 @@ public class MyGdxGame extends Game {
 		assetManager.finishLoading();
 		skin = assetManager.get("ui/...", Skin.class);
 		i18NBundle = assetManager.get("ui/strings", I18NBundle.class);
+
 	}
 
 	public MapManager getMapManager() {

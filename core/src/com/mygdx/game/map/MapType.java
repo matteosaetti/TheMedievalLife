@@ -1,7 +1,7 @@
 package com.mygdx.game.map;
 
 public enum MapType {
-    MAP_1("map/..");
+    MAP_1("map/Map.tmx");
     //MAP_2("map/..");
 
     private String filePath;
