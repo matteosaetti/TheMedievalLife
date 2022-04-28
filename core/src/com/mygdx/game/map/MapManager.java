@@ -3,11 +3,13 @@ package com.mygdx.game.map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.ChainShape;
+
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.World.Entities.Player;
+import com.mygdx.game.World.WCreator;
+
 import java.util.EnumMap;
 
 import static com.mygdx.game.MyGdxGame.BIT_GROUND;
@@ -17,25 +19,24 @@ public class MapManager {
     public static final String TAG = MapManager.class.getSimpleName();
 
     private final World world;
-    private final Array<Body> bodies;
-
     private final AssetManager assetManager;
     private MapType currentMapType;
-    private Map currentMap;
-    private final EnumMap<MapType, Map> mapCache;
+    private TiledMap currentMap;
+    private WCreator currentWCreator;
     private final Array<MapListener> listeners;
+    private MapType safeMapLoader= null;
+    private boolean safeMapLoaderUpdate = true;
 
-    public MapManager(final MyGdxGame context) {
-        world = context.getWorld();
-        assetManager = context.getAssetManager();
+    public MapManager(AssetManager assetManager, World world) {
+        this.world = world;
+        this.assetManager = assetManager;
         this.currentMapType = null;
         this.currentMap = null;
-        bodies = new Array<Body>();
-        mapCache = new EnumMap<MapType, Map>(MapType.class);
-        listeners = new Array<MapListener>();
+        listeners = new Array<>();
     }
 
     public void addMapListener(final MapListener listener){
+
         listeners.add(listener);
     }
     public void setMap(final MapType type){
@@ -43,54 +44,43 @@ public class MapManager {
             //map is already set
             return;
         }
-        if(currentMap != null){
-            //cleanup current map entities/bodies
-            world.getBodies(bodies);
-            destroyCollisionAreas();
-        }
-        //set new map
-        Gdx.app.debug(TAG, "Changing to map" + type);
-        currentMap = mapCache.get(type);
-        if(currentMap == null){
-            Gdx.app.debug(TAG,"Creating new map of type" + type);
-            final TiledMap tiledMap = assetManager.get(type.getFilePath(), TiledMap.class);
-            mapCache.put(type, currentMap);
-        }
-        //create map entities/bodies
-        spawnCollisionAreas();
+        //set currentMap
+        if(assetManager.isLoaded(type.getFilePath()))
+            currentMap = assetManager.get(type.getFilePath(), TiledMap.class);
+        else
+            Gdx.app.error(MapManager.class.getSimpleName(), type.getFilePath() + "not loaded in AssetManager");
 
-        for(final MapListener listener : listeners){
-            listener.mapChange(currentMap);
+        //destroy bodies of old map if there are
+        if(currentWCreator != null){
+            currentWCreator.bodyDestroyer();
         }
+        currentWCreator = new WCreator(world, currentMap);
+
+        for(MapListener listener : listeners){
+            listener.mapChange();
+        }
+
+        //debug
+        Gdx.app.debug(MapManager.class.getSimpleName(), "Moving to new map: " + currentMapType.name());
+
     }
 
-
-    private void destroyCollisionAreas() {
-        for(final Body body : bodies){
-            if("GROUND".equals(body.getUserData())){
-                world.destroyBody(body);
-            }
-        }
-    }
-    private void spawnCollisionAreas() {
-        MyGdxGame.resetBodyAndFixtureDefinition();
-        for(final CollisionArea collisionArea : currentMap.getCollisionAreas()){
-            MyGdxGame.BODY_DEF.position.set(collisionArea.getX(), collisionArea.getY());
-            MyGdxGame.BODY_DEF.fixedRotation = true;
-            final Body body = world.createBody(MyGdxGame.BODY_DEF);
-            body.setUserData("GROUND");
-
-            MyGdxGame.FIXTURE_DEF.filter.categoryBits = BIT_GROUND;
-            MyGdxGame.FIXTURE_DEF.filter.maskBits = -1;
-            final ChainShape chainShape = new ChainShape();
-            chainShape.createChain(collisionArea.getVertices());
-            MyGdxGame.FIXTURE_DEF.shape = chainShape;
-            body.createFixture(MyGdxGame.FIXTURE_DEF);
-            chainShape.dispose();
-        }
+    public MapType getCurrentMapType() {
+        return currentMapType;
     }
 
-    public Map getCurrentMap() {
+    public TiledMap getCurrentMap() {
         return currentMap;
+    }
+
+    public void setSafeMapLoader() {
+        if(!safeMapLoaderUpdate && !world.isLocked()){
+            setMap(safeMapLoader);
+            safeMapLoaderUpdate = true;
+        }
+    }
+
+    public interface MapListener {
+        void mapChange();
     }
 }

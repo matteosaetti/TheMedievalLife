@@ -4,19 +4,21 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 
-public abstract class AbstractScreen<T extends Table> implements Screen, InputListener {
+public abstract class AbstractScreen implements Screen, InputListener {
     protected final MyGdxGame context;
     protected final FitViewport viewport;
     protected final World world;
     protected final Box2DDebugRenderer box2DDebugRenderer;
-    protected final T screenUI;
+    protected final WidgetGroup screenUI;
     protected final Stage stage;
     protected final InputManager inputManager;
     protected final AudioManager audioManager;
@@ -29,10 +31,10 @@ public abstract class AbstractScreen<T extends Table> implements Screen, InputLi
         inputManager = context.getInputManager();
         audioManager = context.getAudioManager();
         stage = context.getStage();
-        screenUI = getScreenUI(context);
+        screenUI = getScreenUI(context.getSkin());
     }
 
-    protected abstract T getScreenUI(final MyGdxGame context);
+    protected abstract WidgetGroup getScreenUI(Skin skin);
 
     @Override
     public void show() {

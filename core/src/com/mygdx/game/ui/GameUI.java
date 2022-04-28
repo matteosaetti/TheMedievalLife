@@ -11,17 +11,17 @@ import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 
 public class GameUI extends Table implements InputListener {
-    private static GameUI uniqueIstance;
+    private static GameUI uniqueInstance;
     final ActionUI action;
     public static GameUI getInstance(final MyGdxGame context, final Skin skin, Player player){
-        uniqueIstance = new GameUI(context, skin, player);
-        return uniqueIstance;
+        uniqueInstance = new GameUI(context, skin, player);
+        return uniqueInstance;
     }
     public static GameUI getInstance(){
-        if(uniqueIstance == null) {
+        if(uniqueInstance == null) {
             Gdx.app.error(GameUI.class.getSimpleName(), "tried to access to class GameUI, but no initialized yet ");
         }
-        return uniqueIstance;
+        return uniqueInstance;
     }
     public GameUI(final MyGdxGame context, final Skin skin, Player player) {
         super(skin);
@@ -31,7 +31,7 @@ public class GameUI extends Table implements InputListener {
         pad(20);
         setFillParent(true);
 
-
+    action = new ActionUI(skin);
     }
 
 
@@ -46,6 +46,7 @@ public class GameUI extends Table implements InputListener {
     }
 
     public ActionUI getAction() {
+
         return action;
     }
 }

@@ -21,8 +21,6 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.ecs.ECSEngine;
 import com.mygdx.game.ecs.component.AnimationComponent;
 import com.mygdx.game.ecs.component.B2DComponent;
-import com.mygdx.game.map.Map;
-import com.mygdx.game.map.MapListener;
 
 import java.util.EnumMap;
 
