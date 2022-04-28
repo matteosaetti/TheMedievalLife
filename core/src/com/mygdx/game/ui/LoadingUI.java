@@ -24,18 +24,18 @@ public class LoadingUI extends Table {
         super(context.getSkin());
         setFillParent(true);
 
-        final I18NBundle i18NBundle = context.getI18NBundle();
+
 
         progressBar = new ProgressBar(0,1, 0.01f, false, getSkin(), "default");
         progressBar.setAnimateDuration(1);
 
-        loadingString = i18NBundle.format("loading");
-        textButton = new TextButton(loadingString, getSkin(), "huge");
+
+
          textButton.getLabel().setWrap(true);
 
 
-       pressAnyKeyButton = new TextButton(i18NBundle.format("press any key"), getSkin(), "huge");
-       pressAnyKeyButton.getLabel().setWrap(true);
+
+
        pressAnyKeyButton.setVisible(false);
         pressAnyKeyButton.addListener(new InputListener(){
             @Override

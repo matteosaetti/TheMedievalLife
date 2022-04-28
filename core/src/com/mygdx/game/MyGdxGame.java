@@ -3,13 +3,9 @@ package com.mygdx.game;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.SkinLoader;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Colors;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -18,66 +14,53 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import com.mygdx.game.audio.AudioManager;
-import com.mygdx.game.ecs.ECSEngine;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.map.MapManager;
 import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.ui.AnimationType;
-import com.mygdx.game.ui.GameRenderer;
 
 
 import java.util.EnumMap;
 
 
 public class MyGdxGame extends Game {
-	public static final String TAG = MyGdxGame.class.getSimpleName();
+	public static final float UNIT_SCALE = 1/32f;
 	private OrthographicCamera gameCamera;
 	private SpriteBatch spriteBatch;
 	private EnumMap<ScreenType, AbstractScreen> screenCache;
-		private FitViewport screenViewport;
+	private FitViewport screenViewport;
 
-	private World world;
+	//b2D variables and constants
+	private static final float FIXED_TIME_STEP = 1/60f;
+	public static final short BIT_CIRCLE = 1;
+	public static final short BIT_BOX = 1 << 1;
+	public static final short BIT_GROUND = 1 << 2;
 	private Box2DDebugRenderer box2DDebugRenderer;
-
-	private WorldContactListener worldContactListener;
-
-	private static final float FIXED_TIME_STEP = 1/ 60f;
+	private World world;
 	private  float accumulator;
 
+	//asset manager
 	private AssetManager assetManager;
 
-	private AudioManager audioManager;
-
+	//skin
 	private Stage stage;
 	private Skin skin;
 
-	private I18NBundle i18NBundle;
-	private ECSEngine ecsEngine;
 
+	//manager
 	private InputManager inputManager;
+	private AudioManager audioManager;
 
+	//map manager
 	private MapManager mapManager;
 
-	//game renderer
-
-	private GameRenderer gameRenderer = new GameRenderer(this, animationCache);
-
-	public static final float UNIT_SCALE = 1/32f;
-
-	public static final FixtureDef FIXTURE_DEF = new FixtureDef();
-	public static final BodyDef BODY_DEF = new BodyDef();
-
-	public static final short BIT_PLAYER = 1 << 0;
-	public static final short BIT_GROUND = 1 << 1;
 
 
 	@Override
@@ -90,15 +73,18 @@ public class MyGdxGame extends Game {
 		//box2d stuff
 		accumulator =  0;
 		Box2D.init();
-		world = new World(Vector2.Zero, true);
-		worldContactListener = new WorldContactListener();
-		world.setContactListener(worldContactListener);
+		world = new World(new Vector2(0, -9.81f), true);
 		box2DDebugRenderer = new Box2DDebugRenderer();
+
+		//invisible boxes
+		box2DDebugRenderer.setDrawBodies(false);
 
 
 		//initialize assetManager
 		assetManager = new AssetManager();
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+
+		//2D
 		initializeSkin();
 		stage = new Stage(new FitViewport(1280,720), spriteBatch);
 
@@ -116,38 +102,32 @@ public class MyGdxGame extends Game {
 		//setup map manager
 		mapManager = new MapManager(this);
 
-		//ecs engine
-		ecsEngine = new ECSEngine(this);
-
-		//set first screen
-		screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
+		Gdx.app.setLogLevel(Application.LOG_ERROR);
 		setScreen(ScreenType.LOADING);
 	}
 
-	public static void resetBodyAndFixtureDefinition(){
-			BODY_DEF.position.set(0,0);
-			BODY_DEF.gravityScale = 1;
-			BODY_DEF.type = BodyDef.BodyType.StaticBody;
-			BODY_DEF.fixedRotation = false;
+	public void setScreen(final ScreenType screenType){
+		final Screen screen = screenAvailable.get(screenType);
 
-			FIXTURE_DEF.density = 0;
-			FIXTURE_DEF.isSensor = false;
-			FIXTURE_DEF.restitution = 0;
-			FIXTURE_DEF.friction = 0.2f;
-			FIXTURE_DEF.filter.categoryBits = 0x0001;
-			FIXTURE_DEF.filter.maskBits = -1;
-			FIXTURE_DEF.shape = null;
+		if(screen == null){
+			//si crea lo screen
+			try{
+				final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
+				new screenAvailable.put(screenType, newScreen);
+				setScreen(newScreen);
+			} catch (ReflectionException error){
+				throw new GdxRuntimeException("Screen " + screenType + "inesistente per" + error);
+
+			}
+		}
+		else
+			setScreen(screen);
+
 	}
-
 	private void initializeSkin() {
-		//setup markup colors
-		Colors.put("Red", Color.RED);
-		Colors.put("Blu", Color.BLUE);
 
-
-		//generate ttf bitmaps
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/Pixelmania.ttf"));
+		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/..."));
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;
@@ -163,10 +143,9 @@ public class MyGdxGame extends Game {
 		//load skin
 		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
 		assetManager.load("ui/...", Skin.class, skinParameter);
-		assetManager.load("ui/strings", I18NBundle.class);
 		assetManager.finishLoading();
 		skin = assetManager.get("ui/...", Skin.class);
-		i18NBundle = assetManager.get("ui/strings", I18NBundle.class);
+
 
 	}
 
@@ -174,9 +153,6 @@ public class MyGdxGame extends Game {
 		return mapManager;
 	}
 
-	public ECSEngine getEcsEngine() {
-		return ecsEngine;
-	}
 
 	public AudioManager getAudioManager() {
 		return audioManager;
@@ -186,9 +162,7 @@ public class MyGdxGame extends Game {
 		return inputManager;
 	}
 
-	public I18NBundle getI18NBundle() {
-		return i18NBundle;
-	}
+
 	public Stage getStage() {
 		return stage;
 	}
@@ -222,24 +196,6 @@ public class MyGdxGame extends Game {
 	}
 
 
-	public void setScreen(final ScreenType screenType){
-
-		final Screen screen = screenCache.get(screenType);
-		if(screen==null){
-				//screen not created it -> create it
-			try {
-				Gdx.app.debug(TAG, "Creating new screen " + screenType);
-				final AbstractScreen newScreen = (AbstractScreen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
-				screenCache.put(screenType, newScreen);
-				setScreen(newScreen);
-			} catch (ReflectionException e ) {
-				throw new GdxRuntimeException("Screen " + screenType + "could not be created", e);
-				}
-		} else{
-			Gdx.app.debug(TAG, "switching to screen: " + screenType );
-			setScreen(screen);
-		}
-	}
 
 	@Override
 	public void render() {
@@ -247,13 +203,13 @@ public class MyGdxGame extends Game {
 
 
 		final float deltaTime = Math.min(0.25f, Gdx.graphics.getDeltaTime());
-		ecsEngine.update(deltaTime);
+
 		accumulator += deltaTime;
 		while(accumulator >= FIXED_TIME_STEP){
 				world.step(FIXED_TIME_STEP,6,2);
 				accumulator -= FIXED_TIME_STEP;
 		}
-		gameRenderer.render(accumulator / FIXED_TIME_STEP)	;
+
 		stage.getViewport().apply();
 		stage.act(deltaTime);
 		stage.draw();
