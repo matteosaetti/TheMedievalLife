@@ -1,0 +1,149 @@
+{
+  "com.badlogic.gdx.graphics.Color": {
+    "white": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+
+    "black": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+
+    "bluScuroOpaco": { "hex": "222034" },
+    "neroOpaco": { "hex": "140c1c" },
+    "rossoChiaro": { "hex": "d04648" },
+    "rosso": { "hex": "cd2f2f" },
+    "rossoScuro": { "hex": "901315" }
+  },
+
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "debug": {
+      "font": "font2_16",
+      "fontColor": "black"
+    },
+    "normal": {
+      "font": "font_20",
+      "fontColor": "black"
+    },
+    "big": {
+      "font": "font_26",
+      "fontColor": "black"
+    },
+    "small": {
+      "font": "font_16",
+      "fontColor": "black"
+    },
+    "small-white": {
+      "font": "font2_16",
+      "fontColor": "white"
+    },
+      "huge": {
+        "font": "font_32",
+        "fontColor": "black"
+      }
+    },
+
+  "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle": {
+    "default": {
+      "font": "font2_16",
+      "fontColorSelected": "rosso",
+      "fontColorUnselected": "white",
+      "selection": "black-rect-select"
+    }
+  },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+      "debug": {
+        "font": "font2_16",
+        "fontColor": "white"
+      },
+      "normal": {
+        "font": "font_20",
+        "fontColor": "white"
+      },
+      "big": {
+        "font": "font_26",
+        "fontColor": "white"
+      },
+      "small": {
+        "font": "font_16",
+        "fontColor": "white"
+      },
+      "huge": {
+        "font": "font_32",
+        "fontColor": "white"
+      }
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle": {
+      "default": {
+        "background": "beforeBar",
+        "knob": "knobBar",
+        "knobBefore": "afterBar"
+      },
+
+      "health": {
+        "background": "playerStatusBG",
+        "knob": "playerStatusHealth",
+        "knobBefore": "playerStatusHealth"
+      },
+
+      "mana": {
+        "background": "playerStatusBG",
+        "knob": "playerStatusMana",
+        "knobBefore": "playerStatusMana"
+      },
+
+      "exp": {
+        "background": "playerStatusBG",
+        "knob": "playerStatusExp",
+        "knobBefore": "playerStatusExp"
+      }
+
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
+      "default": {
+        "vScroll": "invisible",
+        "hScrollKnob": "invisible",
+        "background": "invisible",
+        "hScroll": "invisible",
+        "vScrollKnob": "scroll-up" },
+    },
+
+    "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
+      "default": {
+        "background": "SliderBegin",
+        "knob": "SliderKnob",
+        "knobBefore": "BeforeSlider",
+        "knobAfter": "AfterSlider"
+      }
+    },
+    "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
+      "debug": {
+        "font": "font2_16",
+        "fontColor": "black"
+      },
+      "normal": {
+        "font": "font_20",
+        "fontColor": "black"
+      },
+      "big": {
+        "font": "font_26",
+        "fontColor": "black"
+      },
+      "small": {
+        "font": "font_16",
+        "fontColor": "black"
+      },
+      "huge": {
+        "font": "font_32",
+        "fontColor": "black"
+      }
+    }
+  }

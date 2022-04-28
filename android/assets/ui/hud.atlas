@@ -1,0 +1,440 @@
+
+hud.png
+size: 2048, 512
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+AfterSlider
+  rotate: false
+  xy: 1800, 433
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
+BeforeSlider
+  rotate: false
+  xy: 294, 140
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
+SliderEnding
+  rotate: false
+  xy: 1788, 433
+  size: 10, 36
+  orig: 10, 36
+  offset: 0, 0
+  index: -1
+SliderBegin
+  rotate: false
+  xy: 1788, 433
+  size: 10, 36
+  orig: 10, 36
+  offset: 0, 0
+  index: -1
+SliderKnob
+  rotate: false
+  xy: 1805, 433
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
+action_chat
+  rotate: false
+  xy: 1123, 210
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+action_portal
+  rotate: false
+  xy: 1057, 210
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+afterBar
+  rotate: false
+  xy: 286, 76
+  size: 3, 50
+  orig: 3, 50
+  offset: 0, 0
+  index: -1
+beforeBar
+  rotate: false
+  xy: 76, 38
+  size: 3, 50
+  orig: 3, 50
+  offset: 0, 0
+  index: -1
+black-rect-select
+  rotate: false
+  xy: 1542, 471
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+dialogbox
+  rotate: false
+  xy: 2, 276
+  size: 1425, 227
+  orig: 1425, 227
+  offset: 0, 0
+  index: -1
+hotbarBegin
+  rotate: false
+  xy: 1613, 357
+  size: 14, 48
+  orig: 14, 48
+  offset: 0, 0
+  index: -1
+hotbarCursor
+  rotate: false
+  xy: 1908, 485
+  size: 12, 18
+  orig: 12, 18
+  offset: 0, 0
+  index: -1
+hotbarEnd
+  rotate: false
+  xy: 277, 128
+  size: 15, 48
+  orig: 15, 48
+  offset: 0, 0
+  index: -1
+hotbarMid
+  rotate: false
+  xy: 1189, 226
+  size: 50, 48
+  orig: 50, 48
+  offset: 0, 0
+  index: -1
+invSlot-boots
+  rotate: false
+  xy: 2, 2
+  size: 72, 86
+  orig: 72, 86
+  offset: 0, 0
+  index: -1
+invSlot-bottom-left
+  rotate: false
+  xy: 80, 100
+  size: 76, 76
+  orig: 76, 76
+  offset: 0, 0
+  index: -1
+invSlot-bottom-mid
+  rotate: false
+  xy: 535, 198
+  size: 72, 76
+  orig: 72, 76
+  offset: 0, 0
+  index: -1
+invSlot-bottom-right
+  rotate: false
+  xy: 379, 198
+  size: 76, 76
+  orig: 76, 76
+  offset: 0, 0
+  index: -1
+invSlot-chest
+  rotate: false
+  xy: 1429, 319
+  size: 72, 86
+  orig: 72, 86
+  offset: 0, 0
+  index: -1
+invSlot-helmet
+  rotate: false
+  xy: 301, 188
+  size: 76, 86
+  orig: 76, 86
+  offset: 0, 0
+  index: -1
+invSlot-mid-left
+  rotate: false
+  xy: 683, 202
+  size: 76, 72
+  orig: 76, 72
+  offset: 0, 0
+  index: -1
+invSlot-mid-mid
+  rotate: false
+  xy: 839, 202
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+invSlot-mid-right
+  rotate: false
+  xy: 761, 202
+  size: 76, 72
+  orig: 76, 72
+  offset: 0, 0
+  index: -1
+invSlot-top-left
+  rotate: false
+  xy: 158, 100
+  size: 76, 76
+  orig: 76, 76
+  offset: 0, 0
+  index: -1
+invSlot-top-mid
+  rotate: false
+  xy: 609, 198
+  size: 72, 76
+  orig: 72, 76
+  offset: 0, 0
+  index: -1
+invSlot-top-right
+  rotate: false
+  xy: 457, 198
+  size: 76, 76
+  orig: 76, 76
+  offset: 0, 0
+  index: -1
+invSlot-weapon
+  rotate: false
+  xy: 2, 90
+  size: 76, 86
+  orig: 76, 86
+  offset: 0, 0
+  index: -1
+inventoryIconActive
+  rotate: false
+  xy: 913, 194
+  size: 70, 80
+  orig: 70, 80
+  offset: 0, 0
+  index: -1
+inventoryIconInactive
+  rotate: false
+  xy: 985, 194
+  size: 70, 80
+  orig: 70, 80
+  offset: 0, 0
+  index: -1
+inventoryTop
+  rotate: false
+  xy: 2, 178
+  size: 297, 96
+  orig: 297, 96
+  offset: 0, 0
+  index: -1
+invisible
+  rotate: false
+  xy: 1411, 258
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+item
+  rotate: false
+  xy: 1429, 285
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 204
+item
+  rotate: false
+  xy: 1241, 242
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 209
+item
+  rotate: false
+  xy: 1738, 471
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 201
+item
+  rotate: false
+  xy: 1652, 437
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 101
+item
+  rotate: false
+  xy: 1463, 285
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 206
+item
+  rotate: false
+  xy: 1275, 242
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 211
+item
+  rotate: false
+  xy: 1772, 471
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 203
+item
+  rotate: false
+  xy: 1686, 437
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 208
+item
+  rotate: false
+  xy: 1806, 471
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 200
+item
+  rotate: false
+  xy: 1720, 437
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 100
+item
+  rotate: false
+  xy: 1343, 242
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 205
+item
+  rotate: false
+  xy: 1840, 471
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 210
+item
+  rotate: false
+  xy: 1754, 437
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 202
+item
+  rotate: false
+  xy: 1377, 242
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 102
+item
+  rotate: false
+  xy: 1874, 471
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 207
+key_E
+  rotate: false
+  xy: 1309, 242
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+key_SPACE
+  rotate: false
+  xy: 1672, 471
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+knobBar
+  rotate: false
+  xy: 277, 76
+  size: 7, 50
+  orig: 7, 50
+  offset: 0, 0
+  index: -1
+loadingBarBegin
+  rotate: false
+  xy: 1594, 355
+  size: 17, 50
+  orig: 17, 50
+  offset: 0, 0
+  index: -1
+loadingBarEnd
+  rotate: false
+  xy: 1633, 419
+  size: 17, 50
+  orig: 17, 50
+  offset: 0, 0
+  index: -1
+menuIconActive
+  rotate: false
+  xy: 1503, 343
+  size: 89, 62
+  orig: 89, 62
+  offset: 0, 0
+  index: -1
+menuIconInactive
+  rotate: false
+  xy: 1542, 407
+  size: 89, 62
+  orig: 89, 62
+  offset: 0, 0
+  index: -1
+playerStatusBG
+  rotate: false
+  xy: 1497, 293
+  size: 2, 24
+  orig: 2, 24
+  offset: 0, 0
+  index: -1
+playerStatusExp
+  rotate: false
+  xy: 291, 102
+  size: 1, 24
+  orig: 1, 24
+  offset: 0, 0
+  index: -1
+playerStatusHealth
+  rotate: false
+  xy: 1629, 381
+  size: 1, 24
+  orig: 1, 24
+  offset: 0, 0
+  index: -1
+playerStatusLeft
+  rotate: false
+  xy: 1429, 407
+  size: 111, 96
+  orig: 111, 96
+  offset: 0, 0
+  index: -1
+playerStatusMana
+  rotate: false
+  xy: 76, 12
+  size: 1, 24
+  orig: 1, 24
+  offset: 0, 0
+  index: -1
+playerStatusRight
+  rotate: false
+  xy: 236, 80
+  size: 39, 96
+  orig: 39, 96
+  offset: 0, 0
+  index: -1
+scroll-down
+  rotate: false
+  xy: 1429, 267
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+scroll-up
+  rotate: false
+  xy: 1503, 325
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
