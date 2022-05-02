@@ -31,10 +31,12 @@ public enum MapType {
     }
 
     public Vector2 getSpawn(){
+
         return new Vector2(x,y);
     }
 
     public String getDescription(){
+
         return desc;
     }
     public String getFilePath() {

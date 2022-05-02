@@ -43,26 +43,26 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
     private final GameUI gameUI;
 
 
-    public GameScreen(Player playerB2D, final MyGdxGame context, OrthogonalTiledMapRenderer mapRenderer, int[] layer_2, MapType portalDest, OrthographicCamera orthographicCamera, GameUI gameUI) {
+    public GameScreen(final MyGdxGame context) {
         super(context);
-        this.playerB2D = playerB2D;
+        gameUI = (GameUI) screenUI;
+
 
         //create player
-
+        playerB2D = new Player(world, savePCoordinates,gameUI, context.getAssetManager());
 
 
         //initialized camera
         orthographicCamera = new OrthographicCamera(16,9);
         orthographicCamera.position.set(savePCoordinates,0);
-        batch.setProjectMatrix(orthographicCamera.combined);
+        batch.setProjectionMatrix(orthographicCamera.combined);
         //map init
         mapManager = context.getMapManager();
         mapRenderer= new OrthogonalTiledMapRenderer(null,UNIT_SCALE,batch);
         mapManager.addMapListener(this);
 
-        mapManager.setMap(MapType.);
-
-        WorldContactListener worldContactListener = new WorldContactListener(context);
+        mapManager.setMap(MapType.WORLD);
+        WorldContactListener worldContactListener= new WorldContactListener(context);
         worldContactListener.addPortalListener(this);
         world.setContactListener(worldContactListener);
 
@@ -70,9 +70,10 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
     }
 
     @Override
-    protected Table getScreenUI(Skin skin) {
-        return new GameUI.getInstance(context,skin,playerB2D);
+    protected  Table getScreenUI(Skin skin){
+        return GameUI.getInstance(context,skin,playerB2D);
     }
+
 
     @Override
     public void show() {
@@ -85,15 +86,16 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
 
     @Override
     public void render(float delta) {
+        elapsedTime = (elapsedTime + Gdx.graphics.getDeltaTime()) % 10;
 
-        //TODO remove map change test stuff
-        if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
-           // mapManager.setMap(MapType.MAP_1);
+        //update map
+        mapManager.setSafeMapLoader();
+
+        /*if (newMovementI) {
+            playerB2D.B2DBody.applyLinearImpulse();
 
         }
-        else if(Gdx.input.isKeyPressed(Input.Keys.NUM_2)){
-            // mapManager.setMap(MapType.MAP_2);
-        }
+*/
     }
 
     @Override
@@ -129,7 +131,7 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
     public void keyUp(InputManager manager, GameKeys key) {
 
     }
-    
+
 
     @Override
     public void PortalCrossed(Portal portal) {

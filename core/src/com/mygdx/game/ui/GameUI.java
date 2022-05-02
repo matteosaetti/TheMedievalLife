@@ -23,7 +23,7 @@ public class GameUI extends Table implements InputListener {
         }
         return uniqueInstance;
     }
-    public GameUI(final MyGdxGame context, final Skin skin, Player player) {
+    private GameUI(final MyGdxGame context, final Skin skin, Player player) {
         super(skin);
 
         //properties
@@ -48,5 +48,9 @@ public class GameUI extends Table implements InputListener {
     public ActionUI getAction() {
 
         return action;
+    }
+
+
+    public void setBars(float v, float v1, float v2) {
     }
 }

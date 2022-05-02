@@ -14,7 +14,7 @@ public class Wborder {
     private float[] vertices;
 
 
-    public void WBorder(World world, TiledMap map, PolygonMapObject polygonMapObject) {
+    public Wborder(World world, TiledMap map, PolygonMapObject polygonMapObject) {
         mapBorders = new BodyDef();
         fixtureDef = new FixtureDef();
 

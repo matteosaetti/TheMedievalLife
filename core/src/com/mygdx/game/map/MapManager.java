@@ -34,6 +34,9 @@ public class MapManager {
         this.currentMap = null;
         listeners = new Array<>();
     }
+    public void playerAtSpawnMap(Player player){
+        player.teleportTo(currentMapType.getSpawn());
+    }
 
     public void addMapListener(final MapListener listener){
 
@@ -66,10 +69,12 @@ public class MapManager {
     }
 
     public MapType getCurrentMapType() {
+
         return currentMapType;
     }
 
     public TiledMap getCurrentMap() {
+
         return currentMap;
     }
 

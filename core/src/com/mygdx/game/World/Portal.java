@@ -39,8 +39,4 @@ public class Portal {
 
     }
 
-    public MapType getDestionationMapType(){
-        return  destionationMapType;
-    }
-
 }

@@ -7,6 +7,7 @@ import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.ui.SettingsUI;
 
 public class SettingsScreen extends AbstractScreen implements InputListener {
 
@@ -21,7 +22,7 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
     @Override
     protected Table getScreenUI(Skin skin) {
 
-        return new SettingUI(skin, context);
+        return new SettingsUI(skin, context);
     }
 
 

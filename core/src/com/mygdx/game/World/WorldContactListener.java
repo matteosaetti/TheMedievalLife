@@ -11,10 +11,15 @@ public class WorldContactListener implements ContactListener {
     private final MyGdxGame context;
     private Array<PortalListener> portalListenerArray;
 
-    public WorldContactListener(MyGdxGame context, Array<PortalListener> portalListenerArray) {
+    public WorldContactListener(MyGdxGame context) {
         this.context = context;
-        this.portalListenerArray = portalListenerArray;
+        portalListenerArray = new Array<>();
     }
+
+   public void addPortalListener(PortalListener portalListener){
+        portalListenerArray.add(portalListener);
+   }
+
 
     @Override
     public void beginContact(Contact contact) {
@@ -28,7 +33,7 @@ public class WorldContactListener implements ContactListener {
           Fixture other = fixA.getUserData() == "player_sensor" ? fixB : fixA;
           //contact player-portal
           if(other.getUserData() != null && other.getUserData().getClass().equals(Portal.class)){
-              GameUI.getInstance().getAction().showAction(ActionType.Portal);
+              GameUI.getInstance().getAction().showAction(ActionType.PORTAL);
 
               for(PortalListener portalListener : portalListenerArray){
                   portalListener.PortalCrossed((Portal) other.getUserData());

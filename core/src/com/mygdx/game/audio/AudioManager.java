@@ -45,4 +45,12 @@ public class AudioManager {
             currentMusicType = null;
         }
     }
+
+    public Sound getCurrentMusic() {
+        return null;
+    }
+
+    public void setVolumeSound(float value) {
+        return;
+    }
 }

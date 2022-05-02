@@ -100,7 +100,7 @@ public class MyGdxGame extends Game {
 		screenViewport = new FitViewport(9,16, gameCamera);
 
 		//setup map manager
-		mapManager = new MapManager(this);
+		mapManager = new MapManager(assetManager,world);
 
 		Gdx.app.setLogLevel(Application.LOG_ERROR);
 		setScreen(ScreenType.LOADING);

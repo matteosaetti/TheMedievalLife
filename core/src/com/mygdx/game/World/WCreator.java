@@ -12,6 +12,8 @@ import com.badlogic.gdx.utils.Array;
 
 import javax.swing.border.Border;
 
+import static com.badlogic.gdx.utils.JsonValue.ValueType.object;
+
 public class WCreator {
     private final World world;
     private Array<Body> bodies;
@@ -24,8 +26,8 @@ public class WCreator {
             new WallAndBox(world, map, object);
         }
 
-        for(PolygonMapObject polygonMapObject : map.getLayers().get("solids").getObjects().getByType(PolygonMapObject.class)){
-            new Wborder(world, map, polygonMapObject);
+        for(PolygonMapObject object : map.getLayers().get("solids").getObjects().getByType(PolygonMapObject.class)){
+            new Wborder(world, map, object);
         }
 
         for(MapObject object : map.getLayers().get("portals").getObjects().getByType(RectangleMapObject.class)){

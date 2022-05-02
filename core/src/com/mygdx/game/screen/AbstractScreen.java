@@ -1,11 +1,13 @@
 package com.mygdx.game.screen;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.MyGdxGame;
@@ -22,11 +24,14 @@ public abstract class AbstractScreen implements Screen, InputListener {
     protected final Stage stage;
     protected final InputManager inputManager;
     protected final AudioManager audioManager;
+    protected final SpriteBatch batch;
 
     public AbstractScreen(final MyGdxGame context){
         this.context = context;
+
         viewport = context.getScreenViewport();
         this.world = context.getWorld();
+        this.batch = context.getSpriteBatch();
         this.box2DDebugRenderer = context.getBox2DDebugRenderer();
         inputManager = context.getInputManager();
         audioManager = context.getAudioManager();
