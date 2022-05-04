@@ -68,36 +68,48 @@ public class InputManager implements InputProcessor {
     }
 
     public boolean isKeyPressed(final GameKeys gameKey){
+
         return keyState[gameKey.ordinal()];
     }
 
     @Override
     public boolean keyTyped(char character) {
+
         return false;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
+
         return false;
     }
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
+
         return false;
     }
 
     @Override
     public boolean scrolled(float amountX, float amountY) {
-        return false;
+        if (amountY==0)
+            return false;
+
+        for (final InputListener listener : listeners){
+            listener.scroll(this, amountY);
+        }
+        return true;
     }
 }

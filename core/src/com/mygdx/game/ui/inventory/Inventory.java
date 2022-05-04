@@ -63,7 +63,7 @@ public class Inventory extends Table {
                 //add(new Image(skin.getDrawable(typeOfSlot)));
                 InventoryStack inventoryStack = new InventoryStack(name, skin);
 
-                inventoryStack.add(inventory.toString());
+                inventoryStack.add(inventoryStack);
                 inventory.add(inventoryStack);
                 dragAndDrop.addSource(new SlotSource(inventoryStack));
                 dragAndDrop.addTarget(new SlotTarget(inventoryStack));

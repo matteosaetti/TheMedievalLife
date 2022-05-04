@@ -45,7 +45,8 @@ public class LoadingScreen extends AbstractScreen  {
         for(final AudioType audioType : AudioType.values()){
             assetManager.load(audioType.getFilePath(), audioType.isMusic() ? Music.class : Sound.class);
         }
-
+        //load animations
+        //AnimationLoader.loadAllAnimations(assetManager);
     }
 
 
@@ -99,13 +100,18 @@ public class LoadingScreen extends AbstractScreen  {
     public void keyPressed(InputManager manager, GameKeys key) {
 
         if(assetManager.getProgress() >= 1) {
-            audioManager.playAudio(AudioType.SELECT);
+            //audioManager.playAudio(AudioType.);
             context.setScreen(ScreenType.GAME);
         }
     }
 
     @Override
     public void keyUp(InputManager manager, GameKeys key) {
+
+    }
+
+    @Override
+    public void scroll(InputManager manager, float amount) {
 
     }
 }

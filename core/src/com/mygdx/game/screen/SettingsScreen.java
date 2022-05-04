@@ -2,6 +2,7 @@ package com.mygdx.game.screen;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.GameKeys;
@@ -18,7 +19,10 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
         audioManager = context.getAudioManager();
     }
-
+    @Override
+    public void render(float delta) {
+        ScreenUtils.clear(1, 1, 1, 1);
+    }
     @Override
     protected Table getScreenUI(Skin skin) {
 
@@ -28,11 +32,21 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
     @Override
     public void keyPressed(InputManager manager, GameKeys key) {
-
+        if (key == GameKeys.BACK) { //set screen 'MAINMENU'
+            context.setScreen(ScreenType.MAINMENU);
+        }
     }
 
     @Override
     public void keyUp(InputManager manager, GameKeys key) {
 
+    }
+
+    @Override
+    public void scroll(InputManager manager, float amount) {
+
+    }
+    public void hide(){
+        inputManager.removeInputListener(this);
     }
 }

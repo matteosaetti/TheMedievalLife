@@ -77,6 +77,10 @@ public class MapManager {
 
         return currentMap;
     }
+    public void loadMapSafe(MapType nextMap){
+        this.safeMapLoader = nextMap;
+        safeMapLoaderUpdate = false;
+    }
 
     public void setSafeMapLoader() {
         if(!safeMapLoaderUpdate && !world.isLocked()){

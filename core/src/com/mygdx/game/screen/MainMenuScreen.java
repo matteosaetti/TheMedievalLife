@@ -195,6 +195,11 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
 
     }
 
+    @Override
+    public void scroll(InputManager manager, float amount) {
+
+    }
+
     /**
      * Implements method of interface InputListener
      *
