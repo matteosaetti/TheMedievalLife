@@ -1,7 +1,6 @@
 package com.mygdx.game.ui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -13,10 +12,6 @@ import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.screen.ScreenType;
-import com.mygdx.game.ui.ActionUI;
-import com.mygdx.game.ui.Dialogue;
-import com.mygdx.game.ui.Hotbar;
-import com.mygdx.game.ui.PlayerStatus;
 import com.mygdx.game.ui.inventory.Inventory;
 
 public class GameUI extends Table implements InputListener {

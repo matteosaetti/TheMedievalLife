@@ -14,7 +14,7 @@ public class Portal {
     private Fixture fixture;
     private Rectangle rect;
     private String destinationStr;
-    private MapType destionationMapType;
+    private MapType destinationMapType;
 
     public Portal(World world, TiledMap map, MapObject object){
         bodyDef = new BodyDef();
@@ -35,7 +35,7 @@ public class Portal {
 
         fixture.setUserData(this);
         destinationStr = object.getName();
-        destionationMapType = MapType.getMapTypeByName(destinationStr);
+        destinationMapType = MapType.getMapTypeByName(destinationStr);
 
     }
 

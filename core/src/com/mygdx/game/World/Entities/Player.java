@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.World.Entities.NPC.NPC;
+import com.mygdx.game.World.Entities.animation.NpcAnimation;
 import com.mygdx.game.World.Entities.animation.PlayerAnimation;
 import com.mygdx.game.ui.GameUI;
 import com.mygdx.game.utils.JsonProfile;
@@ -43,7 +44,7 @@ public class Player extends  Entity{
         JsonProfile.loadStats("mainProfile", this);
         updateGameUI();
         playerBodyDef();
-        setNpcAnimation(new PlayerAnimation(this, assetManager));
+        setNpcAnimation((NpcAnimation) new PlayerAnimation(this,assetManager));
     }
 
     void playerBodyDef(){

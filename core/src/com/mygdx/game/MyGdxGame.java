@@ -22,7 +22,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.map.MapManager;
-import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
 
@@ -34,7 +33,7 @@ public class MyGdxGame extends Game {
 	public static final float UNIT_SCALE = 1/32f;
 	private OrthographicCamera gameCamera;
 	private SpriteBatch spriteBatch;
-	private EnumMap<ScreenType, AbstractScreen> screenCache;
+	private EnumMap<ScreenType, Screen> screenCache = new EnumMap<ScreenType, Screen>(ScreenType.class);
 	private FitViewport screenViewport;
 
 	//b2D variables and constants
@@ -86,7 +85,7 @@ public class MyGdxGame extends Game {
 
 		//2D
 		initializeSkin();
-		stage = new Stage(new FitViewport(1280,720), spriteBatch);
+		stage = new Stage(new FitViewport(1280,720));
 
 		//audio
 		audioManager = new AudioManager(this);
@@ -107,13 +106,13 @@ public class MyGdxGame extends Game {
 	}
 
 	public void setScreen(final ScreenType screenType){
-		final Screen screen = screenAvailable.get(screenType);
+		final Screen screen = screenCache.get(screenType);
 
 		if(screen == null){
 			//si crea lo screen
 			try{
 				final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
-				new screenAvailable.put(screenType, newScreen);
+				screenCache.put(screenType, newScreen);
 				setScreen(newScreen);
 			} catch (ReflectionException error){
 				throw new GdxRuntimeException("Screen " + screenType + "inesistente per" + error);
@@ -127,7 +126,7 @@ public class MyGdxGame extends Game {
 	private void initializeSkin() {
 
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/..."));
+		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;
@@ -142,9 +141,9 @@ public class MyGdxGame extends Game {
 
 		//load skin
 		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
-		assetManager.load("ui/...", Skin.class, skinParameter);
+		//assetManager.load("ui/...", Skin.class, skinParameter);
 		assetManager.finishLoading();
-		skin = assetManager.get("ui/...", Skin.class);
+		//skin = assetManager.get("ui/...", Skin.class);
 
 
 	}
@@ -161,7 +160,6 @@ public class MyGdxGame extends Game {
 	public InputManager getInputManager() {
 		return inputManager;
 	}
-
 
 	public Stage getStage() {
 		return stage;

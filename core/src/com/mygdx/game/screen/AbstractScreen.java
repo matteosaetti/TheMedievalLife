@@ -12,10 +12,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioManager;
+import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 
-public abstract class AbstractScreen implements Screen, InputListener {
+public abstract class AbstractScreen implements Screen {
     protected final MyGdxGame context;
     protected final FitViewport viewport;
     protected final World world;
@@ -43,7 +44,7 @@ public abstract class AbstractScreen implements Screen, InputListener {
 
     @Override
     public void show() {
-        inputManager.addInputListener(this);
+
         stage.addActor(screenUI);
     }
 
@@ -71,7 +72,6 @@ public abstract class AbstractScreen implements Screen, InputListener {
 
     @Override
     public void hide() {
-        inputManager.removeInputListener(this);
         stage.getRoot().removeActor(screenUI);
     }
 
@@ -79,4 +79,10 @@ public abstract class AbstractScreen implements Screen, InputListener {
     public void dispose() {
 
     }
+
+    public abstract void keyPressed(InputManager manager, GameKeys key);
+
+    public abstract void keyUp(InputManager manager, GameKeys key);
+
+    public abstract void scroll(InputManager manager, float amount);
 }

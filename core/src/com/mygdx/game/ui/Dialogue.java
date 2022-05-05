@@ -85,7 +85,7 @@ public class Dialogue extends Table {
         if(npc == null){
             this.setSpeaker("Sistema");
             setMessage(personalizedMessage);
-            GameUI.getInstance().getAction().setVisible(true);
+            GameUI.getInstance().getActionPossible().setVisible(true);
             return;
         }
         else

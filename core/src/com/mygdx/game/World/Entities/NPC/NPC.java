@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.World.Entities.Entity;
 import com.mygdx.game.World.Entities.Player;
 
-public class NPC extends Entity {
+public abstract class NPC extends Entity {
 
     private Vector2 coords;
     private float actionRadius = 10;
@@ -81,6 +81,10 @@ public class NPC extends Entity {
     public void setConversationConfigPath(String conversationConfigPath) {
         this.conversationConfigPath = conversationConfigPath;
     }
+
+    public abstract void actionTriggered(Player player);
+
+    public abstract void draw(Batch batch, float elapsedTime);
 
     /**
      * The NPC_handler will notify the NPC when the player enters in his action radius by this method

@@ -5,15 +5,10 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.StringBuilder;
-import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.input.GameKeys;
-
 public class LoadingUI extends Table {
 
     private final ProgressBar progressBar;
@@ -30,13 +25,8 @@ public class LoadingUI extends Table {
         progressBar.setAnimateDuration(1);
         textButton.getLabel().setWrap(true);
 
-
-
-
-
-
        loadingString.setVisible(false);
-        loadingString.addListener(new InputListener(){
+       loadingString.addListener(new InputListener(){
             @Override
             public boolean touchDown(final InputEvent event, final float x, final float y, final int pointer, final int button) {
                return true;
@@ -44,7 +34,7 @@ public class LoadingUI extends Table {
         });
 
 
-       add(loadingString).expand().fill().center().row();
+       add(loadingString).expandX().fillX().center().row();
        add(textButton).expandX().fillX().bottom().row();
        add(progressBar).expandX().fillX().bottom().pad(20,25,20,25);
        bottom();

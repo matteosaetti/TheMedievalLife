@@ -33,7 +33,7 @@ public class WorldContactListener implements ContactListener {
           Fixture other = fixA.getUserData() == "player_sensor" ? fixB : fixA;
           //contact player-portal
           if(other.getUserData() != null && other.getUserData().getClass().equals(Portal.class)){
-              GameUI.getInstance().getAction().showAction(ActionType.PORTAL);
+              GameUI.getInstance().getActionPossible().showAction(ActionType.PORTAL);
 
               for(PortalListener portalListener : portalListenerArray){
                   portalListener.PortalCrossed((Portal) other.getUserData());
@@ -58,7 +58,7 @@ public class WorldContactListener implements ContactListener {
 
             // if player contact with portal
             if(other.getUserData() != null && other.getUserData().getClass().equals(Portal.class)){
-                GameUI.getInstance().getAction().hideAction(ActionType.PORTAL);
+                GameUI.getInstance().getActionPossible().hideAction(ActionType.PORTAL);
             }
         }
     }

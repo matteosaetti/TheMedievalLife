@@ -68,9 +68,9 @@ public class NPC_handler {
         }
 
         if(possibleActions)
-            GameUI.getInstance().getAction().showAction(ActionType.CHAT);
+            GameUI.getInstance().getActionPossible().showAction(ActionType.CHAT);
         else
-            GameUI.getInstance().getAction().hideAction(ActionType.CHAT);
+            GameUI.getInstance().getActionPossible().hideAction(ActionType.CHAT);
     }
 
     public void draw(Batch batch, float elapsedTime) {

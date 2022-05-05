@@ -2,8 +2,11 @@ package com.mygdx.game.World.Entities;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.mygdx.game.World.Entities.animation.NpcAnimation;
 
 public class Entity {
+    private NpcAnimation npcAnimation;
+
     World world;
     public Body B2DBody;
     BodyDef bodyDef;
@@ -89,16 +92,16 @@ public class Entity {
     /**
      * getter of npcAnimation
      */
-    /*public NpcAnimation getNpcAnimation() {
+    public NpcAnimation getNpcAnimation() {
         return npcAnimation;
     }
-    */
+
     /**
      * setter of npcAnimation
      */
-   // public void setNpcAnimation(NpcAnimation npcAnimation) {
-    //    this.npcAnimation = npcAnimation;
-    // }
+    public void setNpcAnimation(NpcAnimation npcAnimation) {
+        this.npcAnimation = npcAnimation;
+     }
 
     public void teleportTo(Vector2 coordinates){
         world.destroyBody(B2DBody);

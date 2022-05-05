@@ -6,9 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.mygdx.game.MyGdxGame;
 
-import javax.swing.event.ChangeEvent;
-
 public class SettingsUI extends Table {
+
     private Slider musicVolume;
     private Slider effectsVolume;
     private Label musicValue;
@@ -31,17 +30,15 @@ public class SettingsUI extends Table {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 musicValue.setText((int) (musicVolume.getValue() * 100));
-                context.getAudioManager().getCurrentMusic().setVolume(musicVolume.getValue());
-
+                context.getAudioManager().setVolumeSound(musicVolume.getValue());
             }
-        } );
+        });
         effectsVolume=new Slider(0,1,0.01f,false,skin,"default");
-        effectsVolume.addListener(new com.badlogic.gdx.scenes.scene2d.utils.ChangeListener() {
+        effectsVolume.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 effectsValue.setText((int) (effectsVolume.getValue() * 100));
                 context.getAudioManager().setVolumeSound(effectsVolume.getValue());
-
             }
         });
 
@@ -73,4 +70,3 @@ public class SettingsUI extends Table {
     }
 
 }
-
