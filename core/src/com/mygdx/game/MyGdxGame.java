@@ -115,7 +115,7 @@ public class MyGdxGame extends Game {
 				screenCache.put(screenType, newScreen);
 				setScreen(newScreen);
 			} catch (ReflectionException error){
-				throw new GdxRuntimeException("Screen " + screenType + "inesistente per" + error);
+				throw new GdxRuntimeException("Screen " + screenType + "inesistente per", error);
 
 			}
 		}
