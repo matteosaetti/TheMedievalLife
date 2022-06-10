@@ -17,9 +17,11 @@ public enum ActionType {
     public String getText(){
         return text;
     }
+
     public String getKey(){
         return key;
     }
+
     public String getAction(){
         return action;
     }

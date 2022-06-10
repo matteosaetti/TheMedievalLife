@@ -39,4 +39,7 @@ public class Portal {
 
     }
 
+    public MapType getDestinationMapType() {
+        return destinationMapType;
+    }
 }

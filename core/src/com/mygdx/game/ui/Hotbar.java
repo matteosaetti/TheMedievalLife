@@ -50,6 +50,7 @@ public class Hotbar extends Table {
     public int getCurrentPointSlot(){
         return currentPointSlot;
     }
+
     public int getNUMBER_OF_SLOT(){
         return NUMBER_OF_SLOT;
     }

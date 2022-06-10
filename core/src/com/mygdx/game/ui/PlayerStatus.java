@@ -39,9 +39,11 @@ class PlayerStatus extends Table {
     public void setExp(final float value) {
         exp.setValue(value);
     }
+
     void setMana(final float value){
         mana.setValue(value);
     }
+
     void setBars(final float healthValue, final float expValue, final float manaValue){
         health.setValue(healthValue);
         exp.setValue(expValue);
@@ -51,9 +53,11 @@ class PlayerStatus extends Table {
     float getHealth(){
         return health.getValue();
     }
+
     float getExp(){
         return exp.getValue();
     }
+
     float getMana(){
         return mana.getValue();
     }

@@ -1,7 +1,6 @@
 package com.mygdx.game.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -34,14 +33,14 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
     private final Vector2 savePCoordinates = new Vector2(11,12.5f);
     float elapsedTime=0;
     private boolean newMovementInput = false;
-    private NPC_handler npc_handler;
-    private Inventory inventory;
+    private final NPC_handler npc_handler;
+    private final Inventory inventory;
 
     //map
     private final MapManager mapManager;
     public final OrthogonalTiledMapRenderer mapRenderer;
-    private int[] layer_1 ={0,1,2,3};
-    private int[] layer_2={4,5,6,7};
+    private final int[] layer_1 ={0,1,2,3};
+    private final int[] layer_2={4,5,6,7};
     private MapType portalDest;
     //camera
     private final OrthographicCamera orthographicCamera;
@@ -56,6 +55,8 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
 
         //create player
         playerB2D = new Player(world, savePCoordinates,gameUI, context.getAssetManager());
+        inventory = gameUI.getInventory();
+        JsonProfile.loadInventory("mainProfile", inventory);
 
         // creating NPC_handler
         npc_handler = new NPC_handler(playerB2D);
@@ -65,12 +66,14 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         orthographicCamera.position.set(savePCoordinates,0);
         batch.setProjectionMatrix(orthographicCamera.combined);
 
+
         //map init
         mapManager = context.getMapManager();
         mapRenderer= new OrthogonalTiledMapRenderer(null,UNIT_SCALE,batch);
         mapManager.addMapListener(this);
 
         mapManager.setMap(MapType.WORLD);
+        JsonProfile.loadLocation("mainProfile", playerB2D, mapManager);
         WorldContactListener worldContactListener= new WorldContactListener(context);
         worldContactListener.addPortalListener(this);
         world.setContactListener(worldContactListener);
@@ -101,6 +104,7 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         //update map
         mapManager.setSafeMapLoader();
 
+        //update player to new speed after moving inputs
         if(newMovementInput){
             playerB2D.B2DBody.applyLinearImpulse(
                     playerB2D.getSpeedX()-playerB2D.B2DBody.getLinearVelocity().x,
@@ -178,7 +182,6 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         mapRenderer.dispose();
     }
 
-    @Override
     public void keyPressed(InputManager manager, GameKeys key) {
         switch (key) {
             /*
@@ -248,7 +251,26 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
 
     @Override
     public void keyUp(InputManager manager, GameKeys key) {
-
+        switch (key){
+            case UP:
+                newMovementInput=true;
+                playerB2D.setSpeedY(manager.isKeyPressed(GameKeys.DOWN) ? -playerB2D.NOMINAL_SPEED : 0);
+                break;
+            case DOWN:
+                newMovementInput=true;
+                playerB2D.setSpeedY(manager.isKeyPressed(GameKeys.UP) ? -playerB2D.NOMINAL_SPEED : 0);
+                break;
+            case LEFT:
+                newMovementInput=true;
+                playerB2D.setSpeedX(manager.isKeyPressed(GameKeys.RIGHT) ? -playerB2D.NOMINAL_SPEED : 0);
+                break;
+            case RIGHT:
+                newMovementInput=true;
+                playerB2D.setSpeedX(manager.isKeyPressed(GameKeys.LEFT) ? -playerB2D.NOMINAL_SPEED : 0);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -259,11 +281,15 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
 
     @Override
     public void PortalCrossed(Portal portal) {
-
+        portalDest= portal.getDestinationMapType();
     }
 
     @Override
     public void mapChange() {
+        mapRenderer.setMap(mapManager.getCurrentMap());
+        mapManager.playerAtSpawnMap(playerB2D);
+        npc_handler.clearAllNPCs();
+        JsonProfile.loadNPCs(npc_handler,mapManager.getCurrentMapType(),world, context.getAssetManager());
 
     }
 }

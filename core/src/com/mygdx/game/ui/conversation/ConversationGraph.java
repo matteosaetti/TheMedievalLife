@@ -24,7 +24,7 @@ public class ConversationGraph extends ConversationGraphSubject{
                     "Can't have a negative amount of conversations");
         }
         this.conversations = conversations;
-        this.associatedChoices = new Hashtable<String, ArrayList<ConversationChoice>>(conversations.size());
+        this.associatedChoices = new Hashtable<String,ArrayList<ConversationChoice>>(conversations.size());
         for( Conversation conversation: conversations.values() ){
             associatedChoices.put( conversation.getId(), new ArrayList<ConversationChoice>());
         }
@@ -44,8 +44,9 @@ public class ConversationGraph extends ConversationGraphSubject{
         return conversation != null;
     }
 
+
     public boolean isReachable(String sourceID, String sinkID){
-        if( !isValid(sourceID) || !isValid(sinkID) ) return false;
+        if( isValid(sourceID) || isValid(sinkID)) return false;
         if( conversations.get(sourceID) == null ) return false;
 
         //First get edges/choices from the source
@@ -62,7 +63,7 @@ public class ConversationGraph extends ConversationGraphSubject{
     }
 
     public Conversation getConversationByID(String id){
-        if( !isValid(id) ){
+        if(!isValid(id)){
             System.out.println("Id " + id + " is not valid!");
             return null;
         }
@@ -85,6 +86,7 @@ public class ConversationGraph extends ConversationGraphSubject{
     public String getCurrentConversation(){
         return conversations.get(currentConversationID).getDialog();
     }
+
     public String toJson(){
         Json json = new Json();
         return json.prettyPrint(this);

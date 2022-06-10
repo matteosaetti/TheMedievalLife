@@ -35,7 +35,7 @@ public class PlayerAnimation {
      * Init TextureAtlas frames and related Animations
      */
     private void animationDef(){
-        TextureAtlas idleRight = assetManager.get("player/idle_right.atlas", TextureAtlas.class);
+        TextureAtlas idleRight=assetManager.get("player/idle_right.atlas", TextureAtlas.class);
         TextureAtlas idleLeft=assetManager.get("player/idle_left.atlas", TextureAtlas.class);
         TextureAtlas walkLeft=assetManager.get("player/walk_left.atlas", TextureAtlas.class);
         TextureAtlas walkRight=assetManager.get("player/walk_right.atlas", TextureAtlas.class);

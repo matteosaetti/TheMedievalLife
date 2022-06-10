@@ -6,21 +6,23 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.World.Entities.Player;
 import com.mygdx.game.World.WCreator;
 
-import java.util.EnumMap;
-
-import static com.mygdx.game.MyGdxGame.BIT_GROUND;
-
+/**  import java.util.EnumMap;
+ *   import com.mygdx.game.MyGdxGame;
+ *   import static com.mygdx.game.MyGdxGame.BIT_GROUND;
+ *   not used;
+ */
 
 public class MapManager {
-    public static final String TAG = MapManager.class.getSimpleName();
+    /**
+      * public static final String TAG = MapManager.class.getSimpleName();
+     */
 
     private final World world;
     private final AssetManager assetManager;
-    private MapType currentMapType;
+    private final MapType currentMapType;
     private TiledMap currentMap;
     private WCreator currentWCreator;
     private final Array<MapListener> listeners;
@@ -34,14 +36,17 @@ public class MapManager {
         this.currentMap = null;
         listeners = new Array<>();
     }
-    public void playerAtSpawnMap(Player player){
-        player.teleportTo(currentMapType.getSpawn());
+
+    public MapType getCurrentMapType() {
+
+        return currentMapType;
     }
 
-    public void addMapListener(final MapListener listener){
+    public TiledMap getCurrentMap() {
 
-        listeners.add(listener);
+        return currentMap;
     }
+
     public void setMap(final MapType type){
         if(currentMapType == type){
             //map is already set
@@ -68,15 +73,15 @@ public class MapManager {
 
     }
 
-    public MapType getCurrentMapType() {
-
-        return currentMapType;
+    public void playerAtSpawnMap(Player player){
+        player.teleportTo(currentMapType.getSpawn());
     }
 
-    public TiledMap getCurrentMap() {
+    public void addMapListener(final MapListener listener){
 
-        return currentMap;
+        listeners.add(listener);
     }
+
     public void loadMapSafe(MapType nextMap){
         this.safeMapLoader = nextMap;
         safeMapLoaderUpdate = false;

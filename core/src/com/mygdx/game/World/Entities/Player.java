@@ -36,7 +36,7 @@ public class Player extends  Entity{
      * @param coords coordinates of where the player will be spawned
      * */
     public Player(World world, Vector2 coords, GameUI gameUI, AssetManager assetManager){
-        //offset to legs = - heightEntireBox + heightLegs / 2
+        //offset to leg = - heightEntireBox + heightLegs / 2
         super(world, coords, 0.4f, 0.15f, -0.6f +0.15f/2);
         this.world = world;
         this.gameUI = gameUI;
@@ -160,7 +160,7 @@ public class Player extends  Entity{
     @Override
     public void teleportTo(Vector2 coordinates){
         world.destroyBody(B2DBody);
-        //offset to legs = - heightEntireBox + heightLegs / 2
+        //offset to leg = - heightEntireBox + heightLegs / 2
         entityDef(coordinates, B2D_BODY_DEF_WIDTH, 0.15f, -B2D_BODY_DEF_HEIGHT +0.15f/2);
         playerBodyDef();
     }

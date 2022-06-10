@@ -1,18 +1,14 @@
 package com.mygdx.game.screen;
 
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioType;
@@ -26,7 +22,7 @@ public class LoadingScreen extends AbstractScreen  {
     private final AssetManager assetManager;
     private final Color color;
 
-    public LoadingScreen(final MyGdxGame context, Color color){
+    public LoadingScreen(final MyGdxGame context){
 
         super(context);
         this.color = context.getSkin().getColor("nero");
@@ -52,8 +48,10 @@ public class LoadingScreen extends AbstractScreen  {
 
     @Override
     protected Table getScreenUI(Skin skin){
+
         return new LoadingUI(skin);
     }
+
     @Override
     public void render(float delta) {
         ScreenUtils.clear(color);
@@ -82,6 +80,7 @@ public class LoadingScreen extends AbstractScreen  {
     @Override
     public void show() {
         super.show();
+        ScreenUtils.clear(color);
 
     }
 
@@ -99,10 +98,6 @@ public class LoadingScreen extends AbstractScreen  {
     @Override
     public void keyPressed(InputManager manager, GameKeys key) {
 
-        if(assetManager.getProgress() >= 1) {
-            //audioManager.playAudio(AudioType.);
-            context.setScreen(ScreenType.GAME);
-        }
     }
 
     @Override
