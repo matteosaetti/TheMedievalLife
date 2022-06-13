@@ -9,26 +9,25 @@ import com.mygdx.game.World.Entities.Player;
 import com.mygdx.game.World.Entities.animation.OnlyIdleAnimation;
 import com.mygdx.game.ui.GameUI;
 
-public class Bardo extends NPC{
-        public Bardo(World world, Vector2 coords, AssetManager assetManager){
-            super(world,0.5f,0.55f,coords);
+public class Merchant extends NPC{
+    public Merchant(World world, Vector2 coords, AssetManager assetManager){
+        super(world,0.5f,0.55f,coords);
 
-            setNPCname("Bardo");
-            setConversationConfigPath("NPC/beer_man/dialogue_default.json");
-            setNpcAnimation(new OnlyIdleAnimation(assetManager,"NPC/beer_man/idle.atlas"));
+        setNPCname("Merchant");
+        setConversationConfigPath("NPC/merchant/dialogue_default.json");
+        setNpcAnimation(new OnlyIdleAnimation( assetManager,"NPC/merchant/idle.atlas"));
     }
 
     @Override
     public void actionTriggered(Player player) {
-        //if in dialogue range,load conversation
+        //if in dialogue range, load conversation
         if(player.isInConversationRadius(this) && !GameUI.getInstance().getDialogue().isVisible()){
             GameUI.getInstance().getDialogue().loadConversation(this,null);
         }
-
         B2DBody.applyLinearImpulse(
                 -B2DBody.getLinearVelocity().x,
                 -B2DBody.getLinearVelocity().y,
-                B2DBody.getWorldCenter().x, B2DBody.getWorldCenter().y,
+                B2DBody.getWorldCenter().x,B2DBody.getWorldCenter().y,
                 true);
     }
 
@@ -41,7 +40,7 @@ public class Bardo extends NPC{
                     1f,1.4f);
         }
         else{
-            Gdx.app.error(this.getClass().getSimpleName(),"batch not drawing");
+            Gdx.app.error(this.getClass().getSimpleName(),"batch if not drawing");
         }
     }
 }
