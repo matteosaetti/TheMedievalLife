@@ -72,7 +72,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
     public void show() {
         ScreenUtils.clear(0, 0, 0, 1);
         batch.setProjectionMatrix(camera.combined);
-        //audioManager.playAudio(AudioType.THEME1);
+        audioManager.playAudio(AudioType.THEME1);
         BG.resume();
         inputManager.addInputListener(this);
     }
@@ -107,8 +107,8 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
             batch.draw(texture_playbutton_active, 8-PLAY_BUTT_WIDTH/2, 1, PLAY_BUTT_WIDTH, PLAY_BUTT_HEIGHT);
             if(Gdx.input.justTouched()){
                 BG.stop();
-               //audioManager.playAudio(AudioType.CLICK2_HEAVY);
-                //audioManager.playAudio(AudioType.CLICK3_SUCCESS);
+                audioManager.playAudio(AudioType.CLICK2_HEAVY);
+                audioManager.playAudio(AudioType.CLICK3_SUCCESS);
 
                 context.setScreen(ScreenType.GAME);
             }
@@ -120,7 +120,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 coordsPointed.y < 2.5f + SETT_BUTT_HEIGHT && coordsPointed.y > 2.5f) {
             batch.draw(texture_settingsbutton_active, 8 - SETT_BUTT_WIDTH / 2, 2.5f, SETT_BUTT_WIDTH, SETT_BUTT_HEIGHT);
             if (Gdx.input.justTouched()) {
-                //audioManager.playAudio(AudioType.CLICK2_HEAVY);
+                audioManager.playAudio(AudioType.CLICK2_HEAVY);
 
                 context.setScreen(ScreenType.SETTINGS);
             }
@@ -175,7 +175,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
      */
     @Override
     public void keyPressed(InputManager manager, GameKeys key) {
-      /*  switch (key){
+        switch (key){
             case NEXT: //set screen 'LOADING'
                 BG.stop();
                 audioManager.playAudio(AudioType.CLICK3_SUCCESS);
@@ -187,8 +187,14 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 break;
         }
 
-       */
+
     }
+
+    /**
+     * Implements method of interface InputListener
+     *
+     * @see InputListener
+     * */
 
     @Override
     public void keyUp(InputManager manager, GameKeys key) {
@@ -200,10 +206,6 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
 
     }
 
-    /**
-     * Implements method of interface InputListener
-     *
-     * @see InputListener
-     * */
+
 
 }

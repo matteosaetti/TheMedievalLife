@@ -53,8 +53,10 @@ public class MyGdxGame extends Game {
 	private Skin skin;
 
 
-	//manager
+	//inputManager
 	private InputManager inputManager;
+
+	//audioManager
 	private AudioManager audioManager;
 
 	//map manager
@@ -95,7 +97,9 @@ public class MyGdxGame extends Game {
 		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
 
 		//setup game viewport
-		gameCamera = new OrthographicCamera();
+		gameCamera = new OrthographicCamera(16,9);
+		gameCamera.position.set(gameCamera.viewportWidth/2,gameCamera.viewportWidth/2,0);
+		gameCamera.update();
 		screenViewport = new FitViewport(9,16, gameCamera);
 
 		//setup map manager
@@ -141,9 +145,9 @@ public class MyGdxGame extends Game {
 
 		//load skin
 		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
-		//assetManager.load("ui/...", Skin.class, skinParameter);
+		assetManager.load("ui/hud.json", Skin.class, skinParameter);
 		assetManager.finishLoading();
-		//skin = assetManager.get("ui/...", Skin.class);
+		skin = assetManager.get("ui/hud.json", Skin.class);
 
 
 	}

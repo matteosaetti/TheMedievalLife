@@ -33,6 +33,7 @@ public class SettingsUI extends Table {
                 context.getAudioManager().setVolumeSound(musicVolume.getValue());
             }
         });
+
         effectsVolume=new Slider(0,1,0.01f,false,skin,"default");
         effectsVolume.addListener(new ChangeListener() {
             @Override

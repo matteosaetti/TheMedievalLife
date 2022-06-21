@@ -88,8 +88,9 @@ public class AudioManager {
         }
     }
 }
-     /* Class for objects that manages the audioType.typeOfSound LOOPINGSOUND
- */
+     /**
+      *  Class for objects that manages the audioType.typeOfSound LOOPINGSOUND
+      */
     class LoopingSound {
          private Sound sound;
          private long soundId;

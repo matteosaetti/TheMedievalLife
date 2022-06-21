@@ -46,7 +46,7 @@ public class Entity {
     /**
      * Init Box2D Body of entity (BodyDef and FixtureDef related)
      *
-     * @param coords coordinates of bodyDef.position
+     * @param coords coordinates of bodyDef. position
      * */
     public void entityDef(Vector2 coords, float hWidth, float hHeight, float offsetY) {
 

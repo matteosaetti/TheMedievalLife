@@ -82,10 +82,6 @@ public abstract class NPC extends Entity {
         this.conversationConfigPath = conversationConfigPath;
     }
 
-    public abstract void actionTriggered(Player player);
-
-    public abstract void draw(Batch batch, float elapsedTime);
-
     /**
      * The NPC_handler will notify the NPC when the player enters in his action radius by this method
      *
@@ -93,5 +89,11 @@ public abstract class NPC extends Entity {
      *
      * @param player player whom the npc will interact
      */
+
+    public abstract void actionTriggered(Player player);
+
+    public abstract void draw(Batch batch, float elapsedTime);
+
+
 }
 

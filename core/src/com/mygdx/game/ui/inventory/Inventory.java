@@ -157,7 +157,7 @@ public class Inventory extends Table {
             return slot.getItem().getQuantity();
         }
 
-        //if there's not, add the the first empty slot
+        //if there's not, add the first empty slot
         for(InventoryStack slot : inventory){
             if(!slot.containsItems()){
                 slot.addItem(item);

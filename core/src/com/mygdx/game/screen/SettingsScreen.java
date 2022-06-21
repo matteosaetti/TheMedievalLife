@@ -19,10 +19,13 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
         audioManager = context.getAudioManager();
     }
+
     @Override
     public void render(float delta) {
+
         ScreenUtils.clear(1, 1, 1, 1);
     }
+
     @Override
     protected Table getScreenUI(Skin skin) {
 
@@ -30,7 +33,6 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
     }
 
 
-    @Override
     public void keyPressed(InputManager manager, GameKeys key) {
         if (key == GameKeys.BACK) { //set screen 'MAINMENU'
             context.setScreen(ScreenType.MAINMENU);
@@ -47,6 +49,34 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
     }
     public void hide(){
+        super.hide();
         inputManager.removeInputListener(this);
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        ScreenUtils.clear(0,0,0,1);
+        inputManager.addInputListener(this);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+    }
+
+    @Override
+    public void dispose() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void pause() {
+
     }
 }

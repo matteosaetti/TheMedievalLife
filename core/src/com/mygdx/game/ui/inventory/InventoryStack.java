@@ -7,8 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.ui.Item;
 
-import static jdk.internal.org.jline.utils.ShutdownHooks.add;
-
 public class InventoryStack extends Stack {
     private Item item = null;
     private final Skin skin;
