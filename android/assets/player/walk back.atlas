@@ -1,0 +1,20 @@
+
+walk back.png
+size: 64, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+walk_back1
+  rotate: false
+  xy: 2, 2
+  size: 24, 30
+  orig: 24, 30
+  offset: 0, 0
+  index: -1
+walk_back2
+  rotate: false
+  xy: 28, 2
+  size: 24, 30
+  orig: 24, 30
+  offset: 0, 0
+  index: -1
