@@ -48,12 +48,12 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         coordsPointed = new Vector3();
         assetManager = context.getAssetManager();
         //texture
-        BG = new MovingTexture(Gdx.files.internal("background/cesaricidio.jpg"), -1f, -1f, -0.5f, -0.5f);
+        BG = new MovingTexture(Gdx.files.internal("loading/loading_photo.jpg"), -1f, -1f, -0.5f, -0.5f);
         BG.setWidth(32);
         BG.setHeight(18);
-        texture_playbutton_active = new Texture(Gdx.files.internal("buttons/playbutton_red.png"));
+        //texture_playbutton_active = new Texture(Gdx.files.internal("buttons/playbutton_red.png"));
         texture_playbutton_inactive = new Texture(Gdx.files.internal("buttons/playbutton_lightgrey.png"));
-        texture_settingsbutton_active = new Texture(Gdx.files.internal("buttons/settingsbutton_red.png"));
+        //texture_settingsbutton_active = new Texture(Gdx.files.internal("buttons/settingsbutton_red.png"));
         texture_settingsbutton_inactive = new Texture(Gdx.files.internal("buttons/settingsbutton_lightgrey.png"));
     }
 
