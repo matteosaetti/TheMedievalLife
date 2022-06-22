@@ -130,7 +130,7 @@ public class MyGdxGame extends Game {
 	private void initializeSkin() {
 
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
+		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/NiceNightie.ttf"));
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;

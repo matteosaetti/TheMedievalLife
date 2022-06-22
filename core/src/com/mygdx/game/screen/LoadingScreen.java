@@ -25,7 +25,7 @@ public class LoadingScreen extends AbstractScreen  {
     public LoadingScreen(final MyGdxGame context){
 
         super(context);
-        this.color = context.getSkin().getColor("nero");
+        this.color = context.getSkin().getColor("neroOpaco");
 
 
         assetManager= context.getAssetManager();
