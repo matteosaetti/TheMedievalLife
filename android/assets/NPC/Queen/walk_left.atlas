@@ -1,0 +1,13 @@
+
+walk_left.png
+size: 128, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+walk_left
+  rotate: false
+  xy: 2, 2
+  size: 91, 31
+  orig: 91, 31
+  offset: 0, 0
+  index: -1

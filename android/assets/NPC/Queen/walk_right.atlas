@@ -1,0 +1,13 @@
+
+walk_right.png
+size: 128, 64
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+walk_right
+  rotate: false
+  xy: 2, 2
+  size: 91, 30
+  orig: 91, 30
+  offset: 0, 0
+  index: -1
