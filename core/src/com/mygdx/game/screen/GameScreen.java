@@ -33,8 +33,8 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
     private final Vector2 savePCoordinates = new Vector2(11,12.5f);
     float elapsedTime=0;
     private boolean newMovementInput = false;
-    private final NPC_handler npc_handler;
-    private final Inventory inventory;
+    private NPC_handler npc_handler;
+    private Inventory inventory;
 
     //map
     private final MapManager mapManager;
@@ -118,10 +118,10 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         orthographicCamera.update();
 
         //footsteps sound if player is moving
-        if(playerB2D.B2DBody.getLinearVelocity().isZero())
-            audioManager.stopLoopingSound(AudioType.FOOTSTEPS_STONE);
-        else
-            audioManager.playAudio(AudioType.FOOTSTEPS_STONE);
+       // if(playerB2D.B2DBody.getLinearVelocity().isZero())
+           // audioManager.stopLoopingSound(AudioType.FOOTSTEPS_STONE);
+        //else
+            //audioManager.playAudio(AudioType.FOOTSTEPS_STONE);
 
         //update NPCs
         npc_handler.update();

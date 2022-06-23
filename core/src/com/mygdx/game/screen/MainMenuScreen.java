@@ -62,12 +62,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         return null;
     }
 
-    /**
-     * Every time this Screen is shown (after pause() or other Screen gamestate
-     *  clear OpenGL screen
-     *  resume themeMusic
-     *  enable listener for inputs
-     */
+
     @Override
     public void show() {
         ScreenUtils.clear(0, 0, 0, 1);
@@ -77,13 +72,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         inputManager.addInputListener(this);
     }
 
-    /**
-     * Every new frame render() is called
-     *
-     * Render what will be seen in the screen
-     *
-     * @param delta time occurred from last frame rendered
-     */
+
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
@@ -107,8 +96,8 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
             batch.draw(texture_playbutton_active, 8-PLAY_BUTT_WIDTH/2, 1, PLAY_BUTT_WIDTH, PLAY_BUTT_HEIGHT);
             if(Gdx.input.justTouched()){
                 BG.stop();
-                audioManager.playAudio(AudioType.CLICK2_HEAVY);
-                audioManager.playAudio(AudioType.CLICK3_SUCCESS);
+                //audioManager.playAudio(AudioType.CLICK2_HEAVY);
+                //audioManager.playAudio(AudioType.CLICK3_SUCCESS);
 
                 context.setScreen(ScreenType.GAME);
             }
@@ -120,7 +109,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 coordsPointed.y < 2.5f + SETT_BUTT_HEIGHT && coordsPointed.y > 2.5f) {
             batch.draw(texture_settingsbutton_active, 8 - SETT_BUTT_WIDTH / 2, 2.5f, SETT_BUTT_WIDTH, SETT_BUTT_HEIGHT);
             if (Gdx.input.justTouched()) {
-                audioManager.playAudio(AudioType.CLICK2_HEAVY);
+               // audioManager.playAudio(AudioType.CLICK2_HEAVY);
 
                 context.setScreen(ScreenType.SETTINGS);
             }
@@ -128,14 +117,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         batch.end();
     }
 
-    /**
-     * Every time the window is resized, resize() is called
-     * <p>
-     * update viewport with new size
-     *
-     * @param width  New width of the window
-     * @param height New height of the window
-     */
+
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
@@ -178,10 +160,10 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         switch (key){
             case NEXT: //set screen 'LOADING'
                 BG.stop();
-                audioManager.playAudio(AudioType.CLICK3_SUCCESS);
+               // audioManager.playAudio(AudioType.CLICK3_SUCCESS);
                 context.setScreen(ScreenType.GAME);
             case BACK:
-                //Gdx.app.exit();
+                    //Gdx.app.exit();
                 break;
             default:
                 break;

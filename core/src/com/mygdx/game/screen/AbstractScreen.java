@@ -19,7 +19,7 @@ import com.mygdx.game.input.InputManager;
 public abstract class AbstractScreen implements Screen {
     protected final MyGdxGame context;
     protected final FitViewport viewport;
-    protected final World world;
+    protected World world;
     protected final Box2DDebugRenderer box2DDebugRenderer;
     protected final WidgetGroup screenUI;
     protected final Stage stage;
@@ -40,7 +40,7 @@ public abstract class AbstractScreen implements Screen {
         screenUI = getScreenUI(context.getSkin());
     }
 
-    protected abstract WidgetGroup getScreenUI(Skin skin);
+    protected abstract WidgetGroup getScreenUI(final Skin skin);
 
     @Override
     public void show() {
