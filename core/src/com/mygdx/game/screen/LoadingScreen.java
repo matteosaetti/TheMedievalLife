@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.World.Entities.animation.AnimationLoader;
+import com.mygdx.game.World.Entities.animation.PlayerAnimation;
 import com.mygdx.game.audio.AudioType;
 import com.mygdx.game.input.GameKeys;
 
@@ -20,16 +22,16 @@ import com.mygdx.game.ui.LoadingUI;
 
 public class LoadingScreen extends AbstractScreen  {
     private final AssetManager assetManager;
-    //private final Color color;
+    private final Color color;
 
     public LoadingScreen(final MyGdxGame context){
 
         super(context);
-        //this.color = context.getSkin().getColor("neroOpaco");
+        this.color = context.getSkin().getColor("neroOpaco");
 
 
         assetManager= context.getAssetManager();
-        //load map
+        //load maps
         for(MapType map : MapType.values()){
             context.getAssetManager().load(map.getFilePath(), TiledMap.class);
         }
@@ -41,8 +43,10 @@ public class LoadingScreen extends AbstractScreen  {
         for(final AudioType audioType : AudioType.values()){
             assetManager.load(audioType.getFilePath(), audioType.isMusic() ? Music.class : Sound.class);
         }
-        //load animations
-        //AnimationLoader.loadAllAnimations(assetManager);
+        //load Animation
+        AnimationLoader.loadAllAnimations(assetManager);
+
+
     }
 
 
@@ -54,13 +58,15 @@ public class LoadingScreen extends AbstractScreen  {
 
     @Override
     public void render(float delta) {
-        //ScreenUtils.clear(color);
+        ScreenUtils.clear(color);
 
-        if(assetManager.update()){
+       if(assetManager.update()){
             context.setScreen(ScreenType.MAINMENU);
         }
         ((LoadingUI) screenUI).setLoadingStatus(assetManager.getQueuedAssets());
         ((LoadingUI) screenUI).setProgressBar(assetManager.getProgress());
+
+
     }
     @Override
     public void resize(int width, int height) {
