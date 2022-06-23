@@ -20,12 +20,12 @@ import com.mygdx.game.ui.LoadingUI;
 
 public class LoadingScreen extends AbstractScreen  {
     private final AssetManager assetManager;
-    private final Color color;
+    //private final Color color;
 
     public LoadingScreen(final MyGdxGame context){
 
         super(context);
-        this.color = context.getSkin().getColor("neroOpaco");
+        //this.color = context.getSkin().getColor("neroOpaco");
 
 
         assetManager= context.getAssetManager();
@@ -54,7 +54,7 @@ public class LoadingScreen extends AbstractScreen  {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(color);
+        //ScreenUtils.clear(color);
 
         if(assetManager.update()){
             context.setScreen(ScreenType.MAINMENU);
@@ -80,7 +80,7 @@ public class LoadingScreen extends AbstractScreen  {
     @Override
     public void show() {
         super.show();
-        ScreenUtils.clear(color);
+        //ScreenUtils.clear(color);
 
     }
 

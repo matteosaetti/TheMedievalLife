@@ -14,8 +14,8 @@ public class Cavalier extends NPC{
         super(world, 0.5f, 0.55f, coords);
 
         setNPCname("Cavalier");
-        setConversationConfigPath("NPC/beer_man/dialogue_default.json");
-        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/beer_man/idle.atlas"));
+       // setConversationConfigPath("NPC/beer_man/dialogue_default.json");
+       // setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/beer_man/idle.atlas"));
     }
     @Override
     public void actionTriggered(Player player) {

@@ -144,10 +144,10 @@ public class MyGdxGame extends Game {
 		fontGenerator.dispose();
 
 		//load skin
-		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
-		assetManager.load("ui/hud.json", Skin.class, skinParameter);
-		assetManager.finishLoading();
-		skin = assetManager.get("ui/hud.json", Skin.class);
+		//final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
+		//assetManager.load("ui/hud.json", Skin.class, skinParameter);
+		//assetManager.finishLoading();
+		//skin = assetManager.get("ui/hud.json", Skin.class);
 
 
 	}

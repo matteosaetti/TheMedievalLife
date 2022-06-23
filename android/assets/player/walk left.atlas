@@ -1,20 +1,13 @@
 
 walk left.png
-size: 64, 64
+size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-walk_left1
-  rotate: false
-  xy: 29, 2
-  size: 25, 30
-  orig: 25, 30
-  offset: 0, 0
-  index: -1
-walk_left2
+walk_left
   rotate: false
   xy: 2, 2
-  size: 25, 30
-  orig: 25, 30
+  size: 89, 31
+  orig: 89, 31
   offset: 0, 0
   index: -1

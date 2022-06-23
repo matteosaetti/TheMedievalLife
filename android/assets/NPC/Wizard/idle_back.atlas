@@ -1,13 +1,13 @@
 
-walk back.png
-size: 128, 64
+idle_back.png
+size: 32, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-walk_back
+idle_back1
   rotate: false
   xy: 2, 2
-  size: 89, 31
-  orig: 89, 31
+  size: 24, 31
+  orig: 24, 31
   offset: 0, 0
   index: -1

@@ -1,6 +1,6 @@
 name=idle
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -32,7 +32,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/idle.png,type:Input,regionName:null}]
+inputFiles=[{path:player/gimp/idle.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -40,7 +40,7 @@ keepInputFileExtensions=false
 
 name=idle back
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -72,7 +72,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/idle_back.png,type:Input,regionName:null}]
+inputFiles=[{path:player/gimp/idle_back.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -80,7 +80,7 @@ keepInputFileExtensions=false
 
 name=idle left
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -112,7 +112,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/idle_left.png,type:Input,regionName:null}]
+inputFiles=[{path:player/gimp/idle_left.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -120,7 +120,7 @@ keepInputFileExtensions=false
 
 name=idle right
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -152,7 +152,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/idle_right.png,type:Input,regionName:null}]
+inputFiles=[{path:player/gimp/idle_right.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -160,7 +160,7 @@ keepInputFileExtensions=false
 
 name=walk
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -192,7 +192,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/walk/walk2.png,type:Input,regionName:null},{path:gimp/walk/walk1.png,type:Input,regionName:null}]
+inputFiles=[{path:player/walk.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -200,7 +200,7 @@ keepInputFileExtensions=false
 
 name=walk left
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -232,7 +232,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/walk_left/walk_left2.png,type:Input,regionName:null},{path:gimp/walk_left/walk_left1.png,type:Input,regionName:null}]
+inputFiles=[{path:player/walk_left.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -240,7 +240,7 @@ keepInputFileExtensions=false
 
 name=walk right
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -272,7 +272,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/walk_right/walk_right2.png,type:Input,regionName:null},{path:gimp/walk_right/walk_right1.png,type:Input,regionName:null}]
+inputFiles=[{path:player/walk_right.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 
@@ -280,7 +280,7 @@ keepInputFileExtensions=false
 
 name=walk back
 filename=
-output=.
+output=../gioco/android/assets/player
 
 alias=true
 alphaThreshold=0
@@ -312,7 +312,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:gimp/walk_back/walk_back2.png,type:Input,regionName:null},{path:gimp/walk_back/walk_back1.png,type:Input,regionName:null}]
+inputFiles=[{path:player/walk_back.png,type:Input,regionName:null}]
 keepInputFileExtensions=false
 
 

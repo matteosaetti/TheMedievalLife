@@ -1,13 +1,13 @@
 
-walk back.png
+walk_left.png
 size: 128, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-walk_back
+walk_left
   rotate: false
   xy: 2, 2
-  size: 89, 31
-  orig: 89, 31
+  size: 86, 32
+  orig: 86, 32
   offset: 0, 0
   index: -1

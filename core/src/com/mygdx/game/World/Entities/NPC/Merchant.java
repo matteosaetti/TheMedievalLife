@@ -14,8 +14,8 @@ public class Merchant extends NPC{
         super(world,0.5f,0.55f,coords);
 
         setNPCname("Merchant");
-        setConversationConfigPath("NPC/merchant/dialogue_default.json");
-        setNpcAnimation(new OnlyIdleAnimation( assetManager,"NPC/merchant/idle.atlas"));
+        //setConversationConfigPath("NPC/merchant/dialogue_default.json");
+        //setNpcAnimation(new OnlyIdleAnimation( assetManager,"NPC/merchant/idle.atlas"));
     }
 
     @Override

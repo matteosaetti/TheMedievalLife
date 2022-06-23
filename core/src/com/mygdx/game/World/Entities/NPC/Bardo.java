@@ -14,8 +14,8 @@ public class Bardo extends NPC{
             super(world,0.5f,0.55f,coords);
 
             setNPCname("Bardo");
-            setConversationConfigPath("NPC/beer_man/dialogue_default.json");
-            setNpcAnimation(new OnlyIdleAnimation(assetManager,"NPC/beer_man/idle.atlas"));
+            //setConversationConfigPath("NPC/beer_man/dialogue_default.json");
+            //setNpcAnimation(new OnlyIdleAnimation(assetManager,"NPC/beer_man/idle.atlas"));
     }
 
     @Override
