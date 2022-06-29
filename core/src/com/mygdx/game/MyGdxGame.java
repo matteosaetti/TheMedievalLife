@@ -66,14 +66,13 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void create () {
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
-
-		spriteBatch = new SpriteBatch();
 
 
 		//box2d stuff
-		accumulator =  0;
 		Box2D.init();
+		accumulator =  0;
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		spriteBatch = new SpriteBatch();
 		world = new World(new Vector2(0, -9.81f), true);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 
@@ -130,7 +129,7 @@ public class MyGdxGame extends Game {
 	private void initializeSkin() {
 
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		final FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/NiceNightie.ttf"));
+		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/NiceNightie.ttf"));
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;
@@ -139,15 +138,18 @@ public class MyGdxGame extends Game {
 			fontParameter.size = size;
 			final BitmapFont bitmapFont = fontGenerator.generateFont(fontParameter);
 			bitmapFont.getData().markupEnabled = true;
-			resources.put("font_" + size, bitmapFont);
+			resources.put("font2_" + size, bitmapFont);
 		}
+		fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
+		fontParameter.size = 16;
+		resources.put("font2_16", fontGenerator.generateFont(fontParameter));
 		fontGenerator.dispose();
 
 		//load skin
-		//final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
-		//assetManager.load("ui/hud.json", Skin.class, skinParameter);
-		//assetManager.finishLoading();
-		//skin = assetManager.get("ui/hud.json", Skin.class);
+		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
+		assetManager.load("ui/hud.json", Skin.class, skinParameter);
+		assetManager.finishLoading();
+		skin = assetManager.get("ui/hud.json", Skin.class);
 
 
 	}
@@ -213,7 +215,7 @@ public class MyGdxGame extends Game {
 		}
 
 		stage.getViewport().apply();
-		stage.act(deltaTime);
+		stage.act();
 		stage.draw();
 	}
 
