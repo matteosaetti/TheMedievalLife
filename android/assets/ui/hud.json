@@ -113,7 +113,7 @@
       "hScrollKnob": "invisible",
       "background": "invisible",
       "hScroll": "invisible",
-      "vScrollKnob": "scroll-up" },
+      "vScrollKnob": "scroll-up" }
   },
 
   "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
