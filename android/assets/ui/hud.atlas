@@ -6,67 +6,53 @@ filter: Nearest, Nearest
 repeat: none
 E-Key
   rotate: false
-  xy: 762, 99
+  xy: 132, 17
   size: 31, 27
   orig: 31, 27
   offset: 0, 0
   index: -1
 Item_
   rotate: false
-  xy: 811, 110
+  xy: 821, 110
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 46
 Item_
   rotate: false
-  xy: 79, 28
+  xy: 181, 28
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 64
 Item_
   rotate: false
-  xy: 97, 28
+  xy: 649, 50
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 14
 Item_
   rotate: false
-  xy: 847, 110
+  xy: 839, 110
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 71
 Item_
   rotate: false
-  xy: 865, 110
+  xy: 667, 50
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 47
 Item_
   rotate: false
-  xy: 151, 28
+  xy: 875, 110
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 49
-Loadingbar_end
-  rotate: false
-  xy: 712, 71
-  size: 2, 5
-  orig: 2, 5
-  offset: 0, 0
-  index: -1
-Loadingbar_begin
-  rotate: false
-  xy: 712, 71
-  size: 2, 5
-  orig: 2, 5
-  offset: 0, 0
-  index: -1
 Space-Key
   rotate: false
   xy: 324, 32
@@ -88,37 +74,44 @@ action_portal
   orig: 64, 64
   offset: 0, 0
   index: -1
-afterbar
+afterBar
   rotate: false
-  xy: 71, 21
-  size: 1, 5
-  orig: 1, 5
+  xy: 621, 16
+  size: 3, 50
+  orig: 3, 50
   offset: 0, 0
   index: -1
 armor_01b
   rotate: false
-  xy: 133, 28
+  xy: 857, 110
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
-beforebar
+beforeBar
   rotate: false
-  xy: 904, 121
-  size: 1, 5
-  orig: 1, 5
+  xy: 626, 16
+  size: 3, 50
+  orig: 3, 50
+  offset: 0, 0
+  index: -1
+black-rect-select
+  rotate: false
+  xy: 2, 12
+  size: 128, 32
+  orig: 128, 32
   offset: 0, 0
   index: -1
 book_01b
   rotate: false
-  xy: 61, 28
+  xy: 631, 50
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 coin_01d
   rotate: false
-  xy: 115, 28
+  xy: 199, 28
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -132,49 +125,49 @@ dialog_box
   index: -1
 end
   rotate: false
-  xy: 780, 87
+  xy: 574, 4
   size: 8, 10
   orig: 8, 10
   offset: 0, 0
   index: -1
-fish_01a
+fish_01b
   rotate: false
-  xy: 829, 110
+  xy: 235, 28
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 hotbar_bg
   rotate: false
-  xy: 44, 19
+  xy: 804, 101
   size: 15, 25
   orig: 15, 25
   offset: 0, 0
   index: -1
 hotbar_box
   rotate: false
-  xy: 2, 4
+  xy: 762, 86
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 hotbar_curson
   rotate: false
-  xy: 44, 2
+  xy: 685, 51
   size: 11, 15
   orig: 11, 15
   offset: 0, 0
   index: -1
 hotbar_end
   rotate: false
-  xy: 795, 102
+  xy: 165, 20
   size: 14, 24
   orig: 14, 24
   offset: 0, 0
   index: -1
 inventory_armor
   rotate: false
-  xy: 454, 2
+  xy: 514, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
@@ -209,63 +202,63 @@ inventory_pants
   index: -1
 inventory_topright
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_left
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_mid
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_midleft
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_midmid
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_midright
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_right
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_topleft
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_topmid
   rotate: false
-  xy: 514, 2
+  xy: 454, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
@@ -277,37 +270,58 @@ inventory_weapon
   orig: 64, 65
   offset: 0, 0
   index: -1
-knobbar
+invisible
   rotate: false
-  xy: 811, 103
-  size: 2, 5
-  orig: 2, 5
+  xy: 649, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+knobBar
+  rotate: false
+  xy: 612, 16
+  size: 7, 50
+  orig: 7, 50
+  offset: 0, 0
+  index: -1
+loadingBarBegin
+  rotate: false
+  xy: 593, 16
+  size: 17, 50
+  orig: 17, 50
+  offset: 0, 0
+  index: -1
+loadingBarEnd
+  rotate: false
+  xy: 574, 16
+  size: 17, 50
+  orig: 17, 50
   offset: 0, 0
   index: -1
 potion_03a
   rotate: false
-  xy: 762, 81
+  xy: 165, 2
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 ps_begin
   rotate: false
-  xy: 57, 6
+  xy: 631, 19
   size: 1, 11
   orig: 1, 11
   offset: 0, 0
   index: -1
 ps_exp
   rotate: false
-  xy: 901, 115
+  xy: 804, 88
   size: 1, 11
   orig: 1, 11
   offset: 0, 0
   index: -1
 ps_health
   rotate: false
-  xy: 169, 33
+  xy: 893, 115
   size: 1, 11
   orig: 1, 11
   offset: 0, 0
@@ -321,28 +335,42 @@ ps_left
   index: -1
 ps_mana
   rotate: false
-  xy: 790, 87
+  xy: 253, 34
   size: 1, 10
   orig: 1, 10
   offset: 0, 0
   index: -1
 scroll_down
   rotate: false
-  xy: 702, 70
+  xy: 181, 20
   size: 8, 6
   orig: 8, 6
   offset: 0, 0
   index: -1
 scroll_up
   rotate: false
-  xy: 61, 20
+  xy: 702, 70
   size: 8, 6
   orig: 8, 6
   offset: 0, 0
   index: -1
+shield_03b
+  rotate: false
+  xy: 631, 32
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 sword_02b
   rotate: false
-  xy: 883, 110
+  xy: 217, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+wood_01a
+  rotate: false
+  xy: 667, 32
   size: 16, 16
   orig: 16, 16
   offset: 0, 0

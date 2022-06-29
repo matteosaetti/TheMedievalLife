@@ -88,21 +88,21 @@
     },
 
     "health": {
-      "background": "playerStatusBG",
-      "knob": "playerStatusHealth",
-      "knobBefore": "playerStatusHealth"
+      "background": "ps_begin",
+      "knob": "ps_health",
+      "knobBefore": "ps_health"
     },
 
     "mana": {
-      "background": "playerStatusBG",
-      "knob": "playerStatusMana",
-      "knobBefore": "playerStatusMana"
+      "background": "ps_begin",
+      "knob": "ps_mana",
+      "knobBefore": "ps_mana"
     },
 
     "exp": {
-      "background": "playerStatusBG",
-      "knob": "playerStatusExp",
-      "knobBefore": "playerStatusExp"
+      "background": "ps_begin",
+      "knob": "ps_exp",
+      "knobBefore": "ps_exp"
     }
 
   },
@@ -113,17 +113,10 @@
       "hScrollKnob": "invisible",
       "background": "invisible",
       "hScroll": "invisible",
-      "vScrollKnob": "scroll-up" }
+      "vScrollKnob": "scroll_up" },
   },
 
-  "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
-    "default": {
-      "background": "SliderBegin",
-      "knob": "SliderKnob",
-      "knobBefore": "BeforeSlider",
-      "knobAfter": "AfterSlider"
-    }
-  },
+
   "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
     "debug": {
       "font": "font2_16",

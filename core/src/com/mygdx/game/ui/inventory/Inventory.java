@@ -269,20 +269,7 @@ class SlotTarget extends DragAndDrop.Target{
         super(inventoryStack);
     }
 
-    /**
-     * if the target currently pointed is valid for drop()
-     *
-     * discard following cases:
-     * -The slot pointed is the source slot
-     * -The slot pointed accepts specific ItemType and does not match with the payload's Item
-     *
-     * @param source dragAndDrop source
-     * @param payload payload of current dragged slot (source)
-     * @param x x of pointer
-     * @param y y of pointer
-     * @param pointer pointer
-     * @return true if the target currently pointed is valid for drop()
-     */
+
     @Override
     public boolean drag(DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
         InventoryStack draggedSlot = (InventoryStack) payload.getObject();
@@ -291,13 +278,7 @@ class SlotTarget extends DragAndDrop.Target{
         return !draggedSlot.equals(targetSlot) && targetSlot.isItemAccepted(draggedSlot.getItem());
     }
 
-    /**
-     * Drop the Item of Payload/Source to the new ItemSlot(SlotTarget).
-     * The Item is droppable because already checked in drag()
-     *
-     * If target slot is empty or contains the same Item: move the Item from source(add to target and remove from source)
-     * else: swap the Items between source and target
-     */
+
     @Override
     public void drop(DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
         InventoryStack sourceSlot = (InventoryStack) source.getActor();

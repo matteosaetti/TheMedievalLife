@@ -3,13 +3,13 @@ package com.mygdx.game.ui;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Array;
 
-public class ActionUI extends Table {
+public class ActionPossibleUI extends Table {
     private Skin skin;
     private Array<ActionType> actions;
     private Array<Cell<actionUI>> cells;
     public Object interactingObject;
 
-    public ActionUI(Skin skin){
+    public ActionPossibleUI(Skin skin){
         this.skin = skin;
         this.setDebug(false);
         actions = new Array<>(ActionType.values());

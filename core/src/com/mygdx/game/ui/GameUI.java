@@ -20,7 +20,7 @@ public class GameUI extends Table implements InputListener {
     final private Hotbar hotbar;
     final private Inventory inventory;
     final private Dialogue dialogue;
-    final ActionUI actionPossible;
+    final ActionPossibleUI actionPossible;
 
     /**
      * Singleton constructor of the uniqueInstance of GameUI
@@ -36,7 +36,7 @@ public class GameUI extends Table implements InputListener {
      */
     public static GameUI getInstance() {
         if (uniqueInstance == null) {
-            Gdx.app.error(GameUI.class.getSimpleName(), "Tried to access to Singleton class GameUI, but not initialised yet (use getInstance(Gamestarter ..., ...)");
+            Gdx.app.error(GameUI.class.getSimpleName(), "Tried to access to Singleton class GameUI, but not initialised yet (use getInstance(MyGdxGame ..., ...)");
         }
         return uniqueInstance;
     }
@@ -74,7 +74,7 @@ public class GameUI extends Table implements InputListener {
         });
 
         dialogue=new Dialogue(skin, "PROVA DI DIALOGO PIU LUNGA PER VEDERE COME SI COMPORTANO LE RIGHE", "TIZIO");
-        actionPossible =new ActionUI(skin);
+        actionPossible =new ActionPossibleUI(skin);
 
 
         //widgets 3rd row
@@ -140,7 +140,7 @@ public class GameUI extends Table implements InputListener {
         return inventory;
     }
 
-    public ActionUI getActionPossible(){
+    public ActionPossibleUI getActionPossible(){
         return actionPossible;
     }
 

@@ -92,7 +92,7 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         super.show();
         inputManager.addInputListener(this);
         inputManager.addInputListener(gameUI);
-        audioManager.playAudio(AudioType.AMBIENT_PALATINO);
+        audioManager.playAudio(AudioType.MEDIEVAL_WORLD);
         JsonProfile.loadLocation("mainProfile", playerB2D, mapManager);
 
     }
@@ -118,14 +118,13 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         orthographicCamera.update();
 
         //footsteps sound if player is moving
-       // if(playerB2D.B2DBody.getLinearVelocity().isZero())
-           // audioManager.stopLoopingSound(AudioType.FOOTSTEPS_STONE);
-        //else
-            //audioManager.playAudio(AudioType.FOOTSTEPS_STONE);
+        if(playerB2D.B2DBody.getLinearVelocity().isZero())
+           audioManager.stopLoopingSound(AudioType.FOOTSTEPS_STONE);
+        else
+            audioManager.playAudio(AudioType.FOOTSTEPS_STONE);
 
         //update NPCs
         npc_handler.update();
-
         renderDraw(delta);
     }
 

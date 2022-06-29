@@ -70,19 +70,24 @@ public class MyGdxGame extends Game {
 
 		//box2d stuff
 		Box2D.init();
-		accumulator =  0;
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
-		spriteBatch = new SpriteBatch();
 		world = new World(new Vector2(0, -9.81f), true);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 
 		//invisible boxes
 		box2DDebugRenderer.setDrawBodies(false);
 
+		accumulator =  0;
 
 		//initialize assetManager
 		assetManager = new AssetManager();
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+
+		//setup game viewport
+		gameCamera = new OrthographicCamera(16,9);
+		gameCamera.position.set(gameCamera.viewportWidth/2,gameCamera.viewportWidth/2,0);
+		gameCamera.update();
+		screenViewport = new FitViewport(gameCamera.viewportWidth, gameCamera.viewportHeight, gameCamera);
+		spriteBatch=new SpriteBatch();
 
 		//2D
 		initializeSkin();
@@ -94,12 +99,6 @@ public class MyGdxGame extends Game {
 		//input
 		inputManager = new InputManager();
 		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
-
-		//setup game viewport
-		gameCamera = new OrthographicCamera(16,9);
-		gameCamera.position.set(gameCamera.viewportWidth/2,gameCamera.viewportWidth/2,0);
-		gameCamera.update();
-		screenViewport = new FitViewport(9,16, gameCamera);
 
 		//setup map manager
 		mapManager = new MapManager(assetManager,world);
@@ -133,12 +132,12 @@ public class MyGdxGame extends Game {
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;
-		final int[] sizeToCreate = {16,20,24,32};
+		final int[] sizeToCreate = {16,20,26,32};
 		for(int size : sizeToCreate){
 			fontParameter.size = size;
 			final BitmapFont bitmapFont = fontGenerator.generateFont(fontParameter);
 			bitmapFont.getData().markupEnabled = true;
-			resources.put("font2_" + size, bitmapFont);
+			resources.put("font_" + size, bitmapFont);
 		}
 		fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
 		fontParameter.size = 16;

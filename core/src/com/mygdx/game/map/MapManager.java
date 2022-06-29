@@ -9,11 +9,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.World.Entities.Player;
 import com.mygdx.game.World.WCreator;
 
-/**  import java.util.EnumMap;
- *   import com.mygdx.game.MyGdxGame;
- *   import static com.mygdx.game.MyGdxGame.BIT_GROUND;
- *   not used;
- */
+
 
 public class MapManager {
     /**
