@@ -1,0 +1,349 @@
+
+hud.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+E-Key
+  rotate: false
+  xy: 762, 99
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: -1
+Item_
+  rotate: false
+  xy: 811, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 46
+Item_
+  rotate: false
+  xy: 79, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 64
+Item_
+  rotate: false
+  xy: 97, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 14
+Item_
+  rotate: false
+  xy: 847, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 71
+Item_
+  rotate: false
+  xy: 865, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 47
+Item_
+  rotate: false
+  xy: 151, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 49
+Loadingbar_end
+  rotate: false
+  xy: 712, 71
+  size: 2, 5
+  orig: 2, 5
+  offset: 0, 0
+  index: -1
+Loadingbar_begin
+  rotate: false
+  xy: 712, 71
+  size: 2, 5
+  orig: 2, 5
+  offset: 0, 0
+  index: -1
+Space-Key
+  rotate: false
+  xy: 324, 32
+  size: 64, 27
+  orig: 64, 27
+  offset: 0, 0
+  index: -1
+action_chat
+  rotate: false
+  xy: 456, 62
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+action_portal
+  rotate: false
+  xy: 390, 62
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+afterbar
+  rotate: false
+  xy: 71, 21
+  size: 1, 5
+  orig: 1, 5
+  offset: 0, 0
+  index: -1
+armor_01b
+  rotate: false
+  xy: 133, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+beforebar
+  rotate: false
+  xy: 904, 121
+  size: 1, 5
+  orig: 1, 5
+  offset: 0, 0
+  index: -1
+book_01b
+  rotate: false
+  xy: 61, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+coin_01d
+  rotate: false
+  xy: 115, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+dialog_box
+  rotate: false
+  xy: 2, 46
+  size: 320, 80
+  orig: 320, 80
+  offset: 0, 0
+  index: -1
+end
+  rotate: false
+  xy: 780, 87
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
+fish_01a
+  rotate: false
+  xy: 829, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+hotbar_bg
+  rotate: false
+  xy: 44, 19
+  size: 15, 25
+  orig: 15, 25
+  offset: 0, 0
+  index: -1
+hotbar_box
+  rotate: false
+  xy: 2, 4
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hotbar_curson
+  rotate: false
+  xy: 44, 2
+  size: 11, 15
+  orig: 11, 15
+  offset: 0, 0
+  index: -1
+hotbar_end
+  rotate: false
+  xy: 795, 102
+  size: 14, 24
+  orig: 14, 24
+  offset: 0, 0
+  index: -1
+inventory_armor
+  rotate: false
+  xy: 454, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_boots
+  rotate: false
+  xy: 522, 68
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_helmet
+  rotate: false
+  xy: 642, 68
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_icon
+  rotate: false
+  xy: 702, 78
+  size: 58, 48
+  orig: 58, 48
+  offset: 0, 0
+  index: -1
+inventory_pants
+  rotate: false
+  xy: 582, 68
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_topright
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_left
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_mid
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_midleft
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_midmid
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_midright
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_right
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_topleft
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_topmid
+  rotate: false
+  xy: 514, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_weapon
+  rotate: false
+  xy: 324, 61
+  size: 64, 65
+  orig: 64, 65
+  offset: 0, 0
+  index: -1
+knobbar
+  rotate: false
+  xy: 811, 103
+  size: 2, 5
+  orig: 2, 5
+  offset: 0, 0
+  index: -1
+potion_03a
+  rotate: false
+  xy: 762, 81
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+ps_begin
+  rotate: false
+  xy: 57, 6
+  size: 1, 11
+  orig: 1, 11
+  offset: 0, 0
+  index: -1
+ps_exp
+  rotate: false
+  xy: 901, 115
+  size: 1, 11
+  orig: 1, 11
+  offset: 0, 0
+  index: -1
+ps_health
+  rotate: false
+  xy: 169, 33
+  size: 1, 11
+  orig: 1, 11
+  offset: 0, 0
+  index: -1
+ps_left
+  rotate: false
+  xy: 390, 2
+  size: 62, 58
+  orig: 62, 58
+  offset: 0, 0
+  index: -1
+ps_mana
+  rotate: false
+  xy: 790, 87
+  size: 1, 10
+  orig: 1, 10
+  offset: 0, 0
+  index: -1
+scroll_down
+  rotate: false
+  xy: 702, 70
+  size: 8, 6
+  orig: 8, 6
+  offset: 0, 0
+  index: -1
+scroll_up
+  rotate: false
+  xy: 61, 20
+  size: 8, 6
+  orig: 8, 6
+  offset: 0, 0
+  index: -1
+sword_02b
+  rotate: false
+  xy: 883, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
