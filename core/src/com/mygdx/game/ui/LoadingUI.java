@@ -31,13 +31,15 @@ public class LoadingUI extends Table {
         add(progressBar).expandX().fillX().bottom().pad(20,0,20, 0).prefWidth(1200);
         add(new Image(skin.getDrawable("loadingBarEnd"))).width(50).padRight(25);
         bottom();
-        //setDebug(true);
+        setDebug(true);
     }
 
     public void setProgressBar(final float progress){
+
         progressBar.setValue(progress);
     }
     public void setLoadingStatus(final int remaining){
+
         currentLoadingAsset.setText("assets remaining: " + remaining);
     }
 }

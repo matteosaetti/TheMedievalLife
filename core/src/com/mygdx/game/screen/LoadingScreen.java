@@ -25,23 +25,24 @@ public class LoadingScreen extends AbstractScreen  {
     private final Color color;
 
     public LoadingScreen(final MyGdxGame context){
-
         super(context);
         this.color = context.getSkin().getColor("neroOpaco");
 
-
+        //asset manager
         assetManager= context.getAssetManager();
         //load maps
         for(MapType map : MapType.values()){
             context.getAssetManager().load(map.getFilePath(), TiledMap.class);
         }
-
-
-
         //load audio
 
         for(final AudioType audioType : AudioType.values()){
-            assetManager.load(audioType.getFilePath(), audioType.isMusic() ? Music.class : Sound.class);
+            if(audioType.isMusic()) {
+                assetManager.load(audioType.getFilePath(), audioType.isMusic() ? Music.class : Sound.class);
+            }
+            else{
+                assetManager.load(audioType.getFilePath(), Sound.class);
+            }
         }
         //load Animation
         AnimationLoader.loadAllAnimations(assetManager);
@@ -52,8 +53,14 @@ public class LoadingScreen extends AbstractScreen  {
 
     @Override
     protected Table getScreenUI(Skin skin){
-
         return new LoadingUI(skin);
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        ScreenUtils.clear(color);
+
     }
 
     @Override
@@ -83,12 +90,7 @@ public class LoadingScreen extends AbstractScreen  {
 
     }
 
-    @Override
-    public void show() {
-        super.show();
-        //ScreenUtils.clear(color);
 
-    }
 
     @Override
     public void hide() {
