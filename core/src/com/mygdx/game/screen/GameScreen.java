@@ -52,6 +52,11 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         super(context);
         gameUI = (GameUI) screenUI;
 
+        //initialized camera
+        orthographicCamera = new OrthographicCamera(16,9);
+        orthographicCamera.position.set(savePCoordinates,0);
+        batch.setProjectionMatrix(orthographicCamera.combined);
+
 
         //create player
         playerB2D = new Player(world, savePCoordinates,gameUI, context.getAssetManager());
@@ -60,12 +65,6 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
 
         // creating NPC_handler
         npc_handler = new NPC_handler(playerB2D);
-
-        //initialized camera
-        orthographicCamera = new OrthographicCamera(16,9);
-        orthographicCamera.position.set(savePCoordinates,0);
-        batch.setProjectionMatrix(orthographicCamera.combined);
-
 
         //map init
         mapManager = context.getMapManager();

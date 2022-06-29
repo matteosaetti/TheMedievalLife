@@ -34,13 +34,6 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
 
     private final OrthographicCamera camera;
 
-    /**
-     * Constructor of Screen->Abstract Screen->LoadingScreen
-     * <p>
-     * Create instances of Objects used in create() and render()
-     *
-     * @param context    Instance of GameStarter
-     */
     public MainMenuScreen(final MyGdxGame context) {
         super(context);
         //Others
@@ -51,9 +44,9 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         BG = new MovingTexture(Gdx.files.internal("loading/loading_photo.jpg"), -1f, -1f, -0.5f, -0.5f);
         BG.setWidth(32);
         BG.setHeight(18);
-        //texture_playbutton_active = new Texture(Gdx.files.internal("buttons/playbutton_red.png"));
+        texture_playbutton_active = new Texture(Gdx.files.internal("buttons/playbutton_red.png"));
         texture_playbutton_inactive = new Texture(Gdx.files.internal("buttons/playbutton_lightgrey.png"));
-        //texture_settingsbutton_active = new Texture(Gdx.files.internal("buttons/settingsbutton_red.png"));
+        texture_settingsbutton_active = new Texture(Gdx.files.internal("buttons/settingsbutton_red.png"));
         texture_settingsbutton_inactive = new Texture(Gdx.files.internal("buttons/settingsbutton_lightgrey.png"));
     }
 
@@ -162,7 +155,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 audioManager.playAudio(AudioType.CLICK3_SUCCESS);
                 context.setScreen(ScreenType.GAME);
             case BACK:
-                    //Gdx.app.exit();
+                    Gdx.app.exit();
                 break;
             default:
                 break;
