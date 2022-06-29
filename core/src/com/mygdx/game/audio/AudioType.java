@@ -13,10 +13,10 @@ enum TypeOfSound {
  * identified from the AudioManager thanks to filePath and in general by the name of the objects of the enum
  */
 public enum AudioType {
-    THEME1("audio/Castlecall.mp3",TypeOfSound.MUSIC, 0.5f),
+    THEME1("audio/spirit_of_valley.wav",TypeOfSound.MUSIC, 0.5f),
     MEDIEVAL_WORLD("audio/medieval_loop.wav", TypeOfSound.MUSIC, 0.5f),
     FOOTSTEPS_STONE("audio/stepstone_1.wav",TypeOfSound.LOOPINGSOUND,1f),
-    FOOTSTEPS_CLEAN("audio/stepstone_5.wav",TypeOfSound.LOOPINGSOUND,0.5f);
+    FOOTSTEPS_CLEAN("audio/stepdirt_5.wav",TypeOfSound.LOOPINGSOUND,0.5f);
 
     private final String filePath;
     private final TypeOfSound typeOfSound;
