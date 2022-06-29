@@ -15,8 +15,11 @@ enum TypeOfSound {
 public enum AudioType {
     THEME1("audio/spirit_of_valley.wav",TypeOfSound.MUSIC, 0.5f),
     MEDIEVAL_WORLD("audio/medieval_loop.wav", TypeOfSound.MUSIC, 0.5f),
-    FOOTSTEPS_STONE("audio/stepstone_1.wav",TypeOfSound.LOOPINGSOUND,1f),
-    FOOTSTEPS_CLEAN("audio/stepdirt_5.wav",TypeOfSound.LOOPINGSOUND,0.5f);
+    CLICK1_LIGHT("audio/click_light.wav", TypeOfSound.SOUND, 0.5f),
+    CLICK2_HEAVY("audio/click_heavy.wav", TypeOfSound.SOUND, 0.5f),
+    CLICK3_SUCCESS("audio/click_success.wav", TypeOfSound.SOUND, 0.5f),
+    FOOTSTEPS_STONE("audio/footsteps/footsteps-stone.wav",TypeOfSound.LOOPINGSOUND,1f),
+    FOOTSTEPS_CLEAN("audio/footsteps/footsteps-dirt.wav",TypeOfSound.LOOPINGSOUND,0.5f);
 
     private final String filePath;
     private final TypeOfSound typeOfSound;

@@ -82,7 +82,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         coordsPointed.set(Gdx.input.getX(), Gdx.input.getY(), 0);
         camera.unproject(coordsPointed);
 
-        //batch.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
         //draw moving background
@@ -96,8 +96,8 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
             batch.draw(texture_playbutton_active, 8-PLAY_BUTT_WIDTH/2, 1, PLAY_BUTT_WIDTH, PLAY_BUTT_HEIGHT);
             if(Gdx.input.justTouched()){
                 BG.stop();
-                //audioManager.playAudio(AudioType.CLICK2_HEAVY);
-                //audioManager.playAudio(AudioType.CLICK3_SUCCESS);
+                audioManager.playAudio(AudioType.CLICK2_HEAVY);
+                audioManager.playAudio(AudioType.CLICK3_SUCCESS);
 
                 context.setScreen(ScreenType.GAME);
             }
@@ -109,8 +109,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 coordsPointed.y < 2.5f + SETT_BUTT_HEIGHT && coordsPointed.y > 2.5f) {
             batch.draw(texture_settingsbutton_active, 8 - SETT_BUTT_WIDTH / 2, 2.5f, SETT_BUTT_WIDTH, SETT_BUTT_HEIGHT);
             if (Gdx.input.justTouched()) {
-               // audioManager.playAudio(AudioType.CLICK2_HEAVY);
-
+                audioManager.playAudio(AudioType.CLICK2_HEAVY);
                 context.setScreen(ScreenType.SETTINGS);
             }
         }
@@ -160,7 +159,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         switch (key){
             case NEXT: //set screen 'LOADING'
                 BG.stop();
-               // audioManager.playAudio(AudioType.CLICK3_SUCCESS);
+                audioManager.playAudio(AudioType.CLICK3_SUCCESS);
                 context.setScreen(ScreenType.GAME);
             case BACK:
                     //Gdx.app.exit();
