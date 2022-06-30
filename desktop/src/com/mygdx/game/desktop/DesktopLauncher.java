@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		config.setTitle("The Medieval Life");
 		config.setWindowedMode(1280, 720);
 		config.setForegroundFPS(60);
-		new Lwjgl3Application(new MyGdxGame(), config);
+		new Lwjgl3Application(new MyGdxGame(),config);
 	}
 }

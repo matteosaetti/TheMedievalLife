@@ -34,7 +34,7 @@ public class Inventory extends Table {
 
         // Title Setup
         title = new Stack();
-        //title.add(new Image(skin.getDrawable("inventoryTop")));
+        title.add(new Image(skin.getDrawable("inventoryTop")));
         Label titleLabel = new Label("INVENTARIO", skin, "small-white");
         titleLabel.setAlignment(1);
         titleLabel.setColor(1,1,1,1);

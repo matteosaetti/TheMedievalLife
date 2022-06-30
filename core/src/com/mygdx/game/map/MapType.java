@@ -3,8 +3,8 @@ package com.mygdx.game.map;
 import com.badlogic.gdx.math.Vector2;
 
 public enum MapType {
-    WORLD("map/Map.tmx", 9.5f,14, "Bosco"),
-    CASTLE("map/Map.tmx",9.5f,14,"Interno");
+    WORLD("map/Map.tmx", 9.5f,14, "Bosco");
+    //CASTLE("map/map2.tmx",9.5f,14,"Interno");
 
     private final String filePath;
     private final float y;

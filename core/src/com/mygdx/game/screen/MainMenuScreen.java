@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.MyGdxGame;
+import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.game.audio.AudioType;
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
