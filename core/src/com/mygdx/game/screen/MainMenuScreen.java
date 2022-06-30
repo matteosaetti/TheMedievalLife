@@ -76,7 +76,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         coordsPointed.set(Gdx.input.getX(), Gdx.input.getY(), 0);
         camera.unproject(coordsPointed);
 
-        batch.setProjectionMatrix(camera.combined);
+        //batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
         //draw moving background
@@ -143,11 +143,6 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         texture_settingsbutton_inactive.dispose();
     }
 
-    /**
-     * Implements method of interface InputListener
-     *
-     * @see InputListener
-     */
     @Override
     public void keyPressed(InputManager manager, GameKeys key) {
         switch (key){
@@ -156,7 +151,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 audioManager.playAudio(AudioType.CLICK3_SUCCESS);
                 context.setScreen(ScreenType.GAME);
             case BACK:
-                    //Gdx.app.exit();
+
                 break;
             default:
                 break;
