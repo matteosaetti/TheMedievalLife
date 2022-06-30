@@ -26,7 +26,7 @@ import com.mygdx.game.utils.JsonProfile;
 import static com.mygdx.game.MyGdxGame.UNIT_SCALE;
 
 
-public class GameScreen  extends AbstractScreen implements MapManager.MapListener, InputListener, PortalListener {
+public class GameScreen  extends AbstractScreen implements InputListener,MapManager.MapListener, PortalListener {
 
     //player
     private final Player playerB2D;
