@@ -62,7 +62,7 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
+
     }
 
     @Override

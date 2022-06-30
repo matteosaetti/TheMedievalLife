@@ -80,7 +80,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
 
         //draw moving background
         BG.updatePosition(16, 9, 1);
-        batch.draw(BG, BG.getX(), BG.getY(), 16*2, 9*2);
+        batch.draw(BG, BG.getX(), BG.getY(), 20*2, 12*2);
 
         //draw texture play button
         batch.draw(texture_playbutton_inactive, 8-PLAY_BUTT_WIDTH/2, 1, PLAY_BUTT_WIDTH, PLAY_BUTT_HEIGHT);
@@ -155,7 +155,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 audioManager.playAudio(AudioType.CLICK3_SUCCESS);
                 context.setScreen(ScreenType.GAME);
             case BACK:
-                    Gdx.app.exit();
+                    //Gdx.app.exit();
                 break;
             default:
                 break;

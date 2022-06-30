@@ -4,6 +4,20 @@ size: 1024, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+AfterSlider
+  rotate: false
+  xy: 450, 26
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
+BeforeSlider
+  rotate: false
+  xy: 1007, 21
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
 E-Key
   rotate: false
   xy: 132, 17
@@ -53,6 +67,27 @@ Item_
   orig: 16, 16
   offset: 0, 0
   index: 49
+SliderEnding
+  rotate: false
+  xy: 1010, 90
+  size: 10, 36
+  orig: 10, 36
+  offset: 0, 0
+  index: -1
+SliderBegin
+  rotate: false
+  xy: 1010, 90
+  size: 10, 36
+  orig: 10, 36
+  offset: 0, 0
+  index: -1
+SliderKnob
+  rotate: false
+  xy: 455, 26
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
 Space-Key
   rotate: false
   xy: 650, 32
@@ -76,7 +111,7 @@ action_portal
   index: -1
 afterBar
   rotate: false
-  xy: 1007, 7
+  xy: 1012, 7
   size: 3, 50
   orig: 3, 50
   offset: 0, 0
@@ -90,7 +125,7 @@ armor_01b
   index: -1
 beforeBar
   rotate: false
-  xy: 1012, 7
+  xy: 1017, 7
   size: 3, 50
   orig: 3, 50
   offset: 0, 0
@@ -153,7 +188,7 @@ hotbar_box
   index: -1
 hotbar_curson
   rotate: false
-  xy: 1010, 111
+  xy: 289, 29
   size: 11, 15
   orig: 11, 15
   offset: 0, 0
@@ -328,21 +363,21 @@ potion_03a
   index: -1
 ps_begin
   rotate: false
-  xy: 289, 33
+  xy: 460, 51
   size: 1, 11
   orig: 1, 11
   offset: 0, 0
   index: -1
 ps_exp
   rotate: false
-  xy: 968, 73
+  xy: 302, 33
   size: 1, 11
   orig: 1, 11
   offset: 0, 0
   index: -1
 ps_health
   rotate: false
-  xy: 450, 51
+  xy: 183, 7
   size: 1, 11
   orig: 1, 11
   offset: 0, 0
@@ -356,21 +391,21 @@ ps_left
   index: -1
 ps_mana
   rotate: false
-  xy: 1017, 47
+  xy: 305, 34
   size: 1, 10
   orig: 1, 10
   offset: 0, 0
   index: -1
 scroll_down
   rotate: false
-  xy: 997, 14
+  xy: 181, 20
   size: 8, 6
   orig: 8, 6
   offset: 0, 0
   index: -1
 scroll_up
   rotate: false
-  xy: 181, 20
+  xy: 968, 78
   size: 8, 6
   orig: 8, 6
   offset: 0, 0

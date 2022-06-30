@@ -12,13 +12,10 @@ import com.mygdx.game.World.WCreator;
 
 
 public class MapManager {
-    /**
-      * public static final String TAG = MapManager.class.getSimpleName();
-     */
 
     private final World world;
     private final AssetManager assetManager;
-    private final MapType currentMapType;
+    private MapType currentMapType;
     private TiledMap currentMap;
     private WCreator currentWCreator;
     private final Array<MapListener> listeners;
@@ -43,10 +40,9 @@ public class MapManager {
         return currentMap;
     }
 
-    public void setMap(final MapType type){
-        if(currentMapType == type){
-            //map is already set
-            return;
+    public void setMap(MapType type){
+        if(currentMapType == null || !type.getFilePath().equals(currentMapType.getFilePath())){
+            currentMapType = type;
         }
         //set currentMap
         if(assetManager.isLoaded(type.getFilePath()))

@@ -16,7 +16,7 @@ public class InputManager implements InputProcessor {
             }
         }
         keyState = new boolean[GameKeys.values().length];
-        listeners = new Array<InputListener>();
+        listeners = new Array<>();
     }
 
     public void addInputListener(final InputListener listener){
@@ -41,10 +41,10 @@ public class InputManager implements InputProcessor {
         return false;
     }
 
-    public void notifyKeyDown(GameKeys gameKey) {
+    public void notifyKeyDown(final GameKeys gameKey) {
         keyState[gameKey.ordinal()] = true;
-        for(final InputListener lister : listeners){
-            lister.keyPressed(this, gameKey);
+        for(final InputListener listener : listeners){
+            listener.keyPressed(this, gameKey);
         }
     }
 
@@ -60,10 +60,10 @@ public class InputManager implements InputProcessor {
         return false;
     }
 
-    public void notifyKeyUp(GameKeys gameKey) {
+    public void notifyKeyUp(final GameKeys gameKey) {
         keyState[gameKey.ordinal()] = false;
-        for(final InputListener lister : listeners){
-            lister.keyUp(this, gameKey);
+        for(final InputListener listener : listeners){
+            listener.keyUp(this, gameKey);
         }
     }
 

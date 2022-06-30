@@ -70,9 +70,9 @@ public class GameScreen  extends AbstractScreen implements MapManager.MapListene
         mapManager = context.getMapManager();
         mapRenderer= new OrthogonalTiledMapRenderer(null,UNIT_SCALE,batch);
         mapManager.addMapListener(this);
-
         mapManager.setMap(MapType.WORLD);
         JsonProfile.loadLocation("mainProfile", playerB2D, mapManager);
+
         WorldContactListener worldContactListener= new WorldContactListener(context);
         worldContactListener.addPortalListener(this);
         world.setContactListener(worldContactListener);

@@ -43,7 +43,7 @@ public class MyGdxGame extends Game {
 	public static final short BIT_GROUND = 1 << 2;
 	private Box2DDebugRenderer box2DDebugRenderer;
 	private World world;
-	private  float accumulator;
+	private float accumulator;
 
 	//asset manager
 	private AssetManager assetManager;
@@ -117,8 +117,7 @@ public class MyGdxGame extends Game {
 				screenCache.put(screenType, newScreen);
 				setScreen(newScreen);
 			} catch (ReflectionException error){
-				throw new GdxRuntimeException("Screen " + screenType + "inesistente per", error);
-
+				throw new GdxRuntimeException("Screen " + screenType + " inesistente per", error);
 			}
 		}
 		else

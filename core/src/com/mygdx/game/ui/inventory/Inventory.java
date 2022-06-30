@@ -15,7 +15,8 @@ public class Inventory extends Table {
     private final int HELMET_SLOT_INDEX = ROWS*COLUMNS;
     private final int CHEST_SLOT_INDEX = ROWS*COLUMNS+1;
     private final int BOOTS_SLOT_INDEX = ROWS*COLUMNS+2;
-    private final int WEAPON_SLOT_INDEX = ROWS*COLUMNS+3;
+    private final int PANTS_SLOT_INDEX = ROWS*COLUMNS+3;
+    private final int WEAPON_SLOT_INDEX = ROWS*COLUMNS+4;
     private final Array<InventoryStack> inventory;
     private int gold=0;
 
@@ -33,7 +34,7 @@ public class Inventory extends Table {
 
         // Title Setup
         title = new Stack();
-        title.add(new Image(skin.getDrawable("inventoryTop")));
+        //title.add(new Image(skin.getDrawable("inventoryTop")));
         Label titleLabel = new Label("INVENTARIO", skin, "small-white");
         titleLabel.setAlignment(1);
         titleLabel.setColor(1,1,1,1);
@@ -44,23 +45,23 @@ public class Inventory extends Table {
         inventorySlotsTable = new Table(skin);
         for(int r=0; r<ROWS; r++){
             for(int c=0; c<COLUMNS; c++){
-                String name = "invSlot";
+                String name = "inventory";
                 if(r == 0)
-                    name+="-top";
+                    name+="_top";
                 else if(r == ROWS-1)
-                    name+="-bottom";
+                    name+="_";
                 else
-                    name+="-mid";
+                    name+="mid";
 
                 if(c == 0)
-                    name+="-left";
+                    name+="left";
                 else if(c == COLUMNS-1)
-                    name+="-right";
+                    name+="right";
                 else
-                    name+="-mid";
+                    name+="_mid";
 
 
-                //add(new Image(skin.getDrawable(typeOfSlot)));
+
                 InventoryStack inventoryStack = new InventoryStack(name, skin);
 
                 inventoryStack.add(inventoryStack);
@@ -74,10 +75,10 @@ public class Inventory extends Table {
 
         // Accessories slots setup
         inventoryBottomSlotsTable = new Table(skin);
-        String[] namesBottomSlots = {"invSlot-helmet", "invSlot-chest", "invSlot-boots", "invSlot-weapon"};
+        String[] namesBottomSlots = {"inventory_helmet", "inventory_armor", "inventory_pants","inventory_boots", "inventory_weapon"};
 
         for(String bottomSlotName : namesBottomSlots){
-            InventoryStack inventoryStack = new InventoryStack(bottomSlotName, skin, bottomSlotName.split("-")[1]);
+            InventoryStack inventoryStack = new InventoryStack(bottomSlotName, skin, bottomSlotName.split("_")[1]);
             inventoryBottomSlotsTable.add(inventoryStack);
             inventory.add(inventoryStack);
             dragAndDrop.addSource(new SlotSource(inventoryStack));
@@ -91,7 +92,7 @@ public class Inventory extends Table {
         row();
         add(inventoryBottomSlotsTable);
 
-        addItemToInventoryAtIndex(new Item("helmet_01", 200, 1, "helmet"), HELMET_SLOT_INDEX);
+        addItemToInventoryAtIndex(new Item("item_46", 200, 1, "helmet"), HELMET_SLOT_INDEX);
     }
 
 

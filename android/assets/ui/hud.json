@@ -115,7 +115,14 @@
       "hScroll": "invisible",
       "vScrollKnob": "scroll_up" },
   },
-
+  "com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle": {
+    "default": {
+      "background": "SliderBegin",
+      "knob": "SliderKnob",
+      "knobBefore": "BeforeSlider",
+      "knobAfter": "AfterSlider"
+    }
+  },
 
   "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
     "debug": {
