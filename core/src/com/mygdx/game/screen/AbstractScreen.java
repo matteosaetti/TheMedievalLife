@@ -40,48 +40,21 @@ public abstract class AbstractScreen implements Screen {
     }
 
     protected abstract WidgetGroup getScreenUI(final Skin skin);
-
-    @Override
-    public void show() {
-
-        stage.addActor(screenUI);
-    }
-
-    @Override
-    public void render(float delta) {
-
-    }
-
     @Override
     public void resize(int width, int height) {
         viewport.update(width,height);
         stage.getViewport().update(width,height, true);
 
     }
-
     @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
+    public void show() {
+        stage.addActor(screenUI);
     }
 
     @Override
     public void hide() {
+
         stage.getRoot().removeActor(screenUI);
     }
 
-    @Override
-    public void dispose() {
-
-    }
-
-    public abstract void keyPressed(InputManager manager, GameKeys key);
-
-    public abstract void keyUp(InputManager manager, GameKeys key);
-
-    public abstract void scroll(InputManager manager, float amount);
-}
+   }

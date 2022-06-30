@@ -1,0 +1,40 @@
+{
+  "coordX": 156.25359,
+  "coordY": 155.68997,
+  "map": "OUTSIDE",
+  "stats": {
+    "health": 100,
+    "maxHealth": 100,
+    "mana": 50,
+    "maxMana": 100,
+    "exp": 0,
+    "maxExp": 100,
+    "level": 1
+  },
+  "inv": {
+    "gold": 0,
+    "items": [
+      {
+        "class": "com.tuquoque.game.ui.Item",
+        "name": "bread",
+        "ID": 100,
+        "quantity": 9
+      },
+      {
+        "class": "com.tuquoque.game.ui.Item",
+        "name": "tomato",
+        "ID": 101,
+        "quantity": 3,
+        "indexInInv": 1
+      },
+      {
+        "class": "com.tuquoque.game.ui.Item",
+        "name": "helmet_01",
+        "ID": 200,
+        "quantity": 1,
+        "type": "helmet",
+        "indexInInv": 15
+      }
+    ]
+  }
+}

@@ -8,10 +8,10 @@ public class InputManager implements InputProcessor {
    private final boolean[] keyState;
    private final Array<InputListener> listeners;
 
-    public InputManager() {
+    public InputManager(){
         this.keyMapping = new GameKeys[256];
         for(final GameKeys gameKey : GameKeys.values()){
-            for(final int code : gameKey.keyCode){
+            for (final int code : gameKey.keyCode){
                 keyMapping[code] = gameKey;
             }
         }
@@ -21,27 +21,26 @@ public class InputManager implements InputProcessor {
 
     public void addInputListener(final InputListener listener){
         listeners.add(listener);
-
     }
 
     public void removeInputListener(final InputListener listener){
-        //item
         listeners.removeValue(listener, true);
     }
 
     @Override
     public boolean keyDown(int keycode) {
         final GameKeys gameKey = keyMapping[keycode];
+
         if(gameKey == null){
-            //no mapping --> nothing to do
             return false;
         }
 
         notifyKeyDown(gameKey);
+
         return false;
     }
 
-    public void notifyKeyDown(final GameKeys gameKey) {
+    public void notifyKeyDown(final GameKeys gameKey){
         keyState[gameKey.ordinal()] = true;
         for(final InputListener listener : listeners){
             listener.keyPressed(this, gameKey);
@@ -51,65 +50,61 @@ public class InputManager implements InputProcessor {
     @Override
     public boolean keyUp(int keycode) {
         final GameKeys gameKey = keyMapping[keycode];
+
         if(gameKey == null){
-            //no mapping --> nothing to do
             return false;
         }
 
         notifyKeyUp(gameKey);
+
         return false;
     }
 
-    public void notifyKeyUp(final GameKeys gameKey) {
+    public void notifyKeyUp(final GameKeys gameKey){
         keyState[gameKey.ordinal()] = false;
         for(final InputListener listener : listeners){
             listener.keyUp(this, gameKey);
         }
     }
 
-    public boolean isKeyPressed(final GameKeys gameKey){
-
-        return keyState[gameKey.ordinal()];
-    }
-
     @Override
     public boolean keyTyped(char character) {
-
         return false;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-
         return false;
     }
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-
         return false;
     }
 
     @Override
     public boolean scrolled(float amountX, float amountY) {
-        if (amountY==0)
+        if(amountY == 0)
             return false;
 
-        for (final InputListener listener : listeners){
+        for(final InputListener listener : listeners){
             listener.scroll(this, amountY);
         }
+
         return true;
+    }
+
+    public boolean isKeyPressed(final GameKeys gameKey){
+        return keyState[gameKey.ordinal()];
     }
 }

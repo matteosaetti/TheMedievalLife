@@ -19,7 +19,12 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
         audioManager = context.getAudioManager();
     }
-
+    @Override
+    public void show() {
+        super.show();
+        ScreenUtils.clear(0,0,0,1);
+        inputManager.addInputListener(this);
+    }
     @Override
     public void render(float delta) {
 
@@ -53,12 +58,7 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
         inputManager.removeInputListener(this);
     }
 
-    @Override
-    public void show() {
-        super.show();
-        ScreenUtils.clear(0,0,0,1);
-        inputManager.addInputListener(this);
-    }
+
 
     @Override
     public void resize(int width, int height) {

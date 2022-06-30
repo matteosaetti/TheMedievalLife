@@ -14,8 +14,8 @@ public class Queen extends NPC{
         super(world, 0.5f, 0.55f, coords);
 
         setNPCname("Queen");
-        setConversationConfigPath("NPC/beer_man/dialogue_default.json");
-        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/beer_man/idle.atlas"));
+        //setConversationConfigPath("NPC/beer_man/dialogue_default.json");
+        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/Queen/idle.atlas"));
     }
 
     @Override

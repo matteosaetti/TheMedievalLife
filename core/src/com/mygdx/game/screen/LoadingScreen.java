@@ -37,10 +37,9 @@ public class LoadingScreen extends AbstractScreen  {
         //load audio
 
         for(final AudioType audioType : AudioType.values()){
-            if(audioType.isMusic()) {
-                assetManager.load(audioType.getFilePath(), audioType.isMusic() ? Music.class : Sound.class);
-            }
-            else{
+            if (audioType.isMusic()){
+                assetManager.load(audioType.getFilePath(), Music.class);
+            } else {
                 assetManager.load(audioType.getFilePath(), Sound.class);
             }
         }
@@ -103,18 +102,5 @@ public class LoadingScreen extends AbstractScreen  {
 
     }
 
-    @Override
-    public void keyPressed(InputManager manager, GameKeys key) {
 
-    }
-
-    @Override
-    public void keyUp(InputManager manager, GameKeys key) {
-
-    }
-
-    @Override
-    public void scroll(InputManager manager, float amount) {
-
-    }
 }

@@ -31,7 +31,8 @@ import java.util.EnumMap;
 
 public class MyGdxGame extends Game {
 	public static final float UNIT_SCALE = 1/32f;
-	private OrthographicCamera gameCamera;
+	private static final float FIXED_TIME_STAMP = 1/60f ;
+	private OrthographicCamera camera;
 	private SpriteBatch spriteBatch;
 	private EnumMap<ScreenType, Screen> screenCache = new EnumMap<ScreenType, Screen>(ScreenType.class);
 	private FitViewport screenViewport;
@@ -66,64 +67,61 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void create () {
-
-
 		//box2d stuff
 		Box2D.init();
 		world = new World(new Vector2(0, -9.81f), true);
 		box2DDebugRenderer = new Box2DDebugRenderer();
-
-		//invisible boxes
+		// Invisible hitboxes
 		box2DDebugRenderer.setDrawBodies(false);
+		accumulator = 0;
 
-		accumulator =  0;
+		//Camera, viewport, batch
+		camera = new OrthographicCamera(16, 9);
+		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+		camera.update();
+		screenViewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
+		spriteBatch = new SpriteBatch();
 
-		//initialize assetManager
+		//AssetManager
 		assetManager = new AssetManager();
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
 
-		//setup game viewport
-		gameCamera = new OrthographicCamera(16,9);
-		gameCamera.position.set(gameCamera.viewportWidth/2,gameCamera.viewportWidth/2,0);
-		gameCamera.update();
-		screenViewport = new FitViewport(gameCamera.viewportWidth, gameCamera.viewportHeight, gameCamera);
-		spriteBatch=new SpriteBatch();
+		//MapManager
+		mapManager = new MapManager(assetManager, world);
 
-		//2D
+		//Scene2D
 		initializeSkin();
-		stage = new Stage(new FitViewport(1280,720));
+		stage = new Stage(new FitViewport(1280, 720));
 
-		//audio
-		audioManager = new AudioManager(this);
+		//AudioManager
+		audioManager = new AudioManager(assetManager);
 
 		//input
 		inputManager = new InputManager();
 		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
 
-		//setup map manager
-		mapManager = new MapManager(assetManager,world);
-
 		Gdx.app.setLogLevel(Application.LOG_ERROR);
 		setScreen(ScreenType.LOADING);
 	}
-
 	public void setScreen(final ScreenType screenType){
-		final Screen screen = screenCache.get(screenType);
+			//screen conterrà lo Screen di tipo screenType dagli screenAvailable, oppure null se non ancora creato
+			final Screen screen = screenCache.get(screenType);
 
-		if(screen == null){
-			//si crea lo screen
-			try{
-				final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
-				screenCache.put(screenType, newScreen);
-				setScreen(newScreen);
-			} catch (ReflectionException error){
-				throw new GdxRuntimeException("Screen " + screenType + " inesistente per", error);
-			}
+			if (screen == null) {
+				//si crea lo Screen di tipo screenType
+				try {
+					final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
+					screenCache.put(screenType, newScreen);
+					setScreen(newScreen);
+				} catch (ReflectionException error) {
+					throw new GdxRuntimeException("lo screen" + screenType + " è inesistente a causa: " + error);
+
+				}
+			} else
+				//si usa lo Screen già presente
+				setScreen(screen);
 		}
-		else
-			setScreen(screen);
 
-	}
 	private void initializeSkin() {
 
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
@@ -182,7 +180,7 @@ public class MyGdxGame extends Game {
 	}
 
 	public OrthographicCamera getGameCamera() {
-		return gameCamera;
+		return camera;
 	}
 
 	public  FitViewport getScreenViewport(){
@@ -203,18 +201,17 @@ public class MyGdxGame extends Game {
 	public void render() {
 		super.render();
 
-
-		final float deltaTime = Math.min(0.25f, Gdx.graphics.getDeltaTime());
-
-		accumulator += deltaTime;
-		while(accumulator >= FIXED_TIME_STEP){
-				world.step(FIXED_TIME_STEP,6,2);
-				accumulator -= FIXED_TIME_STEP;
+		//Timestamp fixed for B2D simulation
+		accumulator += Math.min(0.25f, Gdx.graphics.getDeltaTime());
+		while(accumulator>=FIXED_TIME_STAMP){
+			world.step(FIXED_TIME_STAMP, 6, 2);
+			accumulator -= FIXED_TIME_STAMP;
 		}
 
+		//final float alpha = accumulator/FIXED_TIME_STAMP;
 		stage.getViewport().apply();
 		stage.act();
-		stage.draw();
+		stage.draw();;
 	}
 
 	@Override

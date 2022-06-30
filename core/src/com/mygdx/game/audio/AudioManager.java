@@ -19,8 +19,8 @@ public class AudioManager {
     private final ArrayList<AudioType> loopSoundsPlaying_at;
     private final ArrayList<LoopingSound> loopSoundsPlaying_ls;
 
-    public AudioManager(final MyGdxGame context) {
-        this.assetManager = context.getAssetManager();
+    public AudioManager(final AssetManager assetManager) {
+        this.assetManager = assetManager;
         currentMusic = null;
         currentMusicType = null;
 
@@ -29,8 +29,8 @@ public class AudioManager {
 
     }
 
-    public Sound getCurrentMusic() {
-        return (Sound) currentMusic;
+    public Music getCurrentMusic() {
+        return currentMusic;
     }
 
     public void setVolumeSound(float volumeSoundModifier) {

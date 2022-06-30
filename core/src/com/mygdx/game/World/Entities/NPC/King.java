@@ -15,7 +15,7 @@ public class King extends NPC{
 
         setNPCname("King");
       //  setConversationConfigPath("NPC/beer_man/dialogue_default.json");
-       // setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/beer_man/idle.atlas"));
+        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/beer_man/idle.atlas"));
     }
 
     @Override
