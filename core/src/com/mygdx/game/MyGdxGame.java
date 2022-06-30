@@ -211,7 +211,7 @@ public class MyGdxGame extends Game {
 		//final float alpha = accumulator/FIXED_TIME_STAMP;
 		stage.getViewport().apply();
 		stage.act();
-		stage.draw();;
+		stage.draw();
 	}
 
 	@Override
