@@ -19,6 +19,7 @@ import com.mygdx.game.input.InputManager;
 public abstract class AbstractScreen implements Screen {
     protected final MyGdxGame context;
     protected final FitViewport viewport;
+
     protected World world;
     protected final Box2DDebugRenderer box2DDebugRenderer;
     protected final WidgetGroup screenUI;
@@ -31,7 +32,7 @@ public abstract class AbstractScreen implements Screen {
         this.context = context;
         viewport = context.getScreenViewport();
         this.world = context.getWorld();
-        this.batch = context.getSpriteBatch();
+        batch = context.getSpriteBatch();
         this.box2DDebugRenderer = context.getBox2DDebugRenderer();
         inputManager = context.getInputManager();
         audioManager = context.getAudioManager();

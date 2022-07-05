@@ -37,7 +37,7 @@ public class AudioManager {
         this.volumeSound = volumeSoundModifier;
     }
 
-    public void playAudio(final AudioType type) {
+    public void playAudio(AudioType type) {
         switch (type.getTypeOfSound()) {
             case MUSIC:
                 //play music
@@ -88,9 +88,7 @@ public class AudioManager {
         }
     }
 }
-     /**
-      *  Class for objects that manages the audioType.typeOfSound LOOPINGSOUND
-      */
+
     class LoopingSound {
          private Sound sound;
          private long soundId;
@@ -128,14 +126,6 @@ public class AudioManager {
              sound.stop();
          }
 
-         /**
-          * Needed for the method contains() of the array of LoopingSounds
-          * <p>
-          * A loopingSound is equal to an other one if their sounds are equal
-          *
-          * @param obj comparing object
-          * @return true if this object is equal to obj, false otherwise
-          */
          @Override
          public boolean equals(Object obj) {
              if (obj == null) {

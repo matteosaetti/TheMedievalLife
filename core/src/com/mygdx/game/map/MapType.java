@@ -3,8 +3,9 @@ package com.mygdx.game.map;
 import com.badlogic.gdx.math.Vector2;
 
 public enum MapType {
-    WORLD("map/Map.tmx", 9.5f,14, "Bosco");
-    //CASTLE("map/map2.tmx",9.5f,14,"Interno");
+    CASTLE("map/map2.tmx", 9.5f, 14, "Interno"),
+    WORLD("map/Map.tmx", 183.5f, 182, "Bosco");
+
 
     private final String filePath;
     private final float y;
@@ -12,7 +13,7 @@ public enum MapType {
     private final String desc;
 
 
-    MapType(final String filePath, final float x, final float y, final String desc){
+    MapType(final String filePath, final float x, final float y, final String desc) {
 
         this.filePath = filePath;
         this.y = y;
@@ -22,13 +23,14 @@ public enum MapType {
     }
 
     public static MapType getMapTypeByName(String MapTypeName) {
-        for(MapType mapType : MapType.values()){
-            if(mapType.name().equals(MapTypeName)){
+        for (MapType mapType : MapType.values()) {
+            if (mapType.name().equals(MapTypeName)) {
                 return mapType;
             }
         }
         return null;
     }
+
 
     public Vector2 getSpawn(){
 

@@ -5,7 +5,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.SkinLoader;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -67,7 +66,7 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void create () {
-		//box2d stuff
+		//box2D stuff
 		Box2D.init();
 		world = new World(new Vector2(0, -9.81f), true);
 		box2DDebugRenderer = new Box2DDebugRenderer();
@@ -114,10 +113,11 @@ public class MyGdxGame extends Game {
 					screenCache.put(screenType, newScreen);
 					setScreen(newScreen);
 				} catch (ReflectionException error) {
-					throw new GdxRuntimeException("lo screen" + screenType + " è inesistente a causa: " + error);
+						throw new GdxRuntimeException("lo screen" + screenType + " e' inesistente a causa: " + error);
 
 				}
-			} else
+			}
+			else
 				//si usa lo Screen già presente
 				setScreen(screen);
 		}
@@ -125,16 +125,14 @@ public class MyGdxGame extends Game {
 	private void initializeSkin() {
 
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/NiceNightie.ttf"));
+		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
 		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		fontParameter.minFilter = Texture.TextureFilter.Linear;
 		fontParameter.magFilter = Texture.TextureFilter.Linear;
 		final int[] sizeToCreate = {16,20,26,32};
 		for(int size : sizeToCreate){
 			fontParameter.size = size;
-			final BitmapFont bitmapFont = fontGenerator.generateFont(fontParameter);
-			bitmapFont.getData().markupEnabled = true;
-			resources.put("font_" + size, bitmapFont);
+			resources.put("font_" + size, fontGenerator.generateFont(fontParameter));
 		}
 		fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
 		fontParameter.size = 16;
@@ -149,7 +147,22 @@ public class MyGdxGame extends Game {
 
 
 	}
+	@Override
+	public void render() {
+		super.render();
 
+		//Timestamp fixed for B2D simulation
+		accumulator += Math.min(0.25f, Gdx.graphics.getDeltaTime());
+		while(accumulator>=FIXED_TIME_STAMP){
+			world.step(FIXED_TIME_STAMP, 6, 2);
+			accumulator -= FIXED_TIME_STAMP;
+		}
+
+		//final float alpha = accumulator/FIXED_TIME_STAMP;
+		stage.getViewport().apply();
+		stage.act();
+		stage.draw();
+	}
 	public MapManager getMapManager() {
 		return mapManager;
 	}
@@ -197,22 +210,7 @@ public class MyGdxGame extends Game {
 
 
 
-	@Override
-	public void render() {
-		super.render();
 
-		//Timestamp fixed for B2D simulation
-		accumulator += Math.min(0.25f, Gdx.graphics.getDeltaTime());
-		while(accumulator>=FIXED_TIME_STAMP){
-			world.step(FIXED_TIME_STAMP, 6, 2);
-			accumulator -= FIXED_TIME_STAMP;
-		}
-
-		//final float alpha = accumulator/FIXED_TIME_STAMP;
-		stage.getViewport().apply();
-		stage.act();
-		stage.draw();
-	}
 
 	@Override
 	public void dispose() {

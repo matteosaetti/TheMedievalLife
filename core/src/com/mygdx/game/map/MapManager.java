@@ -25,8 +25,8 @@ public class MapManager {
     public MapManager(AssetManager assetManager, World world) {
         this.world = world;
         this.assetManager = assetManager;
-        this.currentMapType = null;
-        this.currentMap = null;
+        currentMapType = null;
+        currentMap = null;
         listeners = new Array<>();
     }
 

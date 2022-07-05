@@ -30,7 +30,7 @@ public class SettingsUI extends Table {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 musicValue.setText((int) (musicVolume.getValue() * 100));
-                context.getAudioManager().setVolumeSound(musicVolume.getValue());
+                context.getAudioManager().getCurrentMusic().setVolume(musicVolume.getValue());
             }
         });
 

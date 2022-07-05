@@ -38,7 +38,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
     public MainMenuScreen(final MyGdxGame context) {
         super(context);
         //Others
-        this.camera = context.getGameCamera();
+        camera = context.getGameCamera();
         coordsPointed = new Vector3();
         assetManager = context.getAssetManager();
         //texture

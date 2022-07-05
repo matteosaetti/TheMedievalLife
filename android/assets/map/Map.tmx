@@ -7,7 +7,7 @@
   <image source="tileset/PathAndObjects.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="2049" name="addwork" tilewidth="16" tileheight="16" tilecount="3072" columns="24">
-  <image source="tileset/Unorganized Parts/addwork.png" width="384" height="2048"/>
+  <image source="tileset/addwork.png" width="384" height="2048"/>
  </tileset>
  <tileset firstgid="5121" name="[A]Grass1-Dirt1_pipo" tilewidth="16" tileheight="16" tilecount="48" columns="8">
   <image source="tileset/Pipoya RPG Tileset 16x16/[A]_type3/[A]Grass1-Dirt1_pipo.png" width="128" height="96"/>
@@ -16,10 +16,13 @@
   <image source="tileset/[Base]BaseChip_pipo.png" width="256" height="4256"/>
  </tileset>
  <tileset firstgid="9425" name="addwork" tilewidth="16" tileheight="16" tilecount="3072" columns="24">
-  <image source="tileset/Unorganized Parts/addwork.png" width="384" height="2048"/>
+  <image source="tileset/addwork.png" width="384" height="2048"/>
  </tileset>
  <tileset firstgid="12497" name="[A]Water5_pipo" tilewidth="16" tileheight="16" tilecount="160" columns="16">
   <image source="tileset/Pipoya RPG Tileset 32x32/[A]_type1/[A]Water5_pipo.png" width="256" height="160"/>
+ </tileset>
+ <tileset firstgid="12657" name="[Base]BaseChip_pipo" tilewidth="16" tileheight="16" tilecount="4256" columns="16">
+  <image source="tileset/[Base]BaseChip_pipo.png" width="256" height="4256"/>
  </tileset>
  <layer id="5" name="terreno" width="78" height="50">
   <data encoding="csv">
