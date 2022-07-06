@@ -2,8 +2,9 @@ package com.mygdx.game.map;
 
 import com.badlogic.gdx.math.Vector2;
 
+
 public enum MapType {
-   CASTLE("map/prova.tmx", 9.5f, 14, "Interno"),
+    CASTLE("map/prova.tmx", 9.5f, 14, "Interno"),
     WORLD("map/Map.tmx", 183.5f, 182, "Bosco");
 
 

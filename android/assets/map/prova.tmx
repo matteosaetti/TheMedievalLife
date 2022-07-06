@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="80" height="70" tilewidth="16" tileheight="16" infinite="1" nextlayerid="13" nextobjectid="43">
- <tileset firstgid="1" name="addwork" tilewidth="16" tileheight="16" tilecount="3072" columns="24">
-  <image source="tileset/addwork.png" width="384" height="2048"/>
- </tileset>
- <tileset firstgid="3073" name="[Base]BaseChip_pipo" tilewidth="16" tileheight="16" tilecount="4256" columns="16">
-  <image source="tileset/[Base]BaseChip_pipo.png" width="256" height="4256"/>
- </tileset>
- <layer id="1" name="terreno" width="80" height="70">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="72" height="52" tilewidth="16" tileheight="16" infinite="1" nextlayerid="13" nextobjectid="43">
+ <tileset firstgid="1" source="tileset/Tsx/addwork.tsx"/>
+ <tileset firstgid="3073" source="tileset/Tsx/[Base]BaseChip_pipo.tsx"/>
+ <layer id="1" name="terreno" width="72" height="52">
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -370,10 +366,10 @@
 </chunk>
   </data>
  </layer>
- <layer id="9" name="portale" width="80" height="70">
+ <layer id="9" name="portale" width="72" height="52">
   <data encoding="csv"/>
  </layer>
- <layer id="4" name="strutture" width="80" height="70">
+ <layer id="4" name="strutture" width="72" height="52">
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 0,4049,4299,4300,4299,4300,4299,4300,4299,4300,4299,4300,4299,4300,4299,4300,
@@ -664,7 +660,7 @@
   <object id="40" x="1122.7" y="-2.48936" width="14.9362" height="796.597"/>
   <object id="41" x="31.1171" y="-2.48936" width="1091.59" height="95.8405"/>
  </objectgroup>
- <layer id="6" name="addobbi" width="80" height="70">
+ <layer id="6" name="addobbi" width="72" height="52">
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -920,7 +916,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="7" name="roba_sopra_addobbi" width="80" height="70">
+ <layer id="7" name="roba_sopra_addobbi" width="72" height="52">
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
