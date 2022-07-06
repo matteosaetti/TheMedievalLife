@@ -103,24 +103,24 @@ public class MyGdxGame extends Game {
 		setScreen(ScreenType.LOADING);
 	}
 	public void setScreen(final ScreenType screenType){
-			//screen conterrà lo Screen di tipo screenType dagli screenAvailable, oppure null se non ancora creato
-			final Screen screen = screenCache.get(screenType);
+		//screen conterrà lo Screen di tipo screenType dagli screenAvailable, oppure null se non ancora creato
+		final Screen screen = screenCache.get(screenType);
 
-			if (screen == null) {
-				//si crea lo Screen di tipo screenType
-				try {
-					final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
-					screenCache.put(screenType, newScreen);
-					setScreen(newScreen);
-				} catch (ReflectionException error) {
-						throw new GdxRuntimeException("lo screen" + screenType + " e' inesistente a causa: " + error);
+		if (screen == null) {
+			//si crea lo Screen di tipo screenType
+			try {
+				final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
+				screenCache.put(screenType, newScreen);
+				setScreen(newScreen);
+			} catch (ReflectionException error) {
+				throw new GdxRuntimeException("lo screen " + screenType + " e' inesistente a causa: " + error);
 
-				}
 			}
-			else
-				//si usa lo Screen già presente
-				setScreen(screen);
 		}
+		else
+			//si usa lo Screen già presente
+			setScreen(screen);
+	}
 
 	private void initializeSkin() {
 
@@ -222,4 +222,3 @@ public class MyGdxGame extends Game {
 		stage.dispose();
 	}
 }
-

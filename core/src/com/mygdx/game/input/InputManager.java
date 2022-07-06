@@ -4,9 +4,9 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.utils.Array;
 
 public class InputManager implements InputProcessor {
-   private  final GameKeys[] keyMapping;
-   private final boolean[] keyState;
-   private final Array<InputListener> listeners;
+    private final GameKeys[] keyMapping;
+    private final boolean[] keyStatus;
+    private final Array<InputListener> listeners;
 
     public InputManager(){
         this.keyMapping = new GameKeys[256];
@@ -15,7 +15,7 @@ public class InputManager implements InputProcessor {
                 keyMapping[code] = gameKey;
             }
         }
-        keyState = new boolean[GameKeys.values().length];
+        keyStatus = new boolean[GameKeys.values().length];
         listeners = new Array<>();
     }
 
@@ -41,7 +41,7 @@ public class InputManager implements InputProcessor {
     }
 
     public void notifyKeyDown(final GameKeys gameKey){
-        keyState[gameKey.ordinal()] = true;
+        keyStatus[gameKey.ordinal()] = true;
         for(final InputListener listener : listeners){
             listener.keyPressed(this, gameKey);
         }
@@ -61,7 +61,7 @@ public class InputManager implements InputProcessor {
     }
 
     public void notifyKeyUp(final GameKeys gameKey){
-        keyState[gameKey.ordinal()] = false;
+        keyStatus[gameKey.ordinal()] = false;
         for(final InputListener listener : listeners){
             listener.keyUp(this, gameKey);
         }
@@ -105,6 +105,6 @@ public class InputManager implements InputProcessor {
     }
 
     public boolean isKeyPressed(final GameKeys gameKey){
-        return keyState[gameKey.ordinal()];
+        return keyStatus[gameKey.ordinal()];
     }
 }
