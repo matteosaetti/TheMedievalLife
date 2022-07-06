@@ -17,13 +17,11 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.badlogic.gdx.utils.reflect.ReflectionException;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-
 import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.map.MapManager;
 import com.mygdx.game.screen.ScreenType;
 import com.badlogic.gdx.math.Vector2;
-
 
 import java.util.EnumMap;
 
@@ -35,7 +33,6 @@ public class MyGdxGame extends Game {
 	private SpriteBatch spriteBatch;
 	private EnumMap<ScreenType, Screen> screenCache = new EnumMap<ScreenType, Screen>(ScreenType.class);
 	private FitViewport screenViewport;
-
 	//b2D variables and constants
 	private static final float FIXED_TIME_STEP = 1/60f;
 	public static final short BIT_CIRCLE = 1;
@@ -44,25 +41,17 @@ public class MyGdxGame extends Game {
 	private Box2DDebugRenderer box2DDebugRenderer;
 	private World world;
 	private float accumulator;
-
 	//asset manager
 	private AssetManager assetManager;
-
 	//skin
 	private Stage stage;
 	private Skin skin;
-
-
 	//inputManager
 	private InputManager inputManager;
-
 	//audioManager
 	private AudioManager audioManager;
-
 	//map manager
 	private MapManager mapManager;
-
-
 
 	@Override
 	public void create () {
@@ -207,11 +196,6 @@ public class MyGdxGame extends Game {
 	public Box2DDebugRenderer getBox2DDebugRenderer() {
 		return box2DDebugRenderer;
 	}
-
-
-
-
-
 	@Override
 	public void dispose() {
 		super.dispose();

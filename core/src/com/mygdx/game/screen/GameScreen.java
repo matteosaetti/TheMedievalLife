@@ -3,8 +3,6 @@ package com.mygdx.game.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -43,7 +41,6 @@ public class GameScreen extends AbstractScreen implements InputListener, MapMana
     private final int[] layer_1 = {0,1,2,3};
     private final int[] layer_2 = {4,5,6,7};
     private MapType portalDest;
-
     //camera
     private final OrthographicCamera gamecamera;
     private final GameUI gameUI;
@@ -52,9 +49,7 @@ public class GameScreen extends AbstractScreen implements InputListener, MapMana
         super(context);
         gameUI = (GameUI) screenUI;
 
-        //init
-        //camera
-
+        //init camera
         gamecamera = new OrthographicCamera(16,9);
         gamecamera.position.set(savePCoords,0);
         batch.setProjectionMatrix(gamecamera.combined);

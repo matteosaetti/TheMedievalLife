@@ -30,9 +30,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
     private Texture texture_playbutton_inactive;
     private Texture texture_settingsbutton_active;
     private Texture texture_settingsbutton_inactive;
-
     private Vector3 coordsPointed;
-
     private final OrthographicCamera camera;
 
     public MainMenuScreen(final MyGdxGame context) {
