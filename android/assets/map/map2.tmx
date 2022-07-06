@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="80" height="70" tilewidth="16" tileheight="16" infinite="1" nextlayerid="13" nextobjectid="1">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="80" height="70" tilewidth="16" tileheight="16" infinite="1" nextlayerid="13" nextobjectid="42">
  <tileset firstgid="1" name="addwork" tilewidth="16" tileheight="16" tilecount="3072" columns="24">
   <image source="tileset/addwork.png" width="384" height="2048"/>
  </tileset>
@@ -629,7 +629,41 @@
 </chunk>
   </data>
  </layer>
- <objectgroup id="11" name="solidi"/>
+ <objectgroup id="11" name="solidi">
+  <object id="10" x="318.639" y="446.841" width="93.3512" height="93.3512"/>
+  <object id="11" x="482.937" y="84.6384" width="155.585" height="24.8936"/>
+  <object id="12" x="367.181" y="495.383"/>
+  <object id="14" x="342.288" y="504.096"/>
+  <object id="15" x="85.8831" y="261.383" width="18.6702" height="17.4256"/>
+  <object id="16" x="832.692" y="156.83" width="60.9894" height="19.9149"/>
+  <object id="17" x="362.203" y="238.979" width="75.9256" height="33.6064"/>
+  <object id="18" x="787.884" y="594.958" width="58.5001" height="26.1383"/>
+  <object id="19" x="865.054" y="593.713" width="58.5001" height="26.1383"/>
+  <object id="20" x="853.852" y="501.607" width="48.5426" height="52.2767"/>
+  <object id="21" x="934.756" y="505.341" width="52.2767" height="41.0745"/>
+  <object id="22" x="1014.42" y="505.341" width="49.7873" height="52.2767"/>
+  <object id="23" x="979.565" y="566.33" width="23.649" height="19.9149"/>
+  <object id="24" x="1090.34" y="613.628" width="26.1383" height="89.6171"/>
+  <object id="25" x="1054.25" y="663.416" width="33.6064" height="51.032"/>
+  <object id="26" x="1025.62" y="683.33" width="28.6277" height="33.6064"/>
+  <object id="27" x="32.3617" y="124.468" width="29.8724" height="33.6064"/>
+  <object id="28" x="32.3617" y="179.234" width="29.8724" height="27.383"/>
+  <object id="29" x="33.6064" y="601.181" width="24.8936" height="31.1171"/>
+  <object id="30" x="33.6064" y="688.309" width="27.383" height="26.1383"/>
+  <object id="31" x="37.3405" y="769.214" width="24.8936" height="26.1383"/>
+  <object id="32" x="738.097" y="226.532" width="90.8618" height="41.0745"/>
+  <object id="33" x="771.703" y="267.607" width="56.0107" height="32.3617"/>
+  <object id="34" x="774.192" y="304.947" width="19.9149" height="27.383"/>
+  <object id="35" x="1087.85" y="124.468" width="31.1171" height="33.6064"/>
+  <object id="36" x="515.298" y="390.83" width="89.6171" height="83.3937">
+   <ellipse/>
+  </object>
+  <object id="37" x="257.649" y="90.8618" width="28.6277" height="18.6702"/>
+  <object id="38" x="16.1809" y="-2.48936" width="16.1809" height="811.533"/>
+  <object id="39" x="33.6064" y="795.352" width="1099.05" height="22.4043"/>
+  <object id="40" x="1122.7" y="-2.48936" width="14.9362" height="796.597"/>
+  <object id="41" x="31.1171" y="-2.48936" width="1091.59" height="95.8405"/>
+ </objectgroup>
  <layer id="6" name="addobbi" width="80" height="70">
   <data encoding="csv">
    <chunk x="0" y="0" width="16" height="16">
@@ -1034,5 +1068,10 @@
 </chunk>
   </data>
  </layer>
- <objectgroup id="12" name="portale"/>
+ <objectgroup id="12" name="portale">
+  <object id="8" x="526.501" y="781.66" width="65.9682" height="16.1809"/>
+  <object id="9" x="571.628" y="755.98" width="84" height="19">
+   <text wrap="1">WORLD</text>
+  </object>
+ </objectgroup>
 </map>
