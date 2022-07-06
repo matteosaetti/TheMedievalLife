@@ -29,7 +29,7 @@ public class LoadingScreen extends AbstractScreen  {
         color = context.getSkin().getColor("neroOpaco");
 
         //asset manager
-        assetManager= context.getAssetManager();
+        assetManager = context.getAssetManager();
         //load maps
         for(MapType map : MapType.values()){
             context.getAssetManager().load(map.getFilePath(), TiledMap.class);

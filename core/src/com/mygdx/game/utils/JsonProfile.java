@@ -41,8 +41,8 @@ public class JsonProfile {
             json.writeObjectEnd();
         }
         {
-            json.writeObjectStart("inv");
-            json.writeValue("gold", 0);
+            json.writeObjectStart("inventory");
+            json.writeValue("coin", 0);
             json.writeValue("items", inventory.getItemsArray(), Array.class);
             json.writeObjectEnd();
         }
@@ -63,7 +63,7 @@ public class JsonProfile {
         player.setStats(
                 component.getInt("health", 100),
                 component.getInt("maxHealth", 100),
-                component.getInt("mana", 50),
+                component.getInt("mana", 25),
                 component.getInt("maxMana", 100),
                 component.getInt("exp", 0),
                 component.getInt("maxExp", 100),
@@ -86,14 +86,11 @@ public class JsonProfile {
         JsonValue base = jsonReader.parse(Gdx.files.local("data/" + nameProfile + ".json"));
         Array<Item> items = new Array<>();
 
-        JsonValue invJson = base.get("inv");
+        JsonValue invJson = base.get("inventory");
         items = json.fromJson(Array.class, invJson.get("items").toString().substring(6));
         inventory.loadInv(items);
     }
 
-    /**
-     * get the NPCs saved in json file
-     */
     public static void loadNPCs(NPC_handler npc_handler, MapType mapType, World world, AssetManager assetManager){
         Array<NPC> NPCs = new Array<>();
         String strMap = mapType.name();
