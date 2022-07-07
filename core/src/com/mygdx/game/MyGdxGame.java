@@ -9,7 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2D;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.GdxRuntimeException;
@@ -21,43 +24,45 @@ import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.map.MapManager;
 import com.mygdx.game.screen.ScreenType;
-import com.badlogic.gdx.math.Vector2;
 
 import java.util.EnumMap;
 
-
 public class MyGdxGame extends Game {
+	//Game vars
 	public static final float UNIT_SCALE = 1/32f;
-	private static final float FIXED_TIME_STAMP = 1/60f ;
+	private EnumMap<ScreenType, Screen> screenAvailable = new EnumMap<ScreenType, Screen>(ScreenType.class);
 	private OrthographicCamera camera;
-	private SpriteBatch spriteBatch;
-	private EnumMap<ScreenType, Screen> screenCache = new EnumMap<ScreenType, Screen>(ScreenType.class);
-	private FitViewport screenViewport;
-	//b2D variables and constants
-	private static final float FIXED_TIME_STEP = 1/60f;
-	public static final short BIT_CIRCLE = 1;
-	public static final short BIT_BOX = 1 << 1;
-	public static final short BIT_GROUND = 1 << 2;
-	private Box2DDebugRenderer box2DDebugRenderer;
-	private World world;
+	private FitViewport viewport;
+	private SpriteBatch batch;
+
+	//box2D vars and constants
 	private float accumulator;
-	//asset manager
+	private static final float FIXED_TIME_STAMP = 1/60f;
+	public static final short BIT_CIRCLE = 1;
+	public static final short BIT_BOX= 1 << 1;
+	public static final short BIT_GROUND = 1 << 2;
+	private World world;
+	private Box2DDebugRenderer box2DDebugRenderer;
+
+	//assetManager
 	private AssetManager assetManager;
-	//skin
+
+	//mapManager
+	private MapManager mapManager;
+
+	//Skin
 	private Stage stage;
 	private Skin skin;
-	//inputManager
-	private InputManager inputManager;
-	//audioManager
+
+	//other manager
 	private AudioManager audioManager;
-	//map manager
-	private MapManager mapManager;
+	private InputManager inputManager;
 
 	@Override
 	public void create () {
-		//box2D stuff
+		//box2d stuff
 		Box2D.init();
-		world = new World(new Vector2(0, -9.81f), true);
+		world = new World(new Vector2(0,-9.81f), true);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 		// Invisible hitboxes
 		box2DDebugRenderer.setDrawBodies(false);
@@ -65,10 +70,10 @@ public class MyGdxGame extends Game {
 
 		//Camera, viewport, batch
 		camera = new OrthographicCamera(16, 9);
-		camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+		camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2, 0);
 		camera.update();
-		screenViewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
-		spriteBatch = new SpriteBatch();
+		viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
+		batch = new SpriteBatch();
 
 		//AssetManager
 		assetManager = new AssetManager();
@@ -78,32 +83,32 @@ public class MyGdxGame extends Game {
 		mapManager = new MapManager(assetManager, world);
 
 		//Scene2D
-		initializeSkin();
+		skinInit();
 		stage = new Stage(new FitViewport(1280, 720));
 
 		//AudioManager
 		audioManager = new AudioManager(assetManager);
 
 		//input
-		inputManager = new InputManager();
-		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
+		inputManager= new InputManager();
+		Gdx.input.setInputProcessor(new InputMultiplexer(inputManager,stage));
 
 		Gdx.app.setLogLevel(Application.LOG_ERROR);
 		setScreen(ScreenType.LOADING);
 	}
+
 	public void setScreen(final ScreenType screenType){
 		//screen conterrà lo Screen di tipo screenType dagli screenAvailable, oppure null se non ancora creato
-		final Screen screen = screenCache.get(screenType);
+		final Screen screen = screenAvailable.get(screenType);
 
-		if (screen == null) {
+		if(screen == null){
 			//si crea lo Screen di tipo screenType
-			try {
+			try{
 				final Screen newScreen = (Screen) ClassReflection.getConstructor(screenType.getScreenClass(), MyGdxGame.class).newInstance(this);
-				screenCache.put(screenType, newScreen);
+				screenAvailable.put(screenType, newScreen);
 				setScreen(newScreen);
-			} catch (ReflectionException error) {
-				throw new GdxRuntimeException("lo screen " + screenType + " e' inesistente a causa: " + error);
-
+			} catch (ReflectionException error){
+				throw new GdxRuntimeException("Lo Screen " + screenType + "non è stato creato per: ", error);
 			}
 		}
 		else
@@ -111,31 +116,101 @@ public class MyGdxGame extends Game {
 			setScreen(screen);
 	}
 
-	private void initializeSkin() {
 
+	/**
+	 * Getter of World
+	 */
+	public World getWorld() {
+		return world;
+	}
+
+	/**
+	 * Getter of camera
+	 */
+	public OrthographicCamera getGameCamera() {
+		return camera;
+	}
+
+	/**
+	 * Getter of viewport
+	 */
+	public FitViewport getScreenViewport() {
+		return viewport;
+	}
+
+	/**
+	 * Getter of batch
+	 */
+	public SpriteBatch getSpriteBatch() {
+		return batch;
+	}
+
+	/**
+	 * Getter of B2DDebugRenderer
+	 */
+	public Box2DDebugRenderer getBox2DDebugRenderer(){
+		return box2DDebugRenderer;
+	}
+
+	/**
+	 * Getter of assetManager
+	 */
+	public AssetManager getAssetManager() {
+		return assetManager;
+	}
+
+	/**
+	 * Getter of inputManager
+	 */
+	public InputManager getInputManager() {
+		return inputManager;
+	}
+
+	/**
+	 * Getter of inputManager
+	 */
+	public AudioManager getAudioManager() {
+		return audioManager;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public Skin getSkin() {
+		return skin;
+	}
+
+	public MapManager getMapManager(){
+		return mapManager;
+	}
+
+	private void skinInit(){
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
-		final FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-		fontParameter.minFilter = Texture.TextureFilter.Linear;
-		fontParameter.magFilter = Texture.TextureFilter.Linear;
-		final int[] sizeToCreate = {16,20,26,32};
-		for(int size : sizeToCreate){
-			fontParameter.size = size;
-			resources.put("font_" + size, fontGenerator.generateFont(fontParameter));
+		FreeTypeFontGenerator FTFontGen = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
+		final FreeTypeFontGenerator.FreeTypeFontParameter FTFontPar= new FreeTypeFontGenerator.FreeTypeFontParameter();
+		FTFontPar.minFilter = Texture.TextureFilter.Linear;
+		FTFontPar.magFilter = Texture.TextureFilter.Linear;
+		final int[] sizesFont = {16,20,26,32};
+		for(int size : sizesFont){
+			FTFontPar.size = size;
+			resources.put("font_"+size, FTFontGen.generateFont(FTFontPar));
 		}
-		fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
-		fontParameter.size = 16;
-		resources.put("font2_16", fontGenerator.generateFont(fontParameter));
-		fontGenerator.dispose();
 
-		//load skin
-		final SkinLoader.SkinParameter skinParameter = new SkinLoader.SkinParameter("ui/hud.atlas", resources);
-		assetManager.load("ui/hud.json", Skin.class, skinParameter);
+		FTFontGen = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
+		FTFontPar.size = 16;
+		resources.put("font2_16", FTFontGen.generateFont(FTFontPar));
+		FTFontGen.dispose();
+
+		final SkinLoader.SkinParameter skinPar = new SkinLoader.SkinParameter ("ui/hud.atlas", resources);
+		assetManager.load("ui/hud.json", Skin.class, skinPar);
 		assetManager.finishLoading();
 		skin = assetManager.get("ui/hud.json", Skin.class);
-
-
 	}
+
+	/**
+	 * Each frame will update World of Box2D of a fixed timestamp
+	 */
 	@Override
 	public void render() {
 		super.render();
@@ -152,57 +227,14 @@ public class MyGdxGame extends Game {
 		stage.act();
 		stage.draw();
 	}
-	public MapManager getMapManager() {
-		return mapManager;
-	}
 
-
-	public AudioManager getAudioManager() {
-		return audioManager;
-	}
-
-	public InputManager getInputManager() {
-		return inputManager;
-	}
-
-	public Stage getStage() {
-		return stage;
-	}
-
-	public Skin getSkin() {
-		return skin;
-	}
-
-	public SpriteBatch getSpriteBatch() {
-		return spriteBatch;
-	}
-
-	public AssetManager getAssetManager() {
-		return assetManager;
-	}
-
-	public OrthographicCamera getGameCamera() {
-		return camera;
-	}
-
-	public  FitViewport getScreenViewport(){
-		return screenViewport;
-	}
-
-	public World getWorld(){
-		return world;
-	}
-
-	public Box2DDebugRenderer getBox2DDebugRenderer() {
-		return box2DDebugRenderer;
-	}
 	@Override
-	public void dispose() {
+	public void dispose(){
 		super.dispose();
-		box2DDebugRenderer.dispose();
-		world.dispose();
-		assetManager.dispose();
-		spriteBatch.dispose();
+		batch.dispose();
 		stage.dispose();
+		world.dispose();
+		box2DDebugRenderer.dispose();
+		assetManager.dispose();
 	}
 }

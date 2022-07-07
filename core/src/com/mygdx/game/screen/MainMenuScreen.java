@@ -9,11 +9,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.MyGdxGame;
-import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.game.audio.AudioType;
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.screen.AbstractScreen;
+import com.mygdx.game.screen.ScreenType;
 import com.mygdx.game.utils.MovingTexture;
 
 public class MainMenuScreen extends AbstractScreen implements InputListener {
@@ -30,17 +31,26 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
     private Texture texture_playbutton_inactive;
     private Texture texture_settingsbutton_active;
     private Texture texture_settingsbutton_inactive;
+
     private Vector3 coordsPointed;
+
     private final OrthographicCamera camera;
 
-    public MainMenuScreen(final MyGdxGame context) {
+    /**
+     * Constructor of Screen->Abstract Screen->LoadingScreen
+     * <p>
+     * Create instances of Objects used in create() and render()
+     *
+     * @param context    Instance of GameStarter
+     */
+    public MainMenuScreen(final MyGdxGame context){
         super(context);
         //Others
         camera = context.getGameCamera();
         coordsPointed = new Vector3();
         assetManager = context.getAssetManager();
         //texture
-        BG = new MovingTexture(Gdx.files.internal("loading/loading_photo.jpg"), -1f, -1f, -0.5f, -0.5f);
+        BG = new MovingTexture(Gdx.files.internal("background/cesaricidio.jpg"), -1f, -1f, -0.5f, -0.5f);
         BG.setWidth(32);
         BG.setHeight(18);
         texture_playbutton_active = new Texture(Gdx.files.internal("buttons/playbutton_red.png"));
@@ -54,7 +64,12 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         return null;
     }
 
-
+    /**
+     * Every time this Screen is shown (after pause() or other Screen gamestate
+     *  clear OpenGL screen
+     *  resume themeMusic
+     *  enable listener for inputs
+     */
     @Override
     public void show() {
         ScreenUtils.clear(0, 0, 0, 1);
@@ -64,7 +79,13 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         inputManager.addInputListener(this);
     }
 
-
+    /**
+     * Every new frame render() is called
+     *
+     * Render what will be seen in the screen
+     *
+     * @param delta time occurred from last frame rendered
+     */
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
@@ -79,7 +100,7 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
 
         //draw moving background
         BG.updatePosition(16, 9, 1);
-        batch.draw(BG, BG.getX(), BG.getY(), 20*2, 12*2);
+        batch.draw(BG, BG.getX(), BG.getY(), 16*2, 9*2);
 
         //draw texture play button
         batch.draw(texture_playbutton_inactive, 8-PLAY_BUTT_WIDTH/2, 1, PLAY_BUTT_WIDTH, PLAY_BUTT_HEIGHT);
@@ -102,13 +123,21 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
             batch.draw(texture_settingsbutton_active, 8 - SETT_BUTT_WIDTH / 2, 2.5f, SETT_BUTT_WIDTH, SETT_BUTT_HEIGHT);
             if (Gdx.input.justTouched()) {
                 audioManager.playAudio(AudioType.CLICK2_HEAVY);
+
                 context.setScreen(ScreenType.SETTINGS);
             }
         }
         batch.end();
     }
 
-
+    /**
+     * Every time the window is resized, resize() is called
+     * <p>
+     * update viewport with new size
+     *
+     * @param width  New width of the window
+     * @param height New height of the window
+     */
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
@@ -141,6 +170,11 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
         texture_settingsbutton_inactive.dispose();
     }
 
+    /**
+     * Implements method of interface InputListener
+     *
+     * @see InputListener
+     */
     @Override
     public void keyPressed(InputManager manager, GameKeys key) {
         switch (key){
@@ -149,13 +183,11 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
                 audioManager.playAudio(AudioType.CLICK3_SUCCESS);
                 context.setScreen(ScreenType.GAME);
             case BACK:
-
+                //Gdx.app.exit();
                 break;
             default:
                 break;
         }
-
-
     }
 
     /**
@@ -163,7 +195,6 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
      *
      * @see InputListener
      * */
-
     @Override
     public void keyUp(InputManager manager, GameKeys key) {
 
@@ -173,7 +204,4 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
     public void scroll(InputManager manager, float amount) {
 
     }
-
-
-
 }
