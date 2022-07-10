@@ -14,10 +14,11 @@ import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.screen.AbstractScreen;
-import com.mygdx.game.screen.ScreenType;
+import com.mygdx.game.ui.GameUI;
 import com.mygdx.game.utils.MovingTexture;
 
-public class MainMenuScreen extends AbstractScreen implements InputListener {
+
+public class MainmenuScreen extends AbstractScreen implements InputListener {
     private final float BG_WIDTH = 22;
     private final float BG_HEIGHT = 12;
     private final float PLAY_BUTT_WIDTH = 5;
@@ -43,14 +44,14 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
      *
      * @param context    Instance of GameStarter
      */
-    public MainMenuScreen(final MyGdxGame context){
+    public MainmenuScreen(final MyGdxGame context){
         super(context);
         //Others
         camera = context.getGameCamera();
         coordsPointed = new Vector3();
         assetManager = context.getAssetManager();
         //texture
-        BG = new MovingTexture(Gdx.files.internal("background/cesaricidio.jpg"), -1f, -1f, -0.5f, -0.5f);
+        BG = new MovingTexture(Gdx.files.internal("loading/loading_photo.jpg"), -1f, -1f, -0.5f, -0.5f);
         BG.setWidth(32);
         BG.setHeight(18);
         texture_playbutton_active = new Texture(Gdx.files.internal("buttons/playbutton_red.png"));
@@ -205,3 +206,5 @@ public class MainMenuScreen extends AbstractScreen implements InputListener {
 
     }
 }
+
+

@@ -4,17 +4,18 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.World.Entities.animation.AnimationLoader;
 import com.mygdx.game.audio.AudioType;
 import com.mygdx.game.map.MapType;
-import com.mygdx.game.screen.AbstractScreen;
-import com.mygdx.game.screen.ScreenType;
 import com.mygdx.game.ui.LoadingUI;
+import com.mygdx.game.World.Entities.animation.AnimationLoader;
+
 
 public class LoadingScreen extends AbstractScreen {
 

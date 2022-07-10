@@ -1,14 +1,18 @@
 package com.mygdx.game.screen;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioManager;
+import com.mygdx.game.audio.AudioType;
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.ui.SettingsUI;
+
 
 public class SettingsScreen extends AbstractScreen implements InputListener {
 
@@ -17,27 +21,50 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
     public SettingsScreen(MyGdxGame context) {
         super(context);
 
-        audioManager = context.getAudioManager();
-    }
-    @Override
-    public void show() {
-        super.show();
-        ScreenUtils.clear(0,0,0,1);
-        inputManager.addInputListener(this);
-    }
-    @Override
-    public void render(float delta) {
-
-        ScreenUtils.clear(1, 1, 1, 1);
+        audioManager=context.getAudioManager();
     }
 
     @Override
     protected Table getScreenUI(Skin skin) {
-
         return new SettingsUI(skin, context);
     }
 
+    @Override
+    public void show() {
+        super.show();
+        ScreenUtils.clear(0, 0, 0, 1);
+        inputManager.addInputListener(this);
+    }
 
+    @Override
+    public void render(float delta) {
+        ScreenUtils.clear(1, 1, 1, 1);
+    }
+
+    public void resize(int width, int height){
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+        super.hide();
+        inputManager.removeInputListener(this);
+    }
+
+    @Override
+    public void dispose() {
+    }
+
+    @Override
     public void keyPressed(InputManager manager, GameKeys key) {
         if (key == GameKeys.BACK) { //set screen 'MAINMENU'
             context.setScreen(ScreenType.MAINMENU);
@@ -51,32 +78,6 @@ public class SettingsScreen extends AbstractScreen implements InputListener {
 
     @Override
     public void scroll(InputManager manager, float amount) {
-
-    }
-    public void hide(){
-        super.hide();
-        inputManager.removeInputListener(this);
-    }
-
-
-
-    @Override
-    public void resize(int width, int height) {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void pause() {
 
     }
 }

@@ -108,7 +108,7 @@ public class MyGdxGame extends Game {
 				screenAvailable.put(screenType, newScreen);
 				setScreen(newScreen);
 			} catch (ReflectionException error){
-				throw new GdxRuntimeException("Lo Screen " + screenType + "non è stato creato per: ", error);
+				throw new GdxRuntimeException("Lo Screen " + screenType + " non e' stato creato per: ", error);
 			}
 		}
 		else

@@ -76,7 +76,7 @@ public class JsonProfile {
         JsonReader json = new JsonReader();
         JsonValue base = json.parse(Gdx.files.local("data/" + nameProfile + ".json"));
 
-        mapManager.setMap(MapType.getMapTypeByName(base.getString("map")));
+        mapManager.loadMap(MapType.getMapTypeByName(base.getString("map")));
         player.teleportTo(new Vector2(base.getFloat("coordX"), base.getFloat("coordY")));
     }
 
