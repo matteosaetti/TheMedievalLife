@@ -1,0 +1,35 @@
+{
+  conversations: {
+    1:
+    {
+        id: 1
+      dialog: "Ei tu! dove credi di andare?!"
+    }
+    2: {
+      id: 2
+      dialog: "Sono le stanze reali. Solo il re e la regna hanno il permesso di entrarvi!!"
+    }
+
+  }
+  associatedChoices: {
+
+    1: [
+      {
+        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        sourceId: 2
+        destinationId: 3,
+        choicePhrase: "Scusami, volevo solo sapere cosa ci fosse da questa parte"
+        conversationCommandEvent: NONE
+      }
+      {
+        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        sourceId: 2
+        destinationId: 4,
+        choicePhrase: "ok scusami, non cercavo rogne"
+        conversationCommandEvent: NONE
+      }
+    ]
+
+  }
+  currentConversationID: 1
+}

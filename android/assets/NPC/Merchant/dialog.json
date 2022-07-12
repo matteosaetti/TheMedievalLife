@@ -1,0 +1,35 @@
+{
+  conversations: {
+    1: {
+      id: 1
+      dialog: "Salve signore vuole comprare qualcosa?"
+    }
+    2: {
+      id: 2
+      dialog: "La casa offre un sacco di scelte. Posso avere del pesce fresco appena pescato, del pane buonissimo, della frutta oppure se sei una persona che ama la guerra potrei delle ottime spade",
+
+    }
+
+  }
+  associatedChoices: {
+
+    1: [
+      {
+        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        sourceId: 2
+        destinationId: 3,
+        choicePhrase: "Salve, cosa offre la casa?"
+        conversationCommandEvent: NONE
+      }
+      {
+        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        sourceId: 2
+        destinationId: 4,
+        choicePhrase: "Per ora sono a posto cosi grazie!"
+        conversationCommandEvent: NONE
+      }
+    ]
+
+  }
+  currentConversationID: 1
+}
