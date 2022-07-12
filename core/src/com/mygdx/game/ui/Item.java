@@ -71,9 +71,6 @@ public class Item {
         this.indexInInv = indexInInv;
     }
 
-    /**
-     * @return a new Item with the same attributes of this Instance
-     */
     public Item copy(){
         return new Item(name, ID, quantity, type);
     }

@@ -7,7 +7,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.mygdx.game.screen.AbstractScreen;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioType;
 import com.mygdx.game.input.GameKeys;
@@ -15,7 +14,6 @@ import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.map.MapManager;
 import com.mygdx.game.map.MapType;
-import com.mygdx.game.screen.ScreenType;
 import com.mygdx.game.ui.inventory.Inventory;
 import com.mygdx.game.utils.JsonProfile;
 import com.mygdx.game.World.Portal;
@@ -44,7 +42,7 @@ public class GameScreen extends AbstractScreen implements InputListener, MapMana
     private final int[] layers_2 ={4,5,6,7};
     private MapType portalDestination;
 
-    //camera (not the gamestarter camera)
+    //camera (not the game starter camera)
     private final OrthographicCamera gamecamera;
 
     private final GameUI gameUI;

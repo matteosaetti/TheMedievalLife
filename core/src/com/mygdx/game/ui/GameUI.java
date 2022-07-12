@@ -2,17 +2,16 @@ package com.mygdx.game.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.World.Entities.Player;
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.screen.ScreenType;
 import com.mygdx.game.ui.inventory.Inventory;
+import com.mygdx.game.World.Entities.Player;
+
 
 public class GameUI extends Table implements InputListener {
     private static GameUI uniqueInstance;
@@ -36,7 +35,7 @@ public class GameUI extends Table implements InputListener {
      */
     public static GameUI getInstance() {
         if (uniqueInstance == null) {
-            Gdx.app.error(GameUI.class.getSimpleName(), "Tried to access to Singleton class GameUI, but not initialised yet (use getInstance(MyGdxGame ..., ...)");
+            Gdx.app.error(GameUI.class.getSimpleName(), "Tried to access to Singleton class GameUI, but not initialised yet (use getInstance(Gamestarter ..., ...)");
         }
         return uniqueInstance;
     }
@@ -220,5 +219,4 @@ public class GameUI extends Table implements InputListener {
             }
         }
     }
-
 }

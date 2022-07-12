@@ -100,7 +100,7 @@ public class MyGdxGame extends Game {
 	public void setScreen(final ScreenType screenType){
 		//screen conterrà lo Screen di tipo screenType dagli screenAvailable, oppure null se non ancora creato
 		final Screen screen = screenAvailable.get(screenType);
-
+		//System.out.println("hello");
 		if(screen == null){
 			//si crea lo Screen di tipo screenType
 			try{

@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.audio.AudioManager;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.ui.GameUI;
 
 public abstract class AbstractScreen implements Screen {
     protected final MyGdxGame context;
@@ -46,7 +47,13 @@ public abstract class AbstractScreen implements Screen {
 
     @Override
     public void show(){
-        stage.addActor(screenUI);
+        if(screenUI instanceof GameUI){
+            return;
+        }
+        else{
+            stage.addActor(screenUI);
+        }
+
     }
 
     @Override
