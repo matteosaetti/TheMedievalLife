@@ -20,11 +20,6 @@ public class Queen extends NPC{
 
     @Override
     public void actionTriggered(Player player) {
-        //if in dialogue range,load conversation
-        if(player.isInConversationRadius(this) && !GameUI.getInstance().getDialogue().isVisible()){
-            GameUI.getInstance().getDialogue().loadConversation(this,null);
-        }
-
         B2DBody.applyLinearImpulse(
                 -B2DBody.getLinearVelocity().x,
                 -B2DBody.getLinearVelocity().y,

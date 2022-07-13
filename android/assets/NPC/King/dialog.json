@@ -1,0 +1,25 @@
+{
+  conversations: {
+    1:
+    {
+      id: 1
+      dialog: "Come osi porti al mio cospetto senza inchinarti!"
+    }
+
+
+  }
+  associatedChoices: {
+
+    1: [
+      {
+        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        sourceId: 2
+        destinationId: 3,
+        choicePhrase: "pff, Re dei miei stivali.."
+        conversationCommandEvent: NONE
+      }
+    ]
+
+  }
+  currentConversationID: 1
+}

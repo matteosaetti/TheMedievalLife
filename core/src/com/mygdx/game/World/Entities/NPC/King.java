@@ -14,7 +14,7 @@ public class King extends NPC{
         super(world, 0.5f, 0.55f, coords);
 
         setNPCname("King");
-      //  setConversationConfigPath("NPC/beer_man/dialogue_default.json");
+        setConversationConfigPath("NPC/King/dialogue.json");
         setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/King/king.atlas"));
     }
 

@@ -1,13 +1,13 @@
 {
   conversations: {
-    1: {
+    1:
+    {
       id: 1
-      dialog: "Salve signore vuole comprare qualcosa?"
+      dialog: "Ciao Tristano, di che pozione hai bisogno oggi?"
     }
     2: {
       id: 2
-      dialog: "Posso un sacco di scelte. Posso avere del pesce fresco appena pescato, del pane buonissimo, della frutta oppure se sei una persona che ama la guerra potrei delle ottime spade.",
-
+      dialog: "Ok va bene torna domani e a vrai tutto ciò di cui hai bisogno."
     }
 
   }
@@ -18,14 +18,14 @@
         class: com.mygdx.game.ui.dialogues.ConversationChoice
         sourceId: 2
         destinationId: 3,
-        choicePhrase: "Salve, cosa offre la casa?"
+        choicePhrase: "ciao Merlino, avrei bisogno di una pozione per conquistare la Regina e spodestare il Re."
         conversationCommandEvent: NONE
       }
       {
         class: com.mygdx.game.ui.dialogues.ConversationChoice
         sourceId: 2
         destinationId: 4,
-        choicePhrase: "Per ora sono a posto cosi grazie!"
+        choicePhrase: "Va bene Grazie Merlino."
         conversationCommandEvent: NONE
       }
     ]
