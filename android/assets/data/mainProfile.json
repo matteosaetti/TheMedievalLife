@@ -1,78 +1,78 @@
 {
-  "coordX": 60,
-  "coordY": 55,
-  "map": "OUTSIDE",
-  "stats": {
-    "health": 100,
-    "maxHealth": 100,
-    "mana": 50,
-    "maxMana": 100,
-    "exp": 0,
-    "maxExp": 100,
-    "level": 1
-  },
-  "inventory": {
-    "coin": 0,
-    "items": [
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "fish",
-        "ID": 100,
-        "quantity": 20
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "apple",
-        "ID": 101,
-        "quantity": 6,
-        "indexInInv": 1
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "book",
-        "ID": 204,
-        "quantity": 1,
-        "indexInInv": 2
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "potion",
-        "ID": 203,
-        "quantity": 12,
-        "indexInInv": 3
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "helmet_1",
-        "ID": 46,
-        "quantity": 1,
-        "type": "helmet",
-        "indexInInv": 15
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "armon_1",
-        "ID": 201,
-        "quantity": 1,
-        "type": "armor",
-        "indexInInv": 16
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "sword",
-        "ID": 202,
-        "quantity": 1,
-        "type": "weapon",
-        "indexInInv": 19
-      },
-      {
-        "class": "com.MyGdxGame.game.ui.Item",
-        "name": "boots_1",
-        "ID": 49,
-        "quantity": 1,
-        "type": "boots",
-        "indexInInv": 18
-      }
-    ]
-  }
+"coordX": 56.298798,
+"coordY": 70.692505,
+"map": "WORLD",
+"stats": {
+	"health": 100,
+	"maxHealth": 100,
+	"mana": 50,
+	"maxMana": 100,
+	"exp": 0,
+	"maxExp": 100,
+	"level": 1
+},
+"inventory": {
+	"coin": 0,
+	"items": [
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "fish",
+			"ID": 100,
+			"quantity": 20
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "apple",
+			"ID": 101,
+			"quantity": 6,
+			"indexInInv": 1
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "book",
+			"ID": 204,
+			"quantity": 1,
+			"indexInInv": 2
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "potion",
+			"ID": 203,
+			"quantity": 12,
+			"indexInInv": 3
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "helmet_1",
+			"ID": 46,
+			"quantity": 1,
+			"type": "helmet",
+			"indexInInv": 15
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "armon_1",
+			"ID": 201,
+			"quantity": 1,
+			"type": "armor",
+			"indexInInv": 16
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "boots_1",
+			"ID": 49,
+			"quantity": 1,
+			"type": "boots",
+			"indexInInv": 18
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "sword",
+			"ID": 202,
+			"quantity": 1,
+			"type": "weapon",
+			"indexInInv": 19
+		}
+	]
+}
 }

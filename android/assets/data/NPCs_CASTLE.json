@@ -1,10 +1,14 @@
 {
   "Wizard": {
-    "x": 80,
+    "x": 56,
     "y": 20
   },
-  "Merchant": {
+  "Cavalier_1": {
     "x": 14,
+    "y": 17
+  },
+  "Cavalier_2": {
+    "x": 15,
     "y": 17
   },
   "Queen": {

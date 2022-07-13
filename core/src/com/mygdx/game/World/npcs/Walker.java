@@ -20,8 +20,8 @@ public class Walker extends NPC {
     public void draw(Batch batch, float elapsedTime){
         if (batch.isDrawing()){
             batch.draw(getNpcAnimation().getCurrentAnimation().getKeyFrame(elapsedTime, true),
-                    B2DBody.getPosition().x -0.5f,
-                    B2DBody.getPosition().y -0.6f,
+                    B2DBody.getPosition().x -0.3f,
+                    B2DBody.getPosition().y -0.3f,
                     1f,1.2f);
         }
     }

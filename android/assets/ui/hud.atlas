@@ -6,84 +6,56 @@ filter: Nearest, Nearest
 repeat: none
 AfterSlider
   rotate: false
-  xy: 1381, 90
+  xy: 1326, 90
   size: 3, 36
   orig: 3, 36
   offset: 0, 0
   index: -1
 BeforeSlider
   rotate: false
-  xy: 1256, 30
+  xy: 1321, 90
   size: 3, 36
   orig: 3, 36
   offset: 0, 0
   index: -1
 E-Key
   rotate: false
-  xy: 132, 17
+  xy: 623, 35
   size: 31, 27
   orig: 31, 27
   offset: 0, 0
   index: -1
-Item_
+Loadingbar_end
   rotate: false
-  xy: 640, 46
-  size: 16, 16
-  orig: 16, 16
+  xy: 727, 57
+  size: 2, 5
+  orig: 2, 5
   offset: 0, 0
-  index: 46
-Item_
+  index: -1
+Loadingbar_begin
   rotate: false
-  xy: 1386, 110
-  size: 16, 16
-  orig: 16, 16
+  xy: 727, 57
+  size: 2, 5
+  orig: 2, 5
   offset: 0, 0
-  index: 64
-Item_
-  rotate: false
-  xy: 181, 28
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 14
-Item_
-  rotate: false
-  xy: 1345, 68
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 71
-Item_
-  rotate: false
-  xy: 1404, 110
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 47
-Item_
-  rotate: false
-  xy: 676, 46
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 49
+  index: -1
 SliderEnding
   rotate: false
-  xy: 1369, 90
+  xy: 1309, 90
   size: 10, 36
   orig: 10, 36
   offset: 0, 0
   index: -1
 SliderBegin
   rotate: false
-  xy: 1369, 90
+  xy: 1309, 90
   size: 10, 36
   orig: 10, 36
   offset: 0, 0
   index: -1
 SliderKnob
   rotate: false
-  xy: 1261, 30
+  xy: 1331, 90
   size: 3, 36
   orig: 3, 36
   offset: 0, 0
@@ -109,25 +81,18 @@ action_portal
   orig: 64, 64
   offset: 0, 0
   index: -1
-afterBar
+afterbar
   rotate: false
-  xy: 1246, 16
-  size: 3, 50
-  orig: 3, 50
+  xy: 1372, 103
+  size: 1, 5
+  orig: 1, 5
   offset: 0, 0
   index: -1
-armor_01b
+beforebar
   rotate: false
-  xy: 1266, 32
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
-beforeBar
-  rotate: false
-  xy: 1251, 16
-  size: 3, 50
-  orig: 3, 50
+  xy: 1390, 121
+  size: 1, 5
+  orig: 1, 5
   offset: 0, 0
   index: -1
 black-rect-select
@@ -137,20 +102,6 @@ black-rect-select
   orig: 128, 32
   offset: 0, 0
   index: -1
-book_01b
-  rotate: false
-  xy: 1327, 68
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
-coin_01d
-  rotate: false
-  xy: 658, 46
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
 dialog_box
   rotate: false
   xy: 2, 46
@@ -158,44 +109,30 @@ dialog_box
   orig: 320, 80
   offset: 0, 0
   index: -1
-end
-  rotate: false
-  xy: 1199, 4
-  size: 8, 10
-  orig: 8, 10
-  offset: 0, 0
-  index: -1
-fish_01b
-  rotate: false
-  xy: 1404, 92
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
 hotbar_bg
   rotate: false
-  xy: 623, 37
+  xy: 656, 37
   size: 15, 25
   orig: 15, 25
   offset: 0, 0
   index: -1
 hotbar_box
   rotate: false
-  xy: 1327, 86
+  xy: 1267, 86
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 hotbar_curson
   rotate: false
-  xy: 1422, 111
+  xy: 239, 29
   size: 11, 15
   orig: 11, 15
   offset: 0, 0
   index: -1
 hotbar_end
   rotate: false
-  xy: 165, 20
+  xy: 187, 20
   size: 14, 24
   orig: 14, 24
   offset: 0, 0
@@ -223,91 +160,91 @@ inventoryTop
   index: -1
 inventory_armor
   rotate: false
-  xy: 1139, 2
+  xy: 1075, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_boots
   rotate: false
-  xy: 1147, 68
+  xy: 1135, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_helmet
   rotate: false
-  xy: 1267, 68
+  xy: 1207, 68
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_pants
   rotate: false
-  xy: 1207, 68
+  xy: 1147, 68
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_topright
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
-inventory_left
+inventory_bottomleft
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
-inventory_mid
+inventory_bottommid
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+inventory_bottomright
+  rotate: false
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_midleft
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_midmid
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_midright
   rotate: false
-  xy: 1079, 2
-  size: 58, 58
-  orig: 58, 58
-  offset: 0, 0
-  index: -1
-inventory_right
-  rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_topleft
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
   index: -1
 inventory_topmid
   rotate: false
-  xy: 1079, 2
+  xy: 1015, 2
   size: 58, 58
   orig: 58, 58
   offset: 0, 0
@@ -321,30 +258,100 @@ inventory_weapon
   index: -1
 invisible
   rotate: false
-  xy: 1386, 92
+  xy: 1336, 92
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
-knobBar
+item
   rotate: false
-  xy: 1237, 16
-  size: 7, 50
-  orig: 7, 50
+  xy: 187, 2
+  size: 16, 16
+  orig: 16, 16
   offset: 0, 0
-  index: -1
-loadingBarBegin
+  index: 71
+item
   rotate: false
-  xy: 1218, 16
-  size: 17, 50
-  orig: 17, 50
+  xy: 1267, 68
+  size: 16, 16
+  orig: 16, 16
   offset: 0, 0
-  index: -1
-loadingBarEnd
+  index: 204
+item
   rotate: false
-  xy: 1199, 16
-  size: 17, 50
-  orig: 17, 50
+  xy: 673, 46
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 201
+item
+  rotate: false
+  xy: 1336, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 47
+item
+  rotate: false
+  xy: 203, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 101
+item
+  rotate: false
+  xy: 1285, 68
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 203
+item
+  rotate: false
+  xy: 691, 46
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 49
+item
+  rotate: false
+  xy: 1354, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 46
+item
+  rotate: false
+  xy: 221, 28
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 100
+item
+  rotate: false
+  xy: 709, 46
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 64
+item
+  rotate: false
+  xy: 1354, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 202
+item
+  rotate: false
+  xy: 1372, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 14
+knobbar
+  rotate: false
+  xy: 1303, 79
+  size: 2, 5
+  orig: 2, 5
   offset: 0, 0
   index: -1
 menuIconActive
@@ -361,80 +368,59 @@ menuIconInactive
   orig: 89, 62
   offset: 0, 0
   index: -1
-potion_03a
-  rotate: false
-  xy: 165, 2
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
 ps_begin
   rotate: false
-  xy: 1363, 73
-  size: 1, 11
-  orig: 1, 11
+  xy: 2, 2
+  size: 2, 8
+  orig: 2, 8
   offset: 0, 0
   index: -1
 ps_exp
   rotate: false
-  xy: 1256, 17
-  size: 1, 11
-  orig: 1, 11
+  xy: 1147, 62
+  size: 1, 4
+  orig: 1, 4
   offset: 0, 0
   index: -1
 ps_health
   rotate: false
-  xy: 1284, 37
-  size: 1, 11
-  orig: 1, 11
+  xy: 1153, 62
+  size: 1, 4
+  orig: 1, 4
   offset: 0, 0
   index: -1
 ps_left
   rotate: false
-  xy: 1015, 2
-  size: 62, 58
-  orig: 62, 58
+  xy: 132, 12
+  size: 39, 32
+  orig: 39, 32
   offset: 0, 0
   index: -1
 ps_mana
   rotate: false
-  xy: 1302, 56
-  size: 1, 10
-  orig: 1, 10
+  xy: 1150, 62
+  size: 1, 4
+  orig: 1, 4
+  offset: 0, 0
+  index: -1
+ps_right
+  rotate: false
+  xy: 173, 14
+  size: 12, 30
+  orig: 12, 30
   offset: 0, 0
   index: -1
 scroll_down
   rotate: false
-  xy: 181, 20
+  xy: 203, 20
   size: 8, 6
   orig: 8, 6
   offset: 0, 0
   index: -1
 scroll_up
   rotate: false
-  xy: 640, 38
+  xy: 673, 38
   size: 8, 6
   orig: 8, 6
-  offset: 0, 0
-  index: -1
-shield_03b
-  rotate: false
-  xy: 1266, 50
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
-sword_02b
-  rotate: false
-  xy: 1284, 50
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: -1
-wood_01a
-  rotate: false
-  xy: 199, 28
-  size: 16, 16
-  orig: 16, 16
   offset: 0, 0
   index: -1

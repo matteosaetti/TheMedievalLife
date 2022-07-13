@@ -1,5 +1,5 @@
 
-idle back.png
+idle_back.png
 size: 32, 64
 format: RGBA8888
 filter: Nearest, Nearest

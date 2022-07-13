@@ -148,8 +148,8 @@ public class Player extends  Entity{
     public void draw(Batch batch, float elapsedTime) {
         if (batch.isDrawing()) {
             batch.draw(getNpcAnimation().getCurrentAnimation().getKeyFrame(elapsedTime, true),
-                    B2DBody.getPosition().x - 0.65f,
-                    B2DBody.getPosition().y - 0.7f,
+                    B2DBody.getPosition().x - 0.7f,
+                    B2DBody.getPosition().y - 0.6f,
                     1.3f, 1.6f);
         }
         else

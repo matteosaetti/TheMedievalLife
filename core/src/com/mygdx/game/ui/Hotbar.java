@@ -1,58 +1,57 @@
 package com.mygdx.game.ui;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
-public class Hotbar extends Table {
-    private final int NUMBER_OF_SLOT = 8;
-    private int currentPointSlot = 0;
-    ArrayList<Stack> stacks;
-    ArrayList<Cell<Image>> cells;
+class Hotbar extends Table {
+    private final int NUMBER_OF_SLOTS = 8;
+    private int currentPointedSlot = 0;
+    ArrayList<Stack> slots;
+    ArrayList<Cell<Image>> cursors;
+
 
     public Hotbar(Skin skin){
         super(skin);
-        stacks = new ArrayList<>(NUMBER_OF_SLOT);
-        cells = new ArrayList<>(NUMBER_OF_SLOT);
-
+        slots = new ArrayList<>(NUMBER_OF_SLOTS);
+        cursors = new ArrayList<>(NUMBER_OF_SLOTS);
         setScale(1.5f);
         setDebug(false);
 
-        add(new Image(skin.getDrawable("hotbarBegin"))).expandX().bottom().right();
-        for(int i=0; i<NUMBER_OF_SLOT;i++){
+
+        add(new Image(skin.getDrawable("hotbar_bg"))).expandX().bottom().right();
+        for(int i=0; i<NUMBER_OF_SLOTS; i++){
             Stack currentStack = new Stack();
-            currentStack.add(new Image(skin.getDrawable("hotbarMid")));
-            add((CharSequence) currentStack);
-            stacks.add(currentStack);
+            currentStack.add(new Image(skin.getDrawable("hotbar_box")));
+            add(currentStack);
+            slots.add(currentStack);
         }
-        add(new Image(skin.getDrawable("hotbarEnd"))).bottom().expandX().left();
+        add(new Image(skin.getDrawable("hotbar_end"))).bottom().expandX().left();
 
         row();
         add();
-        for(int i=0; i<NUMBER_OF_SLOT;i++){
-            cells.add(this.add(new Image(skin, "hotbarCursor")));
-            cells.get(i).getActor().setVisible(false);
+        for(int i=0; i<NUMBER_OF_SLOTS; i++){
+            cursors.add(this.add(new Image(skin, "hotbar_curson")));
+            cursors.get(i).getActor().setVisible(false);
         }
 
-        cells.get(currentPointSlot).getActor().setVisible(true);
+        cursors.get(currentPointedSlot).getActor().setVisible(true);
     }
+
 
     void changeSlot(int slotIndex){
-        cells.get(currentPointSlot).getActor().setVisible(false);
-        currentPointSlot = slotIndex;
-        cells.get(currentPointSlot).getActor().setVisible(true);
-
-    }
-    public int getCurrentPointSlot(){
-        return currentPointSlot;
+        cursors.get(currentPointedSlot).getActor().setVisible(false);
+        currentPointedSlot = slotIndex;
+        cursors.get(currentPointedSlot).getActor().setVisible(true);
     }
 
-    public int getNUMBER_OF_SLOT(){
-        return NUMBER_OF_SLOT;
+    public int getCurrentPointedSlot() {
+
+        return currentPointedSlot;
     }
 
+    public int getNUMBER_OF_SLOTS() {
+
+        return NUMBER_OF_SLOTS;
+    }
 }

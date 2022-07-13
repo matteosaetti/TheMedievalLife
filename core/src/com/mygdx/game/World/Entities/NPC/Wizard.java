@@ -15,7 +15,7 @@ public class Wizard extends NPC{
 
         setNPCname("Wizard");
         //setConversationConfigPath("NPC/beer_man/dialogue_default.json");
-        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/Wizard/idle.atlas"));
+        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/Wizard/idle_left.atlas"));
     }
 
     @Override

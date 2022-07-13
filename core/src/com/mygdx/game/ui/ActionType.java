@@ -1,8 +1,8 @@
 package com.mygdx.game.ui;
 
 public enum ActionType {
-    CHAT("Parla", "key_E", "action_chat"),
-    PORTAL("Entra", "key_SPACE", "action_portal");
+    CHAT("Parla", "E-Key", "action_chat"),
+    PORTAL("Entra", "Space-Key", "action_portal");
 
     private final String text;
     private final String key;

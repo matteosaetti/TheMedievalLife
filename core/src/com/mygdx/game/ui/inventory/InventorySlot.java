@@ -7,17 +7,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.ui.Item;
 
-public class InventoryStack extends Stack {
+public class InventorySlot extends Stack {
     private Item item = null;
     private final Skin skin;
     private String typeOfItemAccepted;
 
-    public InventoryStack(String typeOfSlot, Skin skin){
+    public InventorySlot(String typeOfSlot, Skin skin){
         this.skin = skin;
         add(new Image(skin.getDrawable(typeOfSlot)));
     }
 
-    public InventoryStack(String typeOfSlot, Skin skin, String typeOfItemAccepted){
+    public InventorySlot(String typeOfSlot, Skin skin, String typeOfItemAccepted){
         this.skin = skin;
         add(new Image(skin.getDrawable(typeOfSlot)));
         this.typeOfItemAccepted = typeOfItemAccepted;

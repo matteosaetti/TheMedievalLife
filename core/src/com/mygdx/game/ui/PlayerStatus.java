@@ -26,9 +26,9 @@ class PlayerStatus extends Table {
         bars.addActor(mana);
         bars.addActor(exp);
 
-        add(new Image(skin.getDrawable("payerStatusLeft")));
+        add(new Image(skin.getDrawable("ps_left")));
         add((bars).expand().fill());
-        add(new Image(skin.getDrawable("playerStatusRight")));
+        add(new Image(skin.getDrawable("ps_right")));
 
     }
 

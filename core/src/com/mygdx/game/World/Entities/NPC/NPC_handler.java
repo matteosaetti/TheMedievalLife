@@ -1,15 +1,22 @@
 package com.mygdx.game.World.Entities.NPC;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.mygdx.game.World.Entities.Player;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonWriter;
+import com.mygdx.game.map.MapType;
 import com.mygdx.game.ui.ActionType;
 import com.mygdx.game.ui.GameUI;
+import com.mygdx.game.World.Entities.Player;
 
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NPC_handler {
+
     private final ArrayList<NPC> npcs;
     private final Player player;
 

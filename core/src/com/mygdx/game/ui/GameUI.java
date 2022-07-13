@@ -119,19 +119,19 @@ public class GameUI extends Table implements InputListener {
     }
 
     private void nextSlotHotbar() {
-        if(hotbar.getCurrentPointSlot() != hotbar.getNUMBER_OF_SLOT() - 1){
-            hotbar.changeSlot(hotbar.getCurrentPointSlot() + 1);
+        if(hotbar.getCurrentPointedSlot() != hotbar.getNUMBER_OF_SLOTS() - 1){
+            hotbar.changeSlot(hotbar.getCurrentPointedSlot() + 1);
         }
         else{
             hotbar.changeSlot(0);
         }
     }
     private void previousSlotHotbar() {
-        if(hotbar.getCurrentPointSlot() != 0){
-            hotbar.changeSlot(hotbar.getCurrentPointSlot() - 1);
+        if(hotbar.getCurrentPointedSlot() != 0){
+            hotbar.changeSlot(hotbar.getCurrentPointedSlot() - 1);
         }
         else{
-            hotbar.changeSlot(hotbar.getNUMBER_OF_SLOT() - 1);
+            hotbar.changeSlot(hotbar.getNUMBER_OF_SLOTS() - 1);
         }
     }
 

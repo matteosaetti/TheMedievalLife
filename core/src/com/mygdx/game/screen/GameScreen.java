@@ -39,7 +39,7 @@ public class GameScreen extends AbstractScreen implements InputListener, MapMana
     private final MapManager mapManager;
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final int[] layers_1 ={0,1,2,3};
-    private final int[] layers_2 ={4,5,6,7};
+    private final int[] layers_2 ={4,5,6};
     private MapType portalDestination;
 
     //camera (not the game starter camera)

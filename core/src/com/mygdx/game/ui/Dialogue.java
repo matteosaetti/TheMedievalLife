@@ -35,7 +35,7 @@ public class Dialogue extends Table {
 
 
         //Init Widgets
-        Image dialogueBox=new Image(skin.getDrawable("dialogbox"));
+        Image dialogueBox=new Image(skin.getDrawable("dialog_box"));
         dialogueBox.setSize(600,120);
         dialogueText= new Label(text, skin, "debug");
         dialogueText.setAlignment(Align.left);

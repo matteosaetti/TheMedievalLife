@@ -82,9 +82,9 @@
 
   "com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle": {
     "default": {
-      "background": "beforeBar",
-      "knob": "knobBar",
-      "knobBefore": "afterBar"
+      "background": "beforebar",
+      "knob": "knobbar",
+      "knobBefore": "afterbar"
     },
 
     "health": {

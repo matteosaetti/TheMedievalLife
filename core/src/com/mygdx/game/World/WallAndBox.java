@@ -25,6 +25,9 @@ public class WallAndBox {
                 (rect.getY() + rect.getHeight() / 2)*UNIT_SCALE);
         body = world.createBody(bodyDef);
 
+        //debug
+        System.out.println("body created: " + bodyDef.position.x + ";" + bodyDef.position.y);
+
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(rect.getWidth()/2*UNIT_SCALE, rect.getHeight()/2*UNIT_SCALE);
         fixtureDef.shape = shape;
