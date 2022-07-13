@@ -29,7 +29,7 @@ import static com.mygdx.game.MyGdxGame.UNIT_SCALE;
 public class GameScreen extends AbstractScreen implements InputListener, MapManager.MapListener, PortalListener {
     //Player
     private final Player playerB2D;
-    private final Vector2 savedPlayerCoords = new Vector2(11, 12.5f);
+    private final Vector2 savedPlayerCoords = new Vector2(0, 0);
     float elapsedTime=0;
     private boolean newMovementInput = false;
     private NPC_handler npc_handler;
