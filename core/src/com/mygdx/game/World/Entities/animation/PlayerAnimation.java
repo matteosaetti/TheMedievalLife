@@ -63,6 +63,8 @@ public class PlayerAnimation implements NpcAnimation{
         walkRightAnimation=new Animation<>(1/8f, walkRight.getRegions());
         idleLeftAnimation=new Animation <>(1/5f, idleLeft.getRegions());
         idleRightAnimation=new Animation <>(1/5f, idleRight.getRegions());
+        idleAnimation= new Animation<>(1/5f, idle.getRegions());
+        idleBackAnimation = new Animation<>(1/5f, idleBack.getRegions());
     }
 
 

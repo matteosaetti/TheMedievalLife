@@ -13,9 +13,10 @@ public class Inventory extends Table {
     private final int COLUMNS = 5;
     private final int NO_BOTTOM_SLOTS = 4;
     private final int HELMET_SLOT_INDEX = ROWS*COLUMNS;
-    private final int CHEST_SLOT_INDEX = ROWS*COLUMNS+1;
-    private final int BOOTS_SLOT_INDEX = ROWS*COLUMNS+2;
-    private final int WEAPON_SLOT_INDEX = ROWS*COLUMNS+3;
+    private final int ARMOR_SLOT_INDEX = ROWS*COLUMNS+1;
+    private final int PANTS_SLOT_INDEX = ROWS*COLUMNS+2;
+    private final int BOOTS_SLOT_INDEX = ROWS*COLUMNS+3;
+    private final int WEAPON_SLOT_INDEX = ROWS*COLUMNS+4;
     private final Array<InventorySlot> inventory;
     private int gold=0;
 
@@ -44,13 +45,13 @@ public class Inventory extends Table {
         inventorySlotsTable = new Table(skin);
         for(int r=0; r<ROWS; r++){
             for(int c=0; c<COLUMNS; c++){
-                String name = "inventory_";
+                String name = "inventory";
                 if(r == 0)
-                    name+="top";
+                    name+="_top";
                 else if(r == ROWS-1)
-                    name+="bottom";
+                    name+="_bottom";
                 else
-                    name+="mid";
+                    name+="_mid";
 
                 if(c == 0)
                     name+="left";

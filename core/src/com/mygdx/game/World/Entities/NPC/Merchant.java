@@ -33,14 +33,13 @@ public class Merchant extends NPC{
 
     @Override
     public void draw(Batch batch, float elapsedTime) {
-        if(batch.isDrawing()){
-            batch.draw(getNpcAnimation().getCurrentAnimation().getKeyFrame(elapsedTime,true),
-                    B2DBody.getPosition().x -0.5f,
-                    B2DBody.getPosition().y -0.55f,
-                    1f,1.4f);
+        if (batch.isDrawing()) {
+            batch.draw(getNpcAnimation().getCurrentAnimation().getKeyFrame(elapsedTime, true),
+                    B2DBody.getPosition().x - 0.5f,
+                    B2DBody.getPosition().y - 0.7f,
+                    1f, 1.4f);
         }
-        else{
-            Gdx.app.error(this.getClass().getSimpleName(),"batch if not drawing");
-        }
+        else
+            Gdx.app.error(this.getClass().getSimpleName(), "batch not drawing");
     }
 }

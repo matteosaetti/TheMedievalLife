@@ -2,8 +2,6 @@ package com.mygdx.game.World.Entities.NPC;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2D;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.World.Entities.Entity;
 import com.mygdx.game.World.Entities.Player;
@@ -13,7 +11,7 @@ public abstract class NPC extends Entity {
     private Vector2 coords;
     private float actionRadius = 10;
     private float dialogueRadius=1.5f;
-    //float NPCspeed = NOMINAL_SPEED;
+    float NPCspeed = NOMINAL_SPEED;
     private String mapLocation;
     private String NPCname = "NPC";
     private String conversationConfigPath;
@@ -89,11 +87,8 @@ public abstract class NPC extends Entity {
      *
      * @param player player whom the npc will interact
      */
-
     public abstract void actionTriggered(Player player);
 
     public abstract void draw(Batch batch, float elapsedTime);
 
-
 }
-
