@@ -23,7 +23,7 @@ public class Wborder {
         mapBorders.position.set(polygon.getX()*UNIT_SCALE,polygon.getY()*UNIT_SCALE);
         borders=world.createBody(mapBorders);
         //debug
-        System.out.println("map created: " + mapBorders.position.x*UNIT_SCALE + ";" + mapBorders.position.y*UNIT_SCALE);
+        //System.out.println("map created: " + mapBorders.position.x*UNIT_SCALE + ";" + mapBorders.position.y*UNIT_SCALE);
 
         ChainShape chainShape=new ChainShape();
 
