@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="50">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="50">
  <tileset firstgid="1" name="addwork" tilewidth="16" tileheight="16" tilecount="3072" columns="24">
   <image source="tileset/addwork.png" width="384" height="2048"/>
  </tileset>
@@ -821,52 +821,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="solidi">
-  <object id="1" x="866" y="2098" width="14" height="750"/>
-  <object id="2" x="2" y="2098" width="13" height="748"/>
-  <object id="3" x="15" y="2097" width="850" height="62"/>
-  <object id="7" x="16" y="2832" width="846.667" height="14.6667"/>
-  <object id="8" x="467" y="2253" width="25" height="20"/>
-  <object id="9" x="464" y="2160" width="64" height="30"/>
-  <object id="10" x="337" y="2161" width="60" height="27"/>
-  <object id="11" x="412" y="2177" width="39" height="17"/>
-  <object id="12" x="369" y="2249" width="26" height="21"/>
-  <object id="13" x="371" y="2345" width="26" height="26"/>
-  <object id="14" x="469" y="2345" width="23" height="28"/>
-  <object id="15" x="16" y="2192" width="33" height="36"/>
-  <object id="16" x="831" y="2193" width="34" height="31"/>
-  <object id="17" x="696" y="2243" width="52" height="13"/>
-  <object id="18" x="800" y="2333" width="64" height="19"/>
-  <object id="19" x="802" y="2409" width="61" height="23"/>
-  <object id="20" x="801" y="2487" width="62" height="26"/>
-  <object id="21" x="706" y="2417" width="27" height="55"/>
-  <object id="22" x="736" y="2560" width="66" height="93"/>
-  <object id="23" x="802" y="2564" width="64" height="83"/>
-  <object id="24" x="709" y="2756" width="150" height="35"/>
-  <object id="25" x="368" y="2639" width="32" height="20"/>
-  <object id="26" x="467" y="2634" width="25" height="21"/>
-  <object id="27" x="465" y="2746" width="27" height="24"/>
-  <object id="28" x="368" y="2748" width="33" height="23"/>
-  <object id="29" x="64" y="2375" width="34" height="21"/>
-  <object id="30" x="47" y="2400" width="63" height="200"/>
-  <object id="31" x="118" y="2406" width="20" height="19"/>
-  <object id="32" x="122" y="2452" width="16" height="27"/>
-  <object id="33" x="123" y="2501" width="11" height="18"/>
-  <object id="34" x="123" y="2548" width="15" height="26"/>
-  <object id="36" x="71" y="2619" width="17" height="13"/>
-  <object id="37" x="26" y="2425" width="12" height="12"/>
-  <object id="38" x="25" y="2470" width="16" height="19"/>
-  <object id="40" x="24" y="2516" width="14" height="25"/>
-  <object id="41" x="27" y="2558" width="11" height="33"/>
-  <object id="42" x="15" y="2696" width="29" height="33"/>
-  <object id="43" x="19" y="2764" width="28" height="27"/>
-  <object id="44" x="157" y="2203" width="31" height="27"/>
-  <object id="45" x="197" y="2221" width="23" height="14"/>
-  <object id="46" x="230" y="2226" width="20" height="16"/>
-  <object id="48" x="374" y="2451" width="113" height="90">
-   <ellipse/>
-  </object>
- </objectgroup>
  <layer id="6" name="roba_sopra_addobbi" width="200" height="200">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1071,6 +1025,52 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="4" name="solidi">
+  <object id="1" x="866" y="2098" width="14" height="750"/>
+  <object id="2" x="2" y="2098" width="13" height="748"/>
+  <object id="3" x="15" y="2097" width="850" height="62"/>
+  <object id="7" x="16" y="2832" width="846.667" height="14.6667"/>
+  <object id="8" x="467" y="2253" width="25" height="20"/>
+  <object id="9" x="464" y="2160" width="64" height="30"/>
+  <object id="10" x="337" y="2161" width="60" height="27"/>
+  <object id="11" x="412" y="2177" width="39" height="17"/>
+  <object id="12" x="369" y="2249" width="26" height="21"/>
+  <object id="13" x="371" y="2345" width="26" height="26"/>
+  <object id="14" x="469" y="2345" width="23" height="28"/>
+  <object id="15" x="16" y="2192" width="33" height="36"/>
+  <object id="16" x="831" y="2193" width="34" height="31"/>
+  <object id="17" x="696" y="2243" width="52" height="13"/>
+  <object id="18" x="800" y="2333" width="64" height="19"/>
+  <object id="19" x="802" y="2409" width="61" height="23"/>
+  <object id="20" x="801" y="2487" width="62" height="26"/>
+  <object id="21" x="706" y="2417" width="27" height="55"/>
+  <object id="22" x="736" y="2560" width="66" height="93"/>
+  <object id="23" x="802" y="2564" width="64" height="83"/>
+  <object id="24" x="709" y="2756" width="150" height="35"/>
+  <object id="25" x="368" y="2639" width="32" height="20"/>
+  <object id="26" x="467" y="2634" width="25" height="21"/>
+  <object id="27" x="465" y="2746" width="27" height="24"/>
+  <object id="28" x="368" y="2748" width="33" height="23"/>
+  <object id="29" x="64" y="2375" width="34" height="21"/>
+  <object id="30" x="47" y="2400" width="63" height="200"/>
+  <object id="31" x="118" y="2406" width="20" height="19"/>
+  <object id="32" x="122" y="2452" width="16" height="27"/>
+  <object id="33" x="123" y="2501" width="11" height="18"/>
+  <object id="34" x="123" y="2548" width="15" height="26"/>
+  <object id="36" x="71" y="2619" width="17" height="13"/>
+  <object id="37" x="26" y="2425" width="12" height="12"/>
+  <object id="38" x="25" y="2470" width="16" height="19"/>
+  <object id="40" x="24" y="2516" width="14" height="25"/>
+  <object id="41" x="27" y="2558" width="11" height="33"/>
+  <object id="42" x="15" y="2696" width="29" height="33"/>
+  <object id="43" x="19" y="2764" width="28" height="27"/>
+  <object id="44" x="157" y="2203" width="31" height="27"/>
+  <object id="45" x="197" y="2221" width="23" height="14"/>
+  <object id="46" x="230" y="2226" width="20" height="16"/>
+  <object id="48" x="374" y="2451" width="113" height="90">
+   <ellipse/>
+  </object>
+ </objectgroup>
  <objectgroup id="8" name="portale">
   <object id="4" x="400" y="2816" width="65" height="15"/>
   <object id="6" x="446" y="2793.5" width="84" height="19">
