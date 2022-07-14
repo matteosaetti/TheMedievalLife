@@ -14,12 +14,16 @@ public class Queen extends NPC{
         super(world, 0.5f, 0.55f, coords);
 
         setNPCname("Queen");
-        //setConversationConfigPath("NPC/beer_man/dialogue_default.json");
+        setConversationConfigPath("NPC/Queen/dialog.json");
         setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/Queen/idle.atlas"));
     }
 
     @Override
     public void actionTriggered(Player player) {
+        //if in dialogue range, load conversation
+        if(player.isInConversationRadius(this) && !GameUI.getInstance().getDialogue().isVisible()){
+            GameUI.getInstance().getDialogue().loadConversation(this,null);
+        }
         B2DBody.applyLinearImpulse(
                 -B2DBody.getLinearVelocity().x,
                 -B2DBody.getLinearVelocity().y,
@@ -30,6 +34,7 @@ public class Queen extends NPC{
 
     @Override
     public void draw (Batch batch,float elapsedTime){
+
         if (batch.isDrawing()) {
             batch.draw(getNpcAnimation().getCurrentAnimation().getKeyFrame(elapsedTime, true),
                     B2DBody.getPosition().x - 0.5f,

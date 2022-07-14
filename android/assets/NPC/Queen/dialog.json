@@ -1,11 +1,14 @@
 {
   conversations: {
-    1:
-    {
+    1: {
       id: 1
-      dialog: "Come osi porti al mio cospetto senza inchinarti!"
+      dialog: "Ciao caro il mio Tristano come stai?"
     }
+    2: {
+      id: 2
+      dialog: "La saluta non manca.",
 
+    }
 
   }
   associatedChoices: {
@@ -15,7 +18,7 @@
         class: com.mygdx.game.ui.conversation.ConversationChoice
         sourceId: 2
         destinationId: 3,
-        choicePhrase: "pff, Re dei miei stivali.."
+        choicePhrase: "Salve mia Regina, io sto molto bene lei?"
         conversationCommandEvent: NONE
       }
     ]

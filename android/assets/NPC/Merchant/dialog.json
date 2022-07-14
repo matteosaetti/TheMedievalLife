@@ -15,14 +15,14 @@
 
     1: [
       {
-        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        class: com.mygdx.game.ui.conversation.ConversationChoice
         sourceId: 2
         destinationId: 3,
         choicePhrase: "Salve, cosa offre la casa?"
         conversationCommandEvent: NONE
       }
       {
-        class: com.mygdx.game.ui.dialogues.ConversationChoice
+        class: com.mygdx.game.ui.conversation.ConversationChoice
         sourceId: 2
         destinationId: 4,
         choicePhrase: "Per ora sono a posto cosi grazie!"
