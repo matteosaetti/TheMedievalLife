@@ -1,6 +1,6 @@
 {
-"coordX": 5.505107,
-"coordY": 92.36075,
+"coordX": 8.813395,
+"coordY": 96.754906,
 "map": "WORLD",
 "stats": {
 	"health": 100,
@@ -18,29 +18,28 @@
 			"class": "com.mygdx.game.ui.Item",
 			"name": "fish",
 			"ID": 100,
-			"quantity": 20,
-			"indexInInv": 3
-		},
-		{
-			"class": "com.mygdx.game.ui.Item",
-			"name": "book",
-			"ID": 204,
-			"quantity": 1,
-			"indexInInv": 7
+			"quantity": 20
 		},
 		{
 			"class": "com.mygdx.game.ui.Item",
 			"name": "apple",
 			"ID": 101,
 			"quantity": 6,
-			"indexInInv": 11
+			"indexInInv": 1
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
+			"name": "book",
+			"ID": 204,
+			"quantity": 1,
+			"indexInInv": 2
 		},
 		{
 			"class": "com.mygdx.game.ui.Item",
 			"name": "potion",
 			"ID": 203,
 			"quantity": 12,
-			"indexInInv": 14
+			"indexInInv": 3
 		},
 		{
 			"class": "com.mygdx.game.ui.Item",
