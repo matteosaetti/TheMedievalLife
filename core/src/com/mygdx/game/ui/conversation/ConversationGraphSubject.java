@@ -27,5 +27,4 @@ public class ConversationGraphSubject {
         for(ConversationGraphObserver observer: _observers){
             observer.onNotify(graph, event);
         }
-    }
-}
+    }}

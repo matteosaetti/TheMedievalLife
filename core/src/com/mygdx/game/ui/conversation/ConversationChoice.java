@@ -1,10 +1,12 @@
 package com.mygdx.game.ui.conversation;
 
+import com.mygdx.game.ui.conversation.ConversationGraphObserver.ConversationCommandEvent;
+
 public class ConversationChoice {
     private String sourceId;
     private String destinationId;
     private String choicePhrase;
-    private ConversationGraphObserver.ConversationCommandEvent conversationCommandEvent;
+    private ConversationCommandEvent conversationCommandEvent;
 
     public ConversationChoice(){}
 
@@ -32,11 +34,11 @@ public class ConversationChoice {
         this.choicePhrase = choicePhrase;
     }
 
-    public ConversationGraphObserver.ConversationCommandEvent getConversationCommandEvent() {
+    public ConversationCommandEvent getConversationCommandEvent() {
         return conversationCommandEvent;
     }
 
-    public void setConversationCommandEvent(ConversationGraphObserver.ConversationCommandEvent choiceCommand) {
+    public void setConversationCommandEvent(ConversationCommandEvent choiceCommand) {
         this.conversationCommandEvent = choiceCommand;
     }
 

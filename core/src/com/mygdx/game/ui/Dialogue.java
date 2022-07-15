@@ -5,15 +5,17 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
-import com.mygdx.game.World.Entities.NPC.NPC;
 import com.mygdx.game.ui.conversation.Conversation;
 import com.mygdx.game.ui.conversation.ConversationChoice;
 import com.mygdx.game.ui.conversation.ConversationGraph;
+import com.mygdx.game.World.Entities.NPC.NPC;
 
 import java.util.ArrayList;
 
 public class Dialogue extends Table {
+
     private Skin skin;
     private Label dialogueText;
     private Label dialogueSpeaker;

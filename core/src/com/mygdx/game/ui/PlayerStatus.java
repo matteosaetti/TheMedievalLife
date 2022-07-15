@@ -7,36 +7,39 @@ class PlayerStatus extends Table {
     ProgressBar mana;
     ProgressBar exp;
 
+
     public PlayerStatus(Skin skin){
         super(skin);
         setDebug(false);
 
-        //Progress Bar
-        health=new ProgressBar(0,1,0.1f,false,skin,"health");
-        mana=new ProgressBar(0,1,0.1f,false,skin,"mana");
-        exp=new ProgressBar(0,1,0.1f,false,skin,"exp");
+        //ProgressBars
+        health = new ProgressBar(0,1,0.01f, false, skin, "health");
+        mana = new ProgressBar(0,1,0.01f, false, skin, "mana");
+        exp = new ProgressBar(0,1,0.01f, false, skin, "exp");
         health.setValue(1);
         mana.setValue(1);
         exp.setValue(1);
 
+        //Group bars of ProgressBars
         VerticalGroup bars = new VerticalGroup();
         bars.pad(2,0,2,0);
         bars.space(6);
         bars.addActor(health);
-        bars.addActor(mana);
         bars.addActor(exp);
+        bars.addActor(mana);
 
+
+        //PlayerStatus table
         add(new Image(skin.getDrawable("ps_left")));
-        add((bars).expand().fill());
+        add(bars).expandX().fillX();
         add(new Image(skin.getDrawable("ps_right")));
-
     }
 
-    public void setHealth(final float value) {
+    void setHealth(final float value){
         health.setValue(value);
     }
 
-    public void setExp(final float value) {
+    void setExp(final float value){
         exp.setValue(value);
     }
 

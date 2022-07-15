@@ -16,8 +16,8 @@
     1: [
       {
         class: com.mygdx.game.ui.conversation.ConversationChoice
-        sourceId: 2
-        destinationId: 3,
+        sourceId: 1
+        destinationId: 2,
         choicePhrase: "Salve mia Regina, io sto molto bene lei?"
         conversationCommandEvent: NONE
       }

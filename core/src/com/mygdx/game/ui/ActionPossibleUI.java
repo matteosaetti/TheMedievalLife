@@ -3,6 +3,7 @@ package com.mygdx.game.ui;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Array;
 
+
 public class ActionPossibleUI extends Table {
     private Skin skin;
     private Array<ActionType> actions;
@@ -22,6 +23,7 @@ public class ActionPossibleUI extends Table {
             row();
         }
     }
+
     public void showAction(ActionType actionType){
         cells.get(actions.indexOf(actionType, true)).getActor().setVisible(true);
     }
@@ -34,6 +36,7 @@ public class ActionPossibleUI extends Table {
         return cells.get(actions.indexOf(actionType, true)).getActor().isVisible();
     }
 }
+
 class actionUI extends Table{
     actionUI(Skin skin, ActionType actionType){
         add(new Image(skin.getDrawable(actionType.getKey())));
@@ -42,4 +45,3 @@ class actionUI extends Table{
         add(new Image((skin.getDrawable(actionType.getAction())))).colspan(2);
     }
 }
-

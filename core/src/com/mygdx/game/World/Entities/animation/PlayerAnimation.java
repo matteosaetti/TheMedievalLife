@@ -92,10 +92,8 @@ public class PlayerAnimation implements NpcAnimation{
 
         }
         else{ //Idle
-            if(direction_x)   return Status.IDLER;
-            else if(!direction_y)         return Status.IDLEL;
-            else if(direction_y)    return Status.IDLE;
-            else return Status.IDLEB;
+            if(direction_x)   return Status.IDLE;
+            else return Status.IDLE;
 
         }
     }

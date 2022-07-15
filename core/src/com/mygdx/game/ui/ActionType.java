@@ -8,7 +8,7 @@ public enum ActionType {
     private final String key;
     private final String action;
 
-    ActionType(String text, String key, String action) {
+    ActionType(final String text, final String key, final String action) {
         this.action=action;
         this.key=key;
         this.text=text;

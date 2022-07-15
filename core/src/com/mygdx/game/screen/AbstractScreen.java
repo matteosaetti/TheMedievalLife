@@ -47,13 +47,7 @@ public abstract class AbstractScreen implements Screen {
 
     @Override
     public void show(){
-        if(screenUI instanceof GameUI){
-            return;
-        }
-        else{
-            stage.addActor(screenUI);
-        }
-
+        stage.addActor(screenUI);
     }
 
     @Override

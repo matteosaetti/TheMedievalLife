@@ -16,15 +16,15 @@
     1: [
       {
         class: com.mygdx.game.ui.conersation.ConversationChoice
-        sourceId: 2
-        destinationId: 3,
+        sourceId: 1
+        destinationId: 2,
         choicePhrase: "ciao Merlino, avrei bisogno di una pozione per conquistare la Regina e spodestare il Re."
         conversationCommandEvent: NONE
       }
       {
         class: com.mygdx.game.ui.conversation.ConversationChoice
         sourceId: 2
-        destinationId: 4,
+        destinationId: 3,
         choicePhrase: "Va bene Grazie Merlino."
         conversationCommandEvent: NONE
       }

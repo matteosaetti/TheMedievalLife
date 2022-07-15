@@ -8,7 +8,7 @@ public class NPCFactory {
     public NPC createNPC(String name, float x, float y, World world, AssetManager assetManager){
         NPC npc = null;
         if(name.equals("Merchant_1")){
-            npc = new Merchant(world, new Vector2(x, y), assetManager);
+         npc = new Merchant(world, new Vector2(x, y), assetManager);
         } else if (name.equals("Merchant_2")){
             npc = new Merchant(world, new Vector2(x, y), assetManager);
         } else if (name.equals("King")){
