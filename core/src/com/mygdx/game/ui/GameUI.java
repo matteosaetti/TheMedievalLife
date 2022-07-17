@@ -5,9 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.World.Portal;
 import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
+import com.mygdx.game.map.MapManager;
 import com.mygdx.game.screen.ScreenType;
 import com.mygdx.game.ui.inventory.Inventory;
 import com.mygdx.game.World.Entities.Player;
@@ -57,8 +59,7 @@ public class GameUI extends Table implements InputListener {
                 context.setScreen(ScreenType.MAINMENU);
             }
         });
-        Button inventoryButt = new Button(skin.getDrawable("inventoryIconInactive"), skin.getDrawable("inventoryIconActive"));
-
+        Button inventoryButt =new Button(skin.getDrawable("inventoryIconInactive"),skin.getDrawable("inventoryIconActive"));
         //widget 2nd row
         inventory = new Inventory(skin, player, context);
         inventoryButt.addListener(new ClickListener() {
@@ -83,7 +84,8 @@ public class GameUI extends Table implements InputListener {
         //first row
         add(menu).top().left();
         add().expandX().top().right();
-        add(inventoryButt).top().right().size( 80,70);
+        add(playerStatus).top();
+        playerStatus.pack();
         row();
 
         //second row
@@ -93,8 +95,7 @@ public class GameUI extends Table implements InputListener {
         row();
 
         //third row
-        add(playerStatus).bottom();
-        playerStatus.pack();
+        add(inventoryButt).bottom().left().size( 80,70);
         add(hotbar).colspan(2).bottom().padRight(playerStatus.getWidth());
     }
 
@@ -186,6 +187,9 @@ public class GameUI extends Table implements InputListener {
                 if(actionPossible.isActionPossible(ActionType.CHAT)){
                     dialogue.setVisible(!dialogue.isVisible());
                     break;
+                }
+                if(actionPossible.isActionPossible(ActionType.PORTAL)){
+
                 }
 
             case BACK:

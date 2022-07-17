@@ -23,7 +23,7 @@ class PlayerStatus extends Table {
         //Group bars of ProgressBars
         VerticalGroup bars = new VerticalGroup();
         bars.pad(2,0,2,0);
-        bars.space(6);
+        bars.space(2);
         bars.addActor(health);
         bars.addActor(exp);
         bars.addActor(mana);

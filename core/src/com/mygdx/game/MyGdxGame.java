@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.SkinLoader;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -77,7 +78,9 @@ public class MyGdxGame extends Game {
 
 		//AssetManager
 		assetManager = new AssetManager();
-		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+		//assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+		assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+
 
 		//MapManager
 		mapManager = new MapManager(assetManager, world);

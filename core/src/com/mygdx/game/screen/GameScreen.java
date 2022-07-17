@@ -209,6 +209,8 @@ public class GameScreen extends AbstractScreen implements InputListener, MapMana
                     portalDestination = null;
                 }
                 break;
+            case INVENTORY:
+
             /*
              * BOX2D DEBUG COMMANDS
              */
