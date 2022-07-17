@@ -32,7 +32,7 @@ class PlayerStatus extends Table {
         //PlayerStatus table
         add(new Image(skin.getDrawable("ps_left")));
         add(bars).expandX().fillX();
-        add(new Image(skin.getDrawable("ps_right")));
+        add(new Image(skin.getDrawable("ps_end")));
     }
 
     void setHealth(final float value){
