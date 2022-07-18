@@ -10,6 +10,7 @@ import com.mygdx.game.input.GameKeys;
 import com.mygdx.game.input.InputListener;
 import com.mygdx.game.input.InputManager;
 import com.mygdx.game.map.MapManager;
+import com.mygdx.game.map.MapType;
 import com.mygdx.game.screen.ScreenType;
 import com.mygdx.game.ui.inventory.Inventory;
 import com.mygdx.game.World.Entities.Player;
