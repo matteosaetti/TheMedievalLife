@@ -830,7 +830,7 @@
   <object id="10" x="337" y="2161" width="60" height="27"/>
   <object id="15" x="16" y="2192" width="33" height="36"/>
   <object id="22" x="736" y="2560" width="66" height="93"/>
-  <object id="23" x="802" y="2564" width="64" height="83"/>
+  <object id="23" x="802" y="2560" width="64" height="87"/>
   <object id="30" x="47" y="2400" width="63" height="200"/>
   <object id="31" x="118" y="2406" width="20" height="19"/>
   <object id="32" x="122" y="2452" width="16" height="27"/>
@@ -844,10 +844,10 @@
   <object id="53" x="444" y="2448">
    <polygon points="0,0 -18,0 -24,6 -47,17 -57,35 -63,54 -55,71 -20,91 -20,93 -4,93 -4,92 34,63 37,47 19,15"/>
   </object>
-  <object id="57" x="803" y="2741" width="58" height="49"/>
-  <object id="58" x="708" y="2756" width="26" height="25"/>
-  <object id="59" x="741" y="2757" width="23" height="24"/>
-  <object id="60" x="773" y="2757" width="22" height="26"/>
+  <object id="57" x="803" y="2738" width="58" height="52"/>
+  <object id="58" x="708" y="2751" width="26" height="30"/>
+  <object id="59" x="741" y="2751" width="23" height="30"/>
+  <object id="60" x="773" y="2752" width="22" height="31"/>
   <object id="78" x="704" y="2416" width="33" height="30"/>
   <object id="79" x="715" y="2461" width="13" height="10"/>
   <object id="86" x="371" y="2224" width="26" height="46"/>
@@ -869,10 +869,10 @@
   <object id="102" x="63" y="2352" width="33" height="45"/>
   <object id="103" x="17" y="2687" width="30" height="46"/>
   <object id="104" x="18" y="2746" width="27" height="48"/>
-  <object id="105" x="373" y="2610" width="22" height="42"/>
-  <object id="106" x="470" y="2610" width="20" height="44"/>
-  <object id="107" x="467" y="2717" width="29" height="51"/>
-  <object id="108" x="372" y="2722" width="24" height="44"/>
+  <object id="105" x="360" y="2610" width="41" height="42"/>
+  <object id="106" x="464" y="2610" width="35" height="44"/>
+  <object id="107" x="461" y="2717" width="40" height="51"/>
+  <object id="108" x="361" y="2722" width="40" height="44"/>
  </objectgroup>
  <layer id="6" name="roba_sopra_addobbi" width="200" height="200">
   <data encoding="csv">
