@@ -78,7 +78,7 @@ public class MyGdxGame extends Game {
 
 		//AssetManager
 		assetManager = new AssetManager();
-		//assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+		assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
 
@@ -103,7 +103,6 @@ public class MyGdxGame extends Game {
 	public void setScreen(final ScreenType screenType){
 		//screen conterrà lo Screen di tipo screenType dagli screenAvailable, oppure null se non ancora creato
 		final Screen screen = screenAvailable.get(screenType);
-		//System.out.println("hello");
 		if(screen == null){
 			//si crea lo Screen di tipo screenType
 			try{
@@ -190,7 +189,7 @@ public class MyGdxGame extends Game {
 
 	private void skinInit(){
 		final ObjectMap<String, Object> resources = new ObjectMap<String, Object>();
-		FreeTypeFontGenerator FTFontGen = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
+		FreeTypeFontGenerator FTFontGen = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixel v2.ttf"));
 		final FreeTypeFontGenerator.FreeTypeFontParameter FTFontPar= new FreeTypeFontGenerator.FreeTypeFontParameter();
 		FTFontPar.minFilter = Texture.TextureFilter.Linear;
 		FTFontPar.magFilter = Texture.TextureFilter.Linear;
@@ -200,7 +199,7 @@ public class MyGdxGame extends Game {
 			resources.put("font_"+size, FTFontGen.generateFont(FTFontPar));
 		}
 
-		FTFontGen = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixelFont.ttf"));
+		FTFontGen = new FreeTypeFontGenerator(Gdx.files.internal("ui/MinimalPixel v2.ttf"));
 		FTFontPar.size = 16;
 		resources.put("font2_16", FTFontGen.generateFont(FTFontPar));
 		FTFontGen.dispose();

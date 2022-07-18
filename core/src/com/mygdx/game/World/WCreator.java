@@ -24,7 +24,7 @@ public class WCreator {
             new Wborder(world, map, object);
         }
 
-        for (MapObject object : map.getLayers().get("portale").getObjects().getByType(RectangleMapObject.class)){
+        for (MapObject object : map.getLayers().get("portals").getObjects().getByType(RectangleMapObject.class)){
             new Portal(world, map, object);
         }
     }

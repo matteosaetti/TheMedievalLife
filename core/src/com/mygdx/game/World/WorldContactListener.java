@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.map.MapType;
 import com.mygdx.game.ui.ActionType;
 import com.mygdx.game.ui.GameUI;
 
