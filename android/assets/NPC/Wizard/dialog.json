@@ -15,7 +15,7 @@
 
     1: [
       {
-        class: com.mygdx.game.ui.conersation.ConversationChoice
+        class: com.mygdx.game.ui.conversation.ConversationChoice
         sourceId: 1
         destinationId: 2,
         choicePhrase: "ciao Merlino, avrei bisogno di una pozione per conquistare la Regina e spodestare il Re."

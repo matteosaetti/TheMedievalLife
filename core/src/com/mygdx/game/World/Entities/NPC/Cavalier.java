@@ -15,7 +15,7 @@ public class Cavalier extends NPC{
 
         setNPCname("Cavalier");
         setConversationConfigPath("NPC/Cavalier/dialog.json");
-        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/Cavalier/idle.atlas"));
+        setNpcAnimation(new OnlyIdleAnimation(assetManager, "NPC/Cavalier/idle_left.atlas"));
     }
     @Override
     public void actionTriggered(Player player) {

@@ -1,7 +1,7 @@
 {
-"coordX": 40.033443,
-"coordY": 92.02137,
-"map": "WORLD",
+"coordX": 14.318399,
+"coordY": 21.355267,
+"map": "CASTLE",
 "stats": {
 	"health": 100,
 	"maxHealth": 100,
@@ -29,17 +29,17 @@
 		},
 		{
 			"class": "com.mygdx.game.ui.Item",
+			"name": "book",
+			"ID": 204,
+			"quantity": 1,
+			"indexInInv": 2
+		},
+		{
+			"class": "com.mygdx.game.ui.Item",
 			"name": "potion",
 			"ID": 203,
 			"quantity": 12,
 			"indexInInv": 3
-		},
-		{
-			"class": "com.mygdx.game.ui.Item",
-			"name": "book",
-			"ID": 204,
-			"quantity": 1,
-			"indexInInv": 7
 		},
 		{
 			"class": "com.mygdx.game.ui.Item",

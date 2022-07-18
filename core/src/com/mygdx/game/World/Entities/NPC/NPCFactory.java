@@ -15,9 +15,10 @@ public class NPCFactory {
             npc = new King(world, new Vector2(x, y), assetManager);
         } else if (name.equals("Cavalier_1")){
             npc = new Cavalier(world, new Vector2(x, y), assetManager);
-        } else if (name.equals("Cavalier_2")){
-            npc = new Cavalier(world, new Vector2(x, y), assetManager);
-        } else if (name.equals("Wizard")) {
+        }// else if (name.equals("Cavalier_2")){
+           // npc = new Cavalier(world, new Vector2(x, y), assetManager);
+        //}
+        else if (name.equals("Wizard")) {
             npc = new Wizard(world, new Vector2(x, y), assetManager);
         } else if (name.equals("Queen")){
             npc = new Queen(world, new Vector2(x, y), assetManager);

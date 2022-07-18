@@ -18,13 +18,13 @@ public class AnimationLoader {
             //Cavalier_1
             "NPC/Cavalier/idle_left.atlas",
             //Cavalier_2
-            "NPC/Cavalier/idle_right.atlas",
+            //"NPC/Cavalier/idle_right.atlas",
             //King
             "NPC/King/king.atlas",
             //Queen
             "NPC/Queen/idle.atlas",
             //Wizard
-            "NPC/Wizard/idle_left.atlas",
+            "NPC/Wizard/idle1.atlas",
             //Merchant_1
             "NPC/Merchant/idle.atlas",
             //Merchant_2
