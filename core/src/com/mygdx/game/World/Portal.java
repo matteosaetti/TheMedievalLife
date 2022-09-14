@@ -21,7 +21,6 @@ public class Portal {
     public Portal(World world, TiledMap map, MapObject object) {
         bdef = new BodyDef();
         rect = ((RectangleMapObject) object).getRectangle();
-
         bdef.gravityScale=0;
         bdef.type = BodyDef.BodyType.StaticBody;
         bdef.position.set((rect.getX() + rect.getWidth() / 2)* UNIT_SCALE,
